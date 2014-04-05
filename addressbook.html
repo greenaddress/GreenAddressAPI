@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>addressbook module &mdash; GreenAddress API  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
+    <link rel="next" title="login module" href="login.html" />
+    <link rel="prev" title="Welcome to GreenAddress API documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="login.html" title="login module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to GreenAddress API documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-addressbook">
+<span id="addressbook-module"></span><h1>addressbook module<a class="headerlink" href="#module-addressbook" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/addressbook/</span></tt></p>
+<blockquote>
+<div><dl class="method">
+<dt id="add_entry">
+<tt class="descclassname">addressbook/</tt><tt class="descname">add_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new entry to the addressbook. Does not allow repeated addresses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> (<em>String</em>) &#8211; b58 string</li>
+<li><strong>name</strong> (<em>String</em>) &#8211; </li>
+<li><strong>rating</strong> (<em>Number</em>) &#8211; &gt;= 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="delete_entry">
+<tt class="descclassname">addressbook/</tt><tt class="descname">delete_entry</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#delete_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="disable_sync">
+<tt class="descclassname">addressbook/</tt><tt class="descname">disable_sync</tt><big>(</big><em>party</em><big>)</big><a class="headerlink" href="#disable_sync" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="edit_entry">
+<tt class="descclassname">addressbook/</tt><tt class="descname">edit_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#edit_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change name and rating of an address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>address</strong> (<em>String</em>) &#8211; identifying address</li>
+<li><strong>name</strong> (<em>String</em>) &#8211; </li>
+<li><strong>rating</strong> (<em>Number</em>) &#8211; &gt;= 0</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_my_addresses">
+<tt class="descclassname">addressbook/</tt><tt class="descname">get_my_addresses</tt><big>(</big><big>)</big><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="get_sync_status">
+<tt class="descclassname">addressbook/</tt><tt class="descname">get_sync_status</tt><big>(</big><big>)</big><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="read_all">
+<tt class="descclassname">addressbook/</tt><tt class="descname">read_all</tt><big>(</big><em>hashed</em><big>)</big><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read all entries from addressbook.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="reddit_user_has_wallet">
+<tt class="descclassname">addressbook/</tt><tt class="descname">reddit_user_has_wallet</tt><big>(</big><em>username</em><big>)</big><a class="headerlink" href="#reddit_user_has_wallet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sync_custom">
+<tt class="descclassname">addressbook/</tt><tt class="descname">sync_custom</tt><big>(</big><em>username</em>, <em>password</em><big>)</big><a class="headerlink" href="#sync_custom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sync_fb">
+<tt class="descclassname">addressbook/</tt><tt class="descname">sync_fb</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sync_reddit">
+<tt class="descclassname">addressbook/</tt><tt class="descname">sync_reddit</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to GreenAddress API documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="login.html"
+                        title="next chapter">login module</a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">addressbook module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="login.html" title="login module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to GreenAddress API documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, GreenAddress.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

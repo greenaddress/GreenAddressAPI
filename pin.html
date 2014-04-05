@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pin module &mdash; GreenAddress API  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
+    <link rel="next" title="twofactor module" href="twofactor.html" />
+    <link rel="prev" title="login module" href="login.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="twofactor.html" title="twofactor module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="login.html" title="login module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pin">
+<span id="pin-module"></span><h1>pin module<a class="headerlink" href="#module-pin" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/pin/</span></tt></p>
+<blockquote>
+<div><dl class="method">
+<dt id="change_pin_login">
+<tt class="descclassname">pin/</tt><tt class="descname">change_pin_login</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the PIN for given device_ident</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pin</strong> (<em>String</em>) &#8211; string with a few characters (max 8 characters)</li>
+<li><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="disable_pin_login">
+<tt class="descclassname">pin/</tt><tt class="descname">disable_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the device from the list of PIN logins if the wallet_id matches.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">success - always true</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_devices">
+<tt class="descclassname">pin/</tt><tt class="descname">get_devices</tt><big>(</big><big>)</big><a class="headerlink" href="#get_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>List all pin devices in this wallet sorted by device_name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[[&quot;device_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_password">
+<tt class="descclassname">pin/</tt><tt class="descname">get_password</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the device_id and return its password.
+Ignore wallet_id in the db entry.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">password</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">#password if there is no such device or the number of attempts has been exceeded</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="remove_all_pin_logins">
+<tt class="descclassname">pin/</tt><tt class="descname">remove_all_pin_logins</tt><big>(</big><big>)</big><a class="headerlink" href="#remove_all_pin_logins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the PIN for given device_ident</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="remove_pin_login">
+<tt class="descclassname">pin/</tt><tt class="descname">remove_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the PIN for given device_ident</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="set_pin_login">
+<tt class="descclassname">pin/</tt><tt class="descname">set_pin_login</tt><big>(</big><em>pin</em>, <em>device_name</em><big>)</big><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a device_ident and password and send password back.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pin</strong> (<em>String</em>) &#8211; with a few characters (max 8 characters)</li>
+<li><strong>device_name</strong> (<em>String</em>) &#8211; human readable string (max 20 characters)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">device_id [uuid]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="login.html"
+                        title="previous chapter">login module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="twofactor.html"
+                        title="next chapter">twofactor module</a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">pin module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="twofactor.html" title="twofactor module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="login.html" title="login module"
+             >previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, GreenAddress.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

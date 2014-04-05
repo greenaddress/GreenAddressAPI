@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>login module &mdash; GreenAddress API  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
+    <link rel="next" title="pin module" href="pin.html" />
+    <link rel="prev" title="addressbook module" href="addressbook.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pin.html" title="pin module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="addressbook.html" title="addressbook module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-login">
+<span id="login-module"></span><h1>login module<a class="headerlink" href="#module-login" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/login/</span></tt></p>
+<blockquote>
+<div><dl class="method">
+<dt id="authenticate">
+<tt class="descclassname">login/</tt><tt class="descname">authenticate</tt><big>(</big><em>signature</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that this is a valid signature of the challenge done using current wallet&#8217;s
+private key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signature</strong> (<em>Array</em>) &#8211; <cite>[r, s]</cite> integers encoded as strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">To Be Documented</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="available_currencies">
+<tt class="descclassname">login/</tt><tt class="descname">available_currencies</tt><big>(</big><big>)</big><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="force_login">
+<tt class="descclassname">login/</tt><tt class="descname">force_login</tt><big>(</big><em>wallet_id</em><big>)</big><a class="headerlink" href="#force_login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="get_challenge">
+<tt class="descclassname">login/</tt><tt class="descname">get_challenge</tt><big>(</big><em>pubkey_hash</em><big>)</big><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate and return a challenge that must be signed for a successful authentication.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pubkey_hash</strong> (<em>String</em>) &#8211; address calculated from pubkey - base58</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string to be signed</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="register">
+<tt class="descclassname">login/</tt><tt class="descname">register</tt><big>(</big><em>master_public</em>, <em>master_chaincode</em><big>)</big><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
+<li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 20 byte chaincode, hex-encoded</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="set_appearance">
+<tt class="descclassname">login/</tt><tt class="descname">set_appearance</tt><big>(</big><em>appearance</em><big>)</big><a class="headerlink" href="#set_appearance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="set_currency">
+<tt class="descclassname">login/</tt><tt class="descname">set_currency</tt><big>(</big><em>currency</em><big>)</big><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="set_exchange">
+<tt class="descclassname">login/</tt><tt class="descname">set_exchange</tt><big>(</big><em>exchange</em><big>)</big><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="set_gait_path">
+<tt class="descclassname">login/</tt><tt class="descname">set_gait_path</tt><big>(</big><em>wallet_path</em><big>)</big><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="set_nlocktime">
+<tt class="descclassname">login/</tt><tt class="descname">set_nlocktime</tt><big>(</big><em>nlocktime</em><big>)</big><a class="headerlink" href="#set_nlocktime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="watch_only">
+<tt class="descclassname">login/</tt><tt class="descname">watch_only</tt><big>(</big><em>token_type</em>, <em>token</em>, <em>logout</em><big>)</big><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="addressbook.html"
+                        title="previous chapter">addressbook module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pin.html"
+                        title="next chapter">pin module</a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">login module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pin.html" title="pin module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="addressbook.html" title="addressbook module"
+             >previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, GreenAddress.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

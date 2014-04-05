@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>twofactor module &mdash; GreenAddress API  documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
+    <link rel="next" title="txs module" href="txs.html" />
+    <link rel="prev" title="pin module" href="pin.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="txs.html" title="txs module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pin.html" title="pin module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-twofactor">
+<span id="twofactor-module"></span><h1>twofactor module<a class="headerlink" href="#module-twofactor" title="Permalink to this headline">¶</a></h1>
+<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/twofactor/</span></tt></p>
+<blockquote>
+<div><dl class="method">
+<dt id="disable_email">
+<tt class="descclassname">twofactor/</tt><tt class="descname">disable_email</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="disable_gauth">
+<tt class="descclassname">twofactor/</tt><tt class="descname">disable_gauth</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_gauth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="disable_phone">
+<tt class="descclassname">twofactor/</tt><tt class="descname">disable_phone</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_phone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="disable_sms">
+<tt class="descclassname">twofactor/</tt><tt class="descname">disable_sms</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_sms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="enable_email">
+<tt class="descclassname">twofactor/</tt><tt class="descname">enable_email</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="enable_gauth">
+<tt class="descclassname">twofactor/</tt><tt class="descname">enable_gauth</tt><big>(</big><em>code</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#enable_gauth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="enable_phone">
+<tt class="descclassname">twofactor/</tt><tt class="descname">enable_phone</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_phone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="enable_sms">
+<tt class="descclassname">twofactor/</tt><tt class="descname">enable_sms</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_sms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="get_config">
+<tt class="descclassname">twofactor/</tt><tt class="descname">get_config</tt><big>(</big><big>)</big><a class="headerlink" href="#get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get two factor authentication configuration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="init_enable_email">
+<tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_email</tt><big>(</big><em>email</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="init_enable_phone">
+<tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_phone</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_phone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="init_enable_sms">
+<tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_sms</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_sms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="request_email">
+<tt class="descclassname">twofactor/</tt><tt class="descname">request_email</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="request_phone">
+<tt class="descclassname">twofactor/</tt><tt class="descname">request_phone</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_phone" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="request_proxy">
+<tt class="descclassname">twofactor/</tt><tt class="descname">request_proxy</tt><big>(</big><em>method</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#request_proxy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="request_sms">
+<tt class="descclassname">twofactor/</tt><tt class="descname">request_sms</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_sms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pin.html"
+                        title="previous chapter">pin module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="txs.html"
+                        title="next chapter">txs module</a></p>
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">twofactor module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="txs.html" title="txs module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pin.html" title="pin module"
+             >previous</a> |</li>
+        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, GreenAddress.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
