@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple login example &mdash; GreenAddress API  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="GreenAddress API  documentation" href="../index.html" />
+    <link rel="up" title="Usage examples" href="../examples.html" />
+    <link rel="next" title="WebSocket WAMP API calls" href="../apicalls.html" />
+    <link rel="prev" title="Usage examples" href="../examples.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../apicalls.html" title="WebSocket WAMP API calls"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../examples.html" title="Usage examples"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">GreenAddress API  documentation</a> &raquo;</li>
+          <li><a href="../examples.html" accesskey="U">Usage examples</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="simple-login-example">
+<h1>Simple login example<a class="headerlink" href="#simple-login-example" title="Permalink to this headline">¶</a></h1>
+<p>Here we demonstrate how you can implement a simple JavaScript web application which logs in to GreenAdress wallet using your mnemonic, and checks balance.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>To implement this example, we use the following libraries, so make sure you download them first:</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://autobahn.s3.amazonaws.com/js/autobahn.js">Autobahn|JS 0.8.2</a></li>
+<li><a class="reference external" href="https://github.com/bitcoinjs/bitcoinjs-lib/releases/tag/0.2.0">bitcoinjs-lib 0.2.0</a></li>
+<li><a class="reference external" href="https://github.com/weilu/bip39/releases/tag/1.0.2">weilu&#8217;s BIP39 JS implementation, v1.0.2</a></li>
+<li><a class="reference external" href="http://code.jquery.com/jquery-2.1.1.js">jQuery 2.1.1</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>To log in to a GreenAddress wallet, you need a private key derived from a mnemonic. The address corresponding to the key is passed to <a class="reference internal" href="../login.html#get_challenge" title="get_challenge"><tt class="xref gait gait-meth docutils literal"><span class="pre">get_challenge()</span></tt></a> call to retrieve a &#8216;challenge&#8217; string to be signed by the private key, which is then verified by the <a class="reference internal" href="../login.html#authenticate" title="authenticate"><tt class="xref gait gait-meth docutils literal"><span class="pre">authenticate()</span></tt></a> call.</p>
+<p>This example implements a simple GreenAddress login with mnemonic as the input, using the <a class="reference internal" href="../login.html#get_challenge" title="get_challenge"><tt class="xref gait gait-meth docutils literal"><span class="pre">get_challenge()</span></tt></a> and <a class="reference internal" href="../login.html#authenticate" title="authenticate"><tt class="xref gait gait-meth docutils literal"><span class="pre">authenticate()</span></tt></a> calls.</p>
+</div>
+<div class="section" id="compiling-bitcoinjs-lib">
+<h2>Compiling bitcoinjs-lib<a class="headerlink" href="#compiling-bitcoinjs-lib" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>To compile bitcoinjs-lib into a browser-usable form, you need to have <a class="reference external" href="http://nodejs.org/">node.js</a> installed. Compiling it with npm is rather simple, you just need to execute the following inside the bitcoinjs-lib-0.2.0 directory:</dt>
+<dd><ol class="first last arabic simple">
+<li><tt class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">npm</span> <span class="pre">run-script</span> <span class="pre">compile</span></tt></li>
+</ol>
+</dd>
+</dl>
+<p>This will create the bitcoinjs-min.js file for you, which you can use in your application.</p>
+</div>
+<div class="section" id="compiling-weilu-s-bip39">
+<h2>Compiling weilu&#8217;s bip39<a class="headerlink" href="#compiling-weilu-s-bip39" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>As above, you need to use node.js to compile the bip39 implementation, which is a bit more involved because this package doesn&#8217;t include a pre-made script for compiling into a browser-usable form. Run the following inside the bip39-1.0.2 directory:</dt>
+<dd><ol class="first last arabic simple">
+<li><tt class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">browserify</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">./node_modules/.bin/browserify</span> <span class="pre">-s</span> <span class="pre">BIP39</span> <span class="pre">./index.js</span> <span class="pre">&gt;</span> <span class="pre">bip39.js</span></tt></li>
+</ol>
+</dd>
+</dl>
+<p>This will create the bip39.js file.</p>
+</div>
+<div class="section" id="deriving-the-private-key-from-mnemonic">
+<h2>Deriving the private key from mnemonic<a class="headerlink" href="#deriving-the-private-key-from-mnemonic" title="Permalink to this headline">¶</a></h2>
+<p>Because GreenAddress uses <a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">BIP39</a> for deriving keys from the mnemonic, you can use any BIP39 implementation to do this. We&#8217;ve chosen weilu&#8217;s implementation here because it&#8217;s first result in Google for &#8216;bip39 javascript&#8217; at the time of writing this.</p>
+<p><em>NOTE</em>: We&#8217;ve simplified this implementation here by not using &#8216;random BIP 32 subpath&#8217; which GreenAddress uses to avoid signing twice using the same key. If you want to use it, you need to pass appropriate random path_hex argument to <a class="reference internal" href="../login.html#authenticate" title="authenticate"><tt class="xref gait gait-meth docutils literal"><span class="pre">authenticate()</span></tt></a> and then use corresponding derived private key.</p>
+<p>To derive the private key, you can use the following code:</p>
+<div class="highlight-python"><div class="highlight"><pre>var mnemonic = &#39;[your mnemonic]&#39;;
+var cur_net = &#39;mainnet&#39;;  // &#39;testnet&#39; for testnet
+var bip39 = new BIP39();
+var seed = bip39.mnemonicToSeed(mnemonic);  // this is slow, perhaps move to a webworker
+var key = Bitcoin.HDWallet.fromSeedHex(seed, cur_net);
+// NOTE: master priv key shouldn&#39;t be used for signing because repeated signing using the
+// same key is dangerous, so in production a random BIP32 subpath should be used.
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging-in-greenaddress-wamp-server">
+<h2>Logging in GreenAddress WAMP server<a class="headerlink" href="#logging-in-greenaddress-wamp-server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="retrieving-a-token">
+<h3>Retrieving a token<a class="headerlink" href="#retrieving-a-token" title="Permalink to this headline">¶</a></h3>
+<p>To connect to GreenAddress server, you need to acquire a token over HTTP which is used for protecting our servers against Denial of Service attacks:</p>
+<div class="highlight-python"><div class="highlight"><pre>var token = $.get(&#39;https://greenaddress.it/token/&#39;, init_wamp);  // init_wamp is defined in the next subsection
+</pre></div>
+</div>
+</div>
+<div class="section" id="connecting-via-wamp-and-using-the-token">
+<h3>Connecting via WAMP and using the token<a class="headerlink" href="#connecting-via-wamp-and-using-the-token" title="Permalink to this headline">¶</a></h3>
+<p>Now after retrieving the token, we can finally authenticate using the token:</p>
+<div class="highlight-python"><div class="highlight"><pre>var init_wamp = function(token) {
+        ab.connect(&#39;wss://prodwss.greenaddress.it/ws/inv&#39;, function(session) {
+                session.authreq(token).then(function(challenge) {
+                        var signature = session.authsign(challenge, token);
+                        session.auth(signature).then(function(permissions) {
+                                on_wamp_auth(session);  // defined in the next subsection
+                        });
+                });
+        });
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging-in-to-the-wallet-and-retrieving-balance">
+<h3>Logging in to the wallet and retrieving balance<a class="headerlink" href="#logging-in-to-the-wallet-and-retrieving-balance" title="Permalink to this headline">¶</a></h3>
+<p>After WAMP authentication, we can use the previously derived private key to log in and retrieve the balance:</p>
+<div class="highlight-python"><div class="highlight"><pre>var on_wamp_auth = function(session) {
+        session.call(&#39;http://greenaddressit.com/login/get_challenge&#39;,
+                        key.getAddress().toString()).then(function(challenge) {
+                var challenge_bytes = new Bitcoin.BigInteger(challenge).toByteArrayUnsigned();
+                var signature = key.priv.sign(challenge_bytes);
+                signature = Bitcoin.ecdsa.parseSig(signature);
+
+                session.call(&#39;http://greenaddressit.com/login/authenticate&#39;,
+                                [signature.r.toString(), signature.s.toString()], false).then(function(data) {
+                        // data contains some wallet configuration data
+                        session.call(&#39;http://greenaddressit.com/txs/get_balance&#39;).then(function(balance) {
+                                console.log(balance.satoshi);
+                        });
+                });
+        });
+};
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Simple login example</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#compiling-bitcoinjs-lib">Compiling bitcoinjs-lib</a></li>
+<li><a class="reference internal" href="#compiling-weilu-s-bip39">Compiling weilu&#8217;s bip39</a></li>
+<li><a class="reference internal" href="#deriving-the-private-key-from-mnemonic">Deriving the private key from mnemonic</a></li>
+<li><a class="reference internal" href="#logging-in-greenaddress-wamp-server">Logging in GreenAddress WAMP server</a><ul>
+<li><a class="reference internal" href="#retrieving-a-token">Retrieving a token</a></li>
+<li><a class="reference internal" href="#connecting-via-wamp-and-using-the-token">Connecting via WAMP and using the token</a></li>
+<li><a class="reference internal" href="#logging-in-to-the-wallet-and-retrieving-balance">Logging in to the wallet and retrieving balance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../examples.html"
+                        title="previous chapter">Usage examples</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../apicalls.html"
+                        title="next chapter">WebSocket WAMP API calls</a></p>
+<h3><a href="../index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Simple login example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../apicalls.html" title="WebSocket WAMP API calls"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../examples.html" title="Usage examples"
+             >previous</a> |</li>
+        <li><a href="../index.html">GreenAddress API  documentation</a> &raquo;</li>
+          <li><a href="../examples.html" >Usage examples</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, GreenAddress.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
