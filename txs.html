@@ -59,8 +59,19 @@
 <p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/txs/</span></tt></p>
 <blockquote>
 <div><dl class="method">
+<dt id="create_subaccount">
+<tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="get_balance">
-<tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sum of unspent outputs destined to our wallet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_balance_by_addr">
+<tt class="descclassname">txs/</tt><tt class="descname">get_balance_by_addr</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the sum of unspent outputs destined to our wallet.</p>
 </dd></dl>
 
