@@ -57,43 +57,121 @@
 <div><dl class="method">
 <dt id="fund">
 <tt class="descclassname">vault/</tt><tt class="descname">fund</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return P2SH hash the user can pay to.
-Generate a new pubkey for this.
-&#64;return: hex encoded script</p>
+<dd><p>Return P2SH hash the user can pay to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">hex encoded script</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="fund_receiving_id">
 <tt class="descclassname">vault/</tt><tt class="descname">fund_receiving_id</tt><big>(</big><em>receiving_id</em><big>)</big><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return P2SH hash the user can pay to.
-Generate a new pubkey for this.
-&#64;return: hex encoded script</p>
+<dd><p>Return P2SH hash the anyone can pay to given receiving_id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>receiving_id</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">base58 encoded P2SH address</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="get_next_private_derived_pointer">
 <tt class="descclassname">vault/</tt><tt class="descname">get_next_private_derived_pointer</tt><big>(</big><big>)</big><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return next unused EXTERNAL branch private key pointer.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="prepare_nlocktime">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_nlocktime</tt><big>(</big><em>txouts</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#prepare_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<tt class="descclassname">vault/</tt><tt class="descname">prepare_nlocktime</tt><big>(</big><em>txouts</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_nlocktime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a nLockTime transaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>txouts</strong> &#8211; [[txhash, out_n], ...]</li>
+<li><strong>twofac_data</strong> &#8211; Two factor authentication data.
+{method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;tx&#8217;: hex,
+&#8216;prevout_pointers&#8217;: [Number, ...],
+&#8216;prevout_subaccounts&#8217;: [Number, ...]}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="prepare_payreq">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_payreq</tt><big>(</big><em>value</em>, <em>data</em><big>)</big><a class="headerlink" href="#prepare_payreq" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prepare BIP70 payment protocol transaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Number</strong> (<em>value</em>) &#8211; satoshis</li>
+<li><strong>data</strong> &#8211; data returned from process_bip0070_url</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">same as prepare_tx</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="prepare_redeposit">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_redeposit</tt><big>(</big><em>txouts</em><big>)</big><a class="headerlink" href="#prepare_redeposit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prepare nLockTime redeposit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Array</strong> (<em>txouts</em>) &#8211; [[txhash, out_n], ...]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">same as prepare_tx</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="prepare_sweep_social">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_sweep_social</tt><big>(</big><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prepare public key sweeping transaction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Array</strong> (<em>pubkey</em>) &#8211; pubkey bytes</li>
+<li><strong>Boolean</strong> (<em>use_electrum</em>) &#8211; whether to use Electrum servers to get the balance. If false,
+only GreenAddress transactions are considered.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;tx&#8217;: hex, &#8216;prevout_scripts&#8217;: [hex, ...]}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="prepare_tx">
@@ -105,7 +183,14 @@ Generate a new pubkey for this.
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>value</strong> (<em>String</em>) &#8211; satoshis as string.</li>
-<li><strong>rcpt_ad</strong> (<em>String</em>) &#8211; b58 address string.</li>
+<li><strong>rcpt_ad</strong> (<em>String</em>) &#8211; recipient address.</li>
+<li><strong>add_fee</strong> (<em>String</em>) &#8211; &#8216;sender&#8217; or &#8216;recipient&#8217; pays the fee</li>
+<li><strong>priv_data</strong> &#8211; external private transaction and other additional data
+{external_private: Boolean,
+pointer: Number,
+pubkey: bytes array,
+social_destination: String,
+instant: Boolean}</li>
 </ul>
 </td>
 </tr>
@@ -118,24 +203,43 @@ Generate a new pubkey for this.
     &#39;tx&#39;: hexencoded binary unsigned transaction without signatures in redeem scripts,
     &#39;prev_outputs&#39;: [
         {
-            &#39;value&#39;: 100000 satoshis,
+            &#39;script&#39;: hex,
+            &#39;value&#39;: satoshis,
             &#39;branch&#39;: branch of users&#39; pubkey in the redeem script,
             &#39;pointer&#39;: pointer in the branch,
+            &#39;subaccount&#39;: Number
         }
     ],
+    &#39;change_pointer&#39;: Number,
+    &#39;requires_2factor&#39;: Boolean
 }
 </pre></div>
 </div>
 <p>The &#8216;tx&#8217; returned contains the original unhashed prev_output script in its redeem script
 for each input. This original script can be used to generate the p2sh output script
 at the js side. This p2sh prev output script is needed to generate a signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="process_bip0070_url">
+<tt class="descclassname">vault/</tt><tt class="descname">process_bip0070_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return BIP70 payment request data</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><strong>NotEnoughMoney</strong> &#8211; </li>
-<li><strong>UserNotFoundError</strong> &#8211; </li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>url</em>) &#8211; payment request URL</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">{
+&#8216;outputs&#8217;: [{&#8216;amount&#8217;: satoshis, &#8216;address&#8217;: String}, ...],
+&#8216;merchant_data&#8217;: hex,
+&#8216;payment_url&#8217;: String,
+&#8216;payreq_url&#8217;: String,
+&#8216;payreq&#8217;: hex,
+&#8216;memo&#8217;: String,
+&#8216;requires_instant&#8217;: Boolean}<ul class="simple">
+<li>requires_instant field is deprecated, and BIP70 instant payments extension is still
+pending finalisation.</li>
 </ul>
 </td>
 </tr>
@@ -144,36 +248,61 @@ at the js side. This p2sh prev output script is needed to generate a signature.<
 </dd></dl>
 
 <dl class="method">
-<dt id="process_bip0070_url">
-<tt class="descclassname">vault/</tt><tt class="descname">process_bip0070_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="send_email">
 <tt class="descclassname">vault/</tt><tt class="descname">send_email</tt><big>(</big><em>destination</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Send an email containing private derived key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>String</strong> (<em>destination</em>) &#8211; email address</li>
+<li><strong>href</strong> &#8211; private key /redeem/ URL</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="send_reddit">
 <tt class="descclassname">vault/</tt><tt class="descname">send_reddit</tt><big>(</big><em>recipient</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Send a Reddit message containing private derived key.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>String</strong> (<em>recipient</em>) &#8211; recipient username</li>
+<li><strong>href</strong> &#8211; private key /redeem/ URL</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="send_tx">
-<tt class="descclassname">vault/</tt><tt class="descname">send_tx</tt><big>(</big><em>signatures</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">vault/</tt><tt class="descname">send_tx</tt><big>(</big><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
 <dd><p>The transaction must have been prepared using prepare_tx
 and signed by the user in js.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>signatures</strong> (<em>Array</em>) &#8211; list of user signatures in the same order as prev_outputs.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>signatures</strong> (<em>Array</em>) &#8211; list of hex-encoded user signatures in the same order as prev_outputs.</li>
+<li><strong>twofac_data</strong> &#8211; (code requested with action=&#8217;send_tx&#8217;) {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">hex encoded txhash.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">hex encoded txhash.</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">NotEnoughMoney(&#8216;missing_satoshis&#8217;)</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+</td>
 </tr>
 </tbody>
 </table>

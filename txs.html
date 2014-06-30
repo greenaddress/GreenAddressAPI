@@ -66,13 +66,44 @@
 <dl class="method">
 <dt id="get_balance">
 <tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the sum of unspent outputs destined to our wallet.</p>
+<dd><p>Returns the sum of unspent outputs destined to user&#8217;s wallet.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>String</strong> (<em>subaccount</em>) &#8211; (default = &#8216;all&#8217;) subaccount; subaccounts are
+work in progress. Pass &#8216;all&#8217; to get user&#8217;s balance ignoring subaccounts.</li>
+<li><strong>Number</strong> (<em>confs</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
+GreenAddress instant confirmed transactions not handled by this call.
+See get_balance_by_addr for instant confirmations support.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="get_balance_by_addr">
 <tt class="descclassname">txs/</tt><tt class="descname">get_balance_by_addr</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the sum of unspent outputs destined to our wallet.</p>
+<dd><p>Returns the sum of unspent outputs destined to given user&#8217;s address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>String</strong> (<em>address</em>) &#8211; base58 encoded address</li>
+<li><strong>Number</strong> (<em>confs</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
+GreenAddress instant confirmed transactions will be considered to
+have this number of confirmations, no matter how large it is.
+For example, given confs=1000000, this call will return balance
+of user&#8217;s instant confirmation outputs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -83,7 +114,36 @@
 <dl class="method">
 <dt id="get_list">
 <tt class="descclassname">txs/</tt><tt class="descname">get_list</tt><big>(</big><em>last_txhash</em>, <em>unclaimed</em><big>)</big><a class="headerlink" href="#get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of all user&#8217;s transactions since last_txhash.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>String</strong> (<em>last_txhash</em>) &#8211; Client&#8217;s last known txhash. Only newer transactions are returned,
+with the exception of unclaimed below.</li>
+<li><strong>unclaimed</strong> &#8211; List of unclaimed txhashes known by client. These transactions are always returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;fiat_currency&#8217;: String, &#8216;cur_block&#8217;: Number,
+&#8216;fiat_value&#8217;: Number, &#8216;list&#8217;: [...], &#8216;unclaimed&#8217;: {...}}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_payment_request">
+<tt class="descclassname">txs/</tt><tt class="descname">get_payment_request</tt><big>(</big><em>txhash</em><big>)</big><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="send_nlocktime">
+<tt class="descclassname">txs/</tt><tt class="descname">send_nlocktime</tt><big>(</big><big>)</big><a class="headerlink" href="#send_nlocktime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request an email with all user&#8217;s nLockTime transactions.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="upcoming_nlocktime">
