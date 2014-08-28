@@ -74,7 +74,12 @@ private key.</p>
 </ul>
 </li>
 <li><strong>logout</strong> (<em>Boolean</em>) &#8211; whether to force log out existing session of the same user</li>
-<li><strong>path_hex</strong> (<em>String</em>) &#8211; 32 bit path for deriving subkey which was used for login</li>
+<li><strong>path_hex</strong> (<em>String</em>) &#8211; <p>32 bit path for deriving subkey which was used for login</p>
+<ul>
+<li>&#8216;GA&#8217; if using constant m/0x4741b11e (m/1195487518) path and deterministic signatures</li>
+<li>16 hex chars if using 4 path components (soon to be deprecated)</li>
+</ul>
+</li>
 <li><strong>device_id</strong> (<em>String</em>) &#8211; unique device identifier. When doing forced logout, user is not
 warned about having &#8220;logged in elsewhere&#8221; if the same device forced the logout.</li>
 </ul>
@@ -378,6 +383,7 @@ so there is no need to force logout here)</li>
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
 <div id="searchbox" style="display: none">

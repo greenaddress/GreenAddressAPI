@@ -107,6 +107,12 @@ of user&#8217;s instant confirmation outputs.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="get_daily_balance_chart">
+<tt class="descclassname">txs/</tt><tt class="descname">get_daily_balance_chart</tt><big>(</big><big>)</big><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of days with balance values for drawing balance graph.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="get_extra_addresses">
 <tt class="descclassname">txs/</tt><tt class="descname">get_extra_addresses</tt><big>(</big><em>endpoint_id</em><big>)</big><a class="headerlink" href="#get_extra_addresses" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -129,6 +135,21 @@ with the exception of unclaimed below.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;fiat_currency&#8217;: String, &#8216;cur_block&#8217;: Number,
 &#8216;fiat_value&#8217;: Number, &#8216;list&#8217;: [...], &#8216;unclaimed&#8217;: {...}}</p>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_list_v2">
+<tt class="descclassname">txs/</tt><tt class="descname">get_list_v2</tt><big>(</big><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of user&#8217;s transactions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;fiat_currency&#8217;: String, &#8216;cur_block&#8217;: Number,
+&#8216;fiat_value&#8217;: Number, &#8216;list&#8217;: [...], &#8216;unclaimed&#8217;: {...}}</td>
 </tr>
 </tbody>
 </table>
@@ -182,6 +203,7 @@ with the exception of unclaimed below.</li>
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
 <div id="searchbox" style="display: none">
