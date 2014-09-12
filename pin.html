@@ -61,15 +61,22 @@
 <div><dl class="method">
 <dt id="change_pin_login">
 <tt class="descclassname">pin/</tt><tt class="descname">change_pin_login</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the PIN for given device_ident</p>
+<dd><div class="line-block">
+<div class="line">Changes the PIN for given device_ident</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1347">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>pin</strong> (<em>String</em>) &#8211; string with a few characters (max 8 characters)</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pin</strong> (<em>String</em>) &#8211; string with a few characters (max 15 characters)</li>
 <li><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return bool status:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">Always True if PIN is changed</p>
 </td>
 </tr>
 </tbody>
@@ -79,7 +86,9 @@
 <dl class="method">
 <dt id="disable_pin_login">
 <tt class="descclassname">pin/</tt><tt class="descname">disable_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the device from the list of PIN logins if the wallet_id matches.</p>
+<dd><div class="line-block">
+<div class="line">Removes the device from the list of PIN logins if the wallet_id matches.</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -95,12 +104,17 @@
 <dl class="method">
 <dt id="get_devices">
 <tt class="descclassname">pin/</tt><tt class="descname">get_devices</tt><big>(</big><big>)</big><a class="headerlink" href="#get_devices" title="Permalink to this definition">¶</a></dt>
-<dd><p>List all pin devices in this wallet sorted by device_name.</p>
+<dd><div class="line-block">
+<div class="line">Lists all pin devices in this wallet sorted by device_name.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L835">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[[&quot;device_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">List</td>
 </tr>
 </tbody>
 </table>
@@ -109,17 +123,29 @@
 <dl class="method">
 <dt id="get_password">
 <tt class="descclassname">pin/</tt><tt class="descname">get_password</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the device_id and return its password.
-Ignore wallet_id in the db entry.</p>
+<dd><div class="line-block">
+<div class="line">If pin and device_ident will match, the API will return the paired password.</div>
+<div class="line">PIN for the given device is disabled on our servers after 3 failed logins.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/signuplogin/controllers.js#L335">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">password</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pin</strong> (<em>string</em>) &#8211; The previously set device PIN</li>
+<li><strong>device_ident</strong> (<em>string</em>) &#8211; The device name</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">password</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">#password if there is no such device or the number of attempts has been exceeded</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">String</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">#password if there is no such device or the number of attempts has been exceeded</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -128,12 +154,17 @@ Ignore wallet_id in the db entry.</p>
 <dl class="method">
 <dt id="remove_all_pin_logins">
 <tt class="descclassname">pin/</tt><tt class="descname">remove_all_pin_logins</tt><big>(</big><big>)</big><a class="headerlink" href="#remove_all_pin_logins" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the PIN for given device_ident</p>
+<dd><div class="line-block">
+<div class="line">Remove all PIN logins previously set. After calling this method, user will not be able anymore to do PIN login from any device he previously paired.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L906">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
 </tr>
 </tbody>
 </table>
@@ -142,12 +173,19 @@ Ignore wallet_id in the db entry.</p>
 <dl class="method">
 <dt id="remove_pin_login">
 <tt class="descclassname">pin/</tt><tt class="descname">remove_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the PIN for given device_ident</p>
+<dd><div class="line-block">
+<div class="line">Remove the PIN login for given device_ident</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L857">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
 </tr>
 </tbody>
 </table>
@@ -156,18 +194,21 @@ Ignore wallet_id in the db entry.</p>
 <dl class="method">
 <dt id="set_pin_login">
 <tt class="descclassname">pin/</tt><tt class="descname">set_pin_login</tt><big>(</big><em>pin</em>, <em>device_name</em><big>)</big><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a device_ident and password and send password back.</p>
+<dd><div class="line-block">
+<div class="line">Generates a device_ident and password and send password back. This password is used for client side seed and mnemonic AES encryption.</div>
+<div class="line">Check usage on Github:<a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L844">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pin</strong> (<em>String</em>) &#8211; with a few characters (max 8 characters)</li>
-<li><strong>device_name</strong> (<em>String</em>) &#8211; human readable string (max 20 characters)</li>
+<li><strong>pin</strong> (<em>String</em>) &#8211; with a few characters (max 15 characters)</li>
+<li><strong>device_name</strong> (<em>String</em>) &#8211; human readable string (max 100 characters)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">device_id [uuid]</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">password</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
@@ -204,6 +245,7 @@ Ignore wallet_id in the db entry.</p>
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
 <div id="searchbox" style="display: none">
@@ -244,7 +286,7 @@ Ignore wallet_id in the db entry.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

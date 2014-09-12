@@ -61,12 +61,24 @@
 <div><dl class="method">
 <dt id="fund">
 <tt class="descclassname">vault/</tt><tt class="descname">fund</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return P2SH hash the user can pay to.</p>
+<dd><div class="line-block">
+<div class="line">Generate and return P2SH hash the user can pay to. Limit is 1000 p2shday for each account.</div>
+<div class="line">Check usage on Github: <a href="#id11"><span class="problematic" id="id12">`JS Example &lt;https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188`_</span></a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
+<div class="line"><br /></div>
+<div class="line">References:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#p2sh-scripts">https://bitcoin.org/en/developer-guide#p2sh-scripts</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">hex encoded script</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified, default is main account.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">hex encoded script</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
 </tr>
 </tbody>
 </table>
@@ -75,14 +87,19 @@
 <dl class="method">
 <dt id="fund_receiving_id">
 <tt class="descclassname">vault/</tt><tt class="descname">fund_receiving_id</tt><big>(</big><em>receiving_id</em><big>)</big><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return P2SH hash the anyone can pay to given receiving_id.</p>
+<dd><div class="line-block">
+<div class="line">Returns a P2SH hash the anyone can pay to given receiving_id.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L191">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>receiving_id</em>) &#8211; </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>receiving_id</strong> (<em>String</em>) &#8211; The user receiving ID (i.e. Facebook User Int)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">base58 encoded P2SH address</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
 </tr>
 </tbody>
 </table>
@@ -90,21 +107,39 @@
 
 <dl class="method">
 <dt id="get_next_private_derived_pointer">
-<tt class="descclassname">vault/</tt><tt class="descname">get_next_private_derived_pointer</tt><big>(</big><big>)</big><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return next unused EXTERNAL branch private key pointer.</p>
+<tt class="descclassname">vault/</tt><tt class="descname">get_next_private_derived_pointer</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns next unused EXTERNAL branch private key pointer.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L476">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>Number</em>) &#8211; If not specified, default subaccount is Main.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="prepare_nlocktime">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_nlocktime</tt><big>(</big><em>txouts</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a nLockTime transaction.</p>
+<dd><div class="line-block">
+<div class="line">Generate a nLockTime transaction.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L54">JS Example</a></div>
+<div class="line">Reference guide:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">https://bitcoin.org/en/developer-guide#locktime-and-sequence-number</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>txouts</strong> &#8211; [[txhash, out_n], ...]</li>
-<li><strong>twofac_data</strong> &#8211; Two factor authentication data.
+<li><strong>txouts</strong> (<em>Array</em>) &#8211; [[txhash, out_n], ...]</li>
+<li><strong>twofac_data</strong> (<em>String</em>) &#8211; Two factor authentication data.
 {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
 </ul>
 </td>
@@ -121,7 +156,14 @@
 <dl class="method">
 <dt id="prepare_payreq">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_payreq</tt><big>(</big><em>value</em>, <em>data</em><big>)</big><a class="headerlink" href="#prepare_payreq" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare BIP70 payment protocol transaction.</p>
+<dd><div class="line-block">
+<div class="line">Prepare BIP70 payment protocol transaction.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L573">JS Example</a></div>
+<div class="line">Reference:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#term-payment-protocol">https://bitcoin.org/en/developer-guide#term-payment-protocol</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -142,7 +184,14 @@
 <dl class="method">
 <dt id="prepare_redeposit">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_redeposit</tt><big>(</big><em>txouts</em><big>)</big><a class="headerlink" href="#prepare_redeposit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare nLockTime redeposit.</p>
+<dd><div class="line-block">
+<div class="line">Prepare nLockTime redeposit.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L287">JS Example</a></div>
+<div class="line">Reference guide:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">https://bitcoin.org/en/developer-guide#locktime-and-sequence-number</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -157,15 +206,18 @@
 
 <dl class="method">
 <dt id="prepare_sweep_social">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_sweep_social</tt><big>(</big><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare public key sweeping transaction.</p>
+<tt class="descclassname">vault/</tt><tt class="descname">prepare_sweep_social</tt><big>(</big><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Prepare public key sweeping transaction.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L23">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Array</strong> (<em>pubkey</em>) &#8211; pubkey bytes</li>
-<li><strong>Boolean</strong> (<em>use_electrum</em>) &#8211; whether to use Electrum servers to get the balance. If false,
+<li><strong>pubkey</strong> (<em>Array</em>) &#8211; pubkey bytes</li>
+<li><strong>use_electrum</strong> (<em>Boolean</em>) &#8211; whether to use Electrum servers to get the balance. If false,
 only GreenAddress transactions are considered.</li>
 </ul>
 </td>
@@ -180,7 +232,15 @@ only GreenAddress transactions are considered.</li>
 <dl class="method">
 <dt id="prepare_tx">
 <tt class="descclassname">vault/</tt><tt class="descname">prepare_tx</tt><big>(</big><em>value</em>, <em>rcpt_ad</em>, <em>add_fee</em>, <em>priv_data</em><big>)</big><a class="headerlink" href="#prepare_tx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare transaction.</p>
+<dd><div class="line-block">
+<div class="line">Prepare transaction.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L398">JS Example</a></div>
+<div class="line">References:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#standard-transactions">https://bitcoin.org/en/developer-guide#standard-transactions</a></div>
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#non-standard-transactions">https://bitcoin.org/en/developer-guide#non-standard-transactions</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -227,7 +287,14 @@ at the js side. This p2sh prev output script is needed to generate a signature.<
 <dl class="method">
 <dt id="process_bip0070_url">
 <tt class="descclassname">vault/</tt><tt class="descname">process_bip0070_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return BIP70 payment request data</p>
+<dd><div class="line-block">
+<div class="line">Returns BIP70 payment request data</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js">JS Example</a></div>
+<div class="line">Reference:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#term-payment-protocol">https://bitcoin.org/en/developer-guide#term-payment-protocol</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -254,14 +321,17 @@ pending finalisation.</li>
 <dl class="method">
 <dt id="send_email">
 <tt class="descclassname">vault/</tt><tt class="descname">send_email</tt><big>(</big><em>destination</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send an email containing private derived key.</p>
+<dd><div class="line-block">
+<div class="line">Vouchers: Send an email containing private derived key.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L349">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>String</strong> (<em>destination</em>) &#8211; email address</li>
-<li><strong>href</strong> &#8211; private key /redeem/ URL</li>
+<li><strong>destination</strong> (<em>String</em>) &#8211; email address</li>
+<li><strong>href</strong> (<em>String</em>) &#8211; private key /redeem/ URL</li>
 </ul>
 </td>
 </tr>
@@ -272,14 +342,17 @@ pending finalisation.</li>
 <dl class="method">
 <dt id="send_reddit">
 <tt class="descclassname">vault/</tt><tt class="descname">send_reddit</tt><big>(</big><em>recipient</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send a Reddit message containing private derived key.</p>
+<dd><div class="line-block">
+<div class="line">Vouchers: Send a reddit message containing private derived key.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L375">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>String</strong> (<em>recipient</em>) &#8211; recipient username</li>
-<li><strong>href</strong> &#8211; private key /redeem/ URL</li>
+<li><strong>recipient</strong> (<em>String</em>) &#8211; recipient username</li>
+<li><strong>href</strong> (<em>String</em>) &#8211; private key /redeem/ URL</li>
 </ul>
 </td>
 </tr>
@@ -290,8 +363,14 @@ pending finalisation.</li>
 <dl class="method">
 <dt id="send_tx">
 <tt class="descclassname">vault/</tt><tt class="descname">send_tx</tt><big>(</big><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
-<dd><p>The transaction must have been prepared using prepare_tx
-and signed by the user in js.</p>
+<dd><div class="line-block">
+<div class="line">The transaction must have been prepared using prepare_tx and signed by the user in js.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L670">JS Example</a></div>
+<div class="line">Reference:</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#signature-hash-types">https://bitcoin.org/en/developer-guide#signature-hash-types</a></div>
+</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -380,7 +459,7 @@ and signed by the user in js.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

@@ -61,23 +61,54 @@
 <div><dl class="method">
 <dt id="create_subaccount">
 <tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="get_balance">
-<tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the sum of unspent outputs destined to user&#8217;s wallet.</p>
+<dd><div class="line-block">
+<div class="line">Create a new subaccount. Available only in full control mode.</div>
+<div class="line">Returns the receiving ID, also used for payment</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1195">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>String</strong> (<em>subaccount</em>) &#8211; (default = &#8216;all&#8217;) subaccount; subaccounts are
-work in progress. Pass &#8216;all&#8217; to get user&#8217;s balance ignoring subaccounts.</li>
-<li><strong>Number</strong> (<em>confs</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pointer</strong> (<em>number</em>) &#8211; Subaccount pointer.</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; Subaccount name.</li>
+<li><strong>user_public</strong> (<em>string</em>) &#8211; User child public key, please refer to HD key creation.</li>
+<li><strong>user_chaincode</strong> (<em>string</em>) &#8211; Child public key chaincode. Please refer to HD key creation:
+<a class="reference external" href="https://bitcoin.org/en/developer-guide#hierarchical-deterministic-key-creation">https://bitcoin.org/en/developer-guide#hierarchical-deterministic-key-creation</a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Receiving ID</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_balance">
+<tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns the sum of unspent outputs destined to user&#8217;s wallet.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/controllers.js#L119">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>subaccount</strong> (<em>number</em>) &#8211; Subaccount pointer (int) or &#8216;all&#8217; (str). Default is &#8216;all&#8217;.</li>
+<li><strong>conf</strong> (<em>number</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
 GreenAddress instant confirmed transactions not handled by this call.
 See get_balance_by_addr for instant confirmations support.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;fiat_value&#8217;: String, &#8216;fiat_exchange&#8217;: String&#8221;, &#8216;fiat_currency&#8217;: String, &#8216;satoshi&#8217;: String}</p>
 </td>
 </tr>
 </tbody>
@@ -93,12 +124,10 @@ See get_balance_by_addr for instant confirmations support.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>String</strong> (<em>address</em>) &#8211; base58 encoded address</li>
-<li><strong>Number</strong> (<em>confs</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
-GreenAddress instant confirmed transactions will be considered to
-have this number of confirmations, no matter how large it is.
-For example, given confs=1000000, this call will return balance
-of user&#8217;s instant confirmation outputs.</li>
+<li><strong>address</strong> (<em>number</em>) &#8211; base58 encoded address</li>
+<li><strong>confs</strong> (<em>number</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
+GreenAddress instant confirmed transactions will be considered to have this number of confirmations, no matter how large it is.
+For example, given confs=1000000, this call will return balance of user&#8217;s instant confirmation outputs.</li>
 </ul>
 </td>
 </tr>
@@ -108,8 +137,21 @@ of user&#8217;s instant confirmation outputs.</li>
 
 <dl class="method">
 <dt id="get_daily_balance_chart">
-<tt class="descclassname">txs/</tt><tt class="descname">get_daily_balance_chart</tt><big>(</big><big>)</big><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return list of days with balance values for drawing balance graph.</p>
+<tt class="descclassname">txs/</tt><tt class="descname">get_daily_balance_chart</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns a list of days with balance values for drawing balance graph.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/info/controllers.js#L25">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>number</em>) &#8211; Returns transactions that belong to the specified subaccount, param is int account identifier.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[{&#8216;balance&#8217;: int, &#8216;date&#8217;: datetime object}, ...]</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -120,15 +162,17 @@ of user&#8217;s instant confirmation outputs.</li>
 <dl class="method">
 <dt id="get_list">
 <tt class="descclassname">txs/</tt><tt class="descname">get_list</tt><big>(</big><em>last_txhash</em>, <em>unclaimed</em><big>)</big><a class="headerlink" href="#get_list" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return list of all user&#8217;s transactions since last_txhash.</p>
+<dd><div class="line-block">
+<div class="line">Returns a list of all user&#8217;s transactions since last_txhash. Please use get_list_v2() described below.</div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>String</strong> (<em>last_txhash</em>) &#8211; Client&#8217;s last known txhash. Only newer transactions are returned,
+<li><strong>last_txhash</strong> (<em>string</em>) &#8211; Client&#8217;s last known txhash. Only newer transactions are returned,
 with the exception of unclaimed below.</li>
-<li><strong>unclaimed</strong> &#8211; List of unclaimed txhashes known by client. These transactions are always returned.</li>
+<li><strong>unclaimed</strong> (<em>list</em>) &#8211; List of unclaimed txhashes known by client. These transactions are always returned.</li>
 </ul>
 </td>
 </tr>
@@ -142,14 +186,29 @@ with the exception of unclaimed below.</li>
 
 <dl class="method">
 <dt id="get_list_v2">
-<tt class="descclassname">txs/</tt><tt class="descname">get_list_v2</tt><big>(</big><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return list of user&#8217;s transactions</p>
+<tt class="descclassname">txs/</tt><tt class="descname">get_list_v2</tt><big>(</big><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns a list of user&#8217;s transactions. Accept multiple parameters.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L382">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;fiat_currency&#8217;: String, &#8216;cur_block&#8217;: Number,
-&#8216;fiat_value&#8217;: Number, &#8216;list&#8217;: [...], &#8216;unclaimed&#8217;: {...}}</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>page_id</strong> (<em>number</em>) &#8211; Returns the selected page from a paginated feed. Interval is 30 transactions per page.
+Page number must be smaller than 30.</li>
+<li><strong>search_query</strong> (<em>string</em>) &#8211; Generic search term. Search on address book, memos and vouchers.</li>
+<li><strong>sort_by</strong> (<em>string</em>) &#8211; Sort transactions by value. Accepted &#8216;ts&#8217;, &#8216;value&#8217;. Descending if param starts with &#8216;-&#8216;, else ascending (i.e.: &#8216;-value&#8217;)</li>
+<li><strong>date_range</strong> (<em>list</em>) &#8211; Returns transactions in range. i.e.: [&#8216;2014-01-01T00:00:00.000&#8217;, &#8216;2014-06-31T23:59:59.999&#8217;].</li>
+<li><strong>subaccount</strong> (<em>number</em>) &#8211; Returns transactions belong to the specified subaccount, param is int account identifier.
+Also accept string &#8216;all&#8217;. If not specified return Main account transactions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;fiat_currency&#8217;: String, &#8216;cur_block&#8217;: Number,
+&#8216;fiat_value&#8217;: Number, &#8216;list&#8217;: [...], &#8216;unclaimed&#8217;: {...}}</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -158,23 +217,117 @@ with the exception of unclaimed below.</li>
 <dl class="method">
 <dt id="get_payment_request">
 <tt class="descclassname">txs/</tt><tt class="descname">get_payment_request</tt><big>(</big><em>txhash</em><big>)</big><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">BIP70 payment protocol. Returns the payment request for the specified transaction.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L94">JS Example</a></div>
+<div class="line">Please refer to:</div>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki</a></li>
+<li><a class="reference external" href="https://bitcoin.org/en/developer-guide#payment-protocol">https://bitcoin.org/en/developer-guide#payment-protocol</a></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>txhash</strong> (<em>string</em>) &#8211; Transaction hash.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="get_redeem_message">
 <tt class="descclassname">txs/</tt><tt class="descname">get_redeem_message</tt><big>(</big><em>type_</em>, <em>hash_or_pubkey</em><big>)</big><a class="headerlink" href="#get_redeem_message" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Returns a voucher&#8217;s message. No authentication is needed against this public API.</div>
+<div class="line">An anonymous user can request the message attached to his voucher providing the voucher pubkey received (&#8216;pubkey&#8217;).</div>
+<div class="line">Redeem is also available with the hash of the bip38 encrypted private key (&#8216;hash&#8217;).</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L63">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>type</strong> (<em>string</em>) &#8211; &#8216;pubkey&#8217; or &#8216;hash&#8217;.</li>
+<li><strong>hash_or_pubkey</strong> (<em>string</em>) &#8211; BIP38 hash or public key.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">message</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="rename_subaccount">
+<tt class="descclassname">txs/</tt><tt class="descname">rename_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em><big>)</big><a class="headerlink" href="#rename_subaccount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Rename already existing subaccount. Doesn&#8217;t accept duplicates.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1219">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pointer</strong> (<em>number</em>) &#8211; Subaccount pointer.</li>
+<li><strong>name</strong> (<em>string</em>) &#8211; Subaccount name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="send_nlocktime">
 <tt class="descclassname">txs/</tt><tt class="descname">send_nlocktime</tt><big>(</big><big>)</big><a class="headerlink" href="#send_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Request an email with all user&#8217;s nLockTime transactions.</p>
+<dd><div class="line-block">
+<div class="line">Request an email with all user&#8217;s nLockTime transactions.</div>
+<div class="line">Available only in full control mode.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L399">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="upcoming_nlocktime">
 <tt class="descclassname">txs/</tt><tt class="descname">upcoming_nlocktime</tt><big>(</big><big>)</big><a class="headerlink" href="#upcoming_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Returns upcoming nLocktime signed transactions. Available only in full control mode.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L384">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;cur_block&#8217;: Int, &#8216;list&#8217;: [{&#8216;$$hashKey&#8217;: String, &#8216;nlocktime_at&#8217;: Int, &#8216;output_n&#8217;: Int, &#8216;txhash&#8217;: String}, ...]}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div></blockquote>
 </div>
@@ -244,7 +397,7 @@ with the exception of unclaimed below.</li>
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

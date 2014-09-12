@@ -61,14 +61,17 @@
 <div><dl class="method">
 <dt id="add_entry">
 <tt class="descclassname">addressbook/</tt><tt class="descname">add_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add new entry to the addressbook. Does not allow repeated addresses.</p>
+<dd><div class="line-block">
+<div class="line">Add new entry to the addressbook. Does not allow repeated addresses.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L753">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>address</strong> (<em>String</em>) &#8211; b58 string</li>
-<li><strong>name</strong> (<em>String</em>) &#8211; </li>
+<li><strong>name</strong> (<em>String</em>) &#8211; Contact name</li>
 <li><strong>rating</strong> (<em>Number</em>) &#8211; &gt;= 0</li>
 </ul>
 </td>
@@ -86,24 +89,57 @@
 <dl class="method">
 <dt id="delete_entry">
 <tt class="descclassname">addressbook/</tt><tt class="descname">delete_entry</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#delete_entry" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Delete addressbook entry.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L720">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> (<em>string</em>) &#8211; Base58 representation of bitcoin public key or p2sh.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="disable_sync">
 <tt class="descclassname">addressbook/</tt><tt class="descname">disable_sync</tt><big>(</big><em>party</em><big>)</big><a class="headerlink" href="#disable_sync" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Disable linking of a third-party account.</div>
+<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>party</strong> (<em>string</em>) &#8211; Values are &#8216;facebook&#8217;, &#8216;reddit&#8217; and &#8216;custom&#8217;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="edit_entry">
 <tt class="descclassname">addressbook/</tt><tt class="descname">edit_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#edit_entry" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change name and rating of an address.</p>
+<dd><div class="line-block">
+<div class="line">Change name and rating of an address.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L735">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>address</strong> (<em>String</em>) &#8211; identifying address</li>
-<li><strong>name</strong> (<em>String</em>) &#8211; </li>
+<li><strong>name</strong> (<em>String</em>) &#8211; Contact name</li>
 <li><strong>rating</strong> (<em>Number</em>) &#8211; &gt;= 0</li>
 </ul>
 </td>
@@ -120,18 +156,55 @@
 
 <dl class="method">
 <dt id="get_my_addresses">
-<tt class="descclassname">addressbook/</tt><tt class="descname">get_my_addresses</tt><big>(</big><big>)</big><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<tt class="descclassname">addressbook/</tt><tt class="descname">get_my_addresses</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>before_pointer</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns previously generated addresses. Available only in full access mode. Result is paginated and addresses are returnered 10 per page.</div>
+<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/receive/controllers.js#L8">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>subaccount</strong> (<em>int</em>) &#8211; Subaccount pointer, if not specified return addresses generated with main account.</li>
+<li><strong>before_pointer</strong> (<em>int</em>) &#8211; Page ID, if not specified return the first, if 1 is specified, return from address 11 to 20, etc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[{&#8216;$$hashkey&#8217;: String, &#8216;ad&#8217;: String, &#8216;num_tx&#8217;: Int, &#8216;pointer&#8217;: Int}, ...]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">List</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="get_sync_status">
 <tt class="descclassname">addressbook/</tt><tt class="descname">get_sync_status</tt><big>(</big><big>)</big><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Returns the linking status of third-party accounts and the logged in GreenAddress Wallet. With this API you can check which third-party accounts are linked, and if a custom login is enabled.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L1031">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;username&#8217;: null or String (custom login username), &#8216;fb&#8217;: Boolean, &#8216;reddit&#8217;: Boolean}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="read_all">
 <tt class="descclassname">addressbook/</tt><tt class="descname">read_all</tt><big>(</big><em>hashed</em><big>)</big><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read all entries from addressbook.</p>
+<dd><div class="line-block">
+<div class="line">Read all entries from addressbook.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1770">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -151,22 +224,100 @@
 <dl class="method">
 <dt id="sync_custom">
 <tt class="descclassname">addressbook/</tt><tt class="descname">sync_custom</tt><big>(</big><em>username</em>, <em>password</em><big>)</big><a class="headerlink" href="#sync_custom" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Define and enable custom login for the current account. Available in user full access mode only, it enables watch-only mode.</div>
+<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L245">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>username</strong> (<em>string</em>) &#8211; Custom login username</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; Custom login password</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="sync_fb">
 <tt class="descclassname">addressbook/</tt><tt class="descname">sync_fb</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Link GreenAddress account with a Facebook account.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#942">JS Example</a></div>
+<div class="line">Please read also the <a class="reference external" href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook documentation</a> about access_token</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>access_token</strong> (<em>string</em>) &#8211; Facebook user access token</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="sync_reddit">
 <tt class="descclassname">addressbook/</tt><tt class="descname">sync_reddit</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Link GreenAddress account with a Reddit account.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
+<div class="line">Please read also the <a class="reference external" href="https://github.com/reddit/reddit/wiki/OAuth2-Quick-Start-Example">Reddit documentation</a> about OAuth</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>access_token</strong> (<em>string</em>) &#8211; Reddit user access token</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="user_has_wallet">
 <tt class="descclassname">addressbook/</tt><tt class="descname">user_has_wallet</tt><big>(</big><em>usertype</em>, <em>username</em><big>)</big><a class="headerlink" href="#user_has_wallet" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Check if a contact have a wallet on GreenAddress.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/send/controllers.js#L524">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>usertype</strong> (<em>string</em>) &#8211; Accepted values are &#8216;Facebook&#8217;, &#8216;reddit&#8217; and &#8216;email&#8217;.</li>
+<li><strong>username</strong> (<em>string</em>) &#8211; Facebook user ID, check reference about Facebook user ID <a class="reference external" href="https://developers.facebook.com/docs/graph-api/reference/v2.1/user">here</a> or Reddit username or email address.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">has_wallet</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div></blockquote>
 </div>
@@ -236,7 +387,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

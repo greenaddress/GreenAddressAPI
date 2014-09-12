@@ -61,8 +61,11 @@
 <div><dl class="method">
 <dt id="authenticate">
 <tt class="descclassname">login/</tt><tt class="descname">authenticate</tt><big>(</big><em>signature</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check that this is a valid signature of the challenge done using current wallet&#8217;s
-private key.</p>
+<dd><div class="line-block">
+<div class="line">Validates the signature of the challenge done using current wallet&#8217;s private key.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1180">JS Example</a></div>
+<div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -76,8 +79,8 @@ private key.</p>
 <li><strong>logout</strong> (<em>Boolean</em>) &#8211; whether to force log out existing session of the same user</li>
 <li><strong>path_hex</strong> (<em>String</em>) &#8211; <p>32 bit path for deriving subkey which was used for login</p>
 <ul>
-<li>&#8216;GA&#8217; if using constant m/0x4741b11e (m/1195487518) path and deterministic signatures</li>
-<li>16 hex chars if using 4 path components (soon to be deprecated)</li>
+<li><em>&#8216;GA&#8217;</em> if using constant <em>m/0x4741b11e (m/1195487518)</em> path and deterministic signatures</li>
+<li>16 hex chars if using 4 path components <strong>(soon to be deprecated)</strong></li>
 </ul>
 </li>
 <li><strong>device_id</strong> (<em>String</em>) &#8211; unique device identifier. When doing forced logout, user is not
@@ -99,7 +102,10 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="available_currencies">
 <tt class="descclassname">login/</tt><tt class="descname">available_currencies</tt><big>(</big><big>)</big><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of allowed currencies for all available pricing sources.</p>
+<dd><div class="line-block">
+<div class="line">Returns a list of allowed currencies for all available pricing sources.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L411">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -114,12 +120,15 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="change_settings">
 <tt class="descclassname">login/</tt><tt class="descname">change_settings</tt><big>(</big><em>key</em>, <em>value</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#change_settings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change settings. Currently used only for privacy settings and transaction limits.</p>
+<dd><div class="line-block">
+<div class="line">Change settings. Currently used only for privacy settings and transaction limits.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L669">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>key</strong> (<em>String</em>) &#8211; name of the value to change. Can be one of
 &#8216;tx_limits&#8217;, &#8216;privacy.send_me&#8217;, &#8216;privacy.show_as_sender&#8217;.</li>
 <li><strong>value</strong> (<em>String</em>) &#8211; <p>the value to set.</p>
@@ -144,6 +153,12 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 </ul>
 </td>
 </tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -151,7 +166,10 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="get_challenge">
 <tt class="descclassname">login/</tt><tt class="descname">get_challenge</tt><big>(</big><em>pubkey_hash</em><big>)</big><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate and return a challenge that must be signed for a successful authentication.</p>
+<dd><div class="line-block">
+<div class="line">Generate and return a challenge that must be signed for a successful authentication.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1164">JS Example</a> or take a look at the <a class="reference external" href="examples/mnemonic_python_login.html">Python mnemonic login example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -169,7 +187,10 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="get_spending_limits">
 <tt class="descclassname">login/</tt><tt class="descname">get_spending_limits</tt><big>(</big><big>)</big><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return spending limits.</p>
+<dd><div class="line-block">
+<div class="line">Returns spending limits.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L675">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -183,9 +204,12 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="get_trezor_challenge">
 <tt class="descclassname">login/</tt><tt class="descname">get_trezor_challenge</tt><big>(</big><em>pubkey_hash</em><big>)</big><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate and return a Trezor challenge that must be signed for a successful authentication.</p>
-<p>A string &#8216;<tt class="docutils literal"><span class="pre">greenaddress.it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">login</span> <span class="pre">ABCDE</span></tt>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token)
-must be signed to proceed with authentication.</p>
+<dd><div class="line-block">
+<div class="line">Generate and return a Trezor challenge that must be signed for a successful authentication.</div>
+<div class="line">A string &#8216;<tt class="docutils literal"><span class="pre">greenaddress.it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">login</span> <span class="pre">ABCDE</span></tt>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token) must be signed to proceed with authentication.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1230">JS Example</a></div>
+<div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -203,15 +227,21 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="register">
 <tt class="descclassname">login/</tt><tt class="descname">register</tt><big>(</big><em>master_public</em>, <em>master_chaincode</em><big>)</big><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a new account.</p>
+<dd><div class="line-block">
+<div class="line">Create a new account.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L114">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
 <li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 20 byte chaincode, hex-encoded</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;wallet_id&#8217;: Int}</p>
 </td>
 </tr>
 </tbody>
@@ -221,13 +251,19 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="remove_account">
 <tt class="descclassname">login/</tt><tt class="descname">remove_account</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#remove_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove the account</p>
+<dd><div class="line-block">
+<div class="line">Remove the account</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L613">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Two factor authentication data. Required to increase transaction limits.
-{method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Two factor authentication data. Required to increase transaction limits. {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
 </tr>
 </tbody>
 </table>
@@ -236,12 +272,15 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="set_appearance">
 <tt class="descclassname">login/</tt><tt class="descname">set_appearance</tt><big>(</big><em>appearance</em><big>)</big><a class="headerlink" href="#set_appearance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update appearance settings.</p>
+<dd><div class="line-block">
+<div class="line">Update appearance settings.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L165">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appearance</strong> &#8211; JSON</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appearance</strong> (<em>JSON</em>) &#8211; {&#8220;sound&#8221;: Boolean, &#8220;altimeout&#8221;: Int, &#8220;unit&#8221;: String (&#8216;BTC&#8217;, &#8216;mBTC&#8217;, &#8216;µBTC&#8217; }</td>
 </tr>
 </tbody>
 </table>
@@ -250,12 +289,21 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="set_currency">
 <tt class="descclassname">login/</tt><tt class="descname">set_currency</tt><big>(</big><em>currency</em><big>)</big><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the pricing source currency.</p>
+<dd><div class="line-block">
+<div class="line">Change the pricing source currency.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L504">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>currency</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">#exchangecurrencynotsupported</td>
 </tr>
 </tbody>
 </table>
@@ -264,12 +312,21 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="set_exchange">
 <tt class="descclassname">login/</tt><tt class="descname">set_exchange</tt><big>(</big><em>exchange</em><big>)</big><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the pricing source.</p>
+<dd><div class="line-block">
+<div class="line">Change the pricing source. GreenAddress indexes a large number of Bitcoin exchanges, and return to the user the preferred price.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L528">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>currency</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">#exchangecurrencynotsupported</td>
 </tr>
 </tbody>
 </table>
@@ -278,16 +335,17 @@ must be signed to proceed with authentication.</p>
 <dl class="method">
 <dt id="set_gait_path">
 <tt class="descclassname">login/</tt><tt class="descname">set_gait_path</tt><big>(</big><em>wallet_path</em><big>)</big><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set deposits server-side subkey path. <strong>Required after first login.</strong></p>
-<p>Server-side subkey path is a unique per-user value used for deriving server-side signing key
-to protect users&#8217; privacy by not reusing the same GreenAddress public key for signing.</p>
-<p><strong>WARNING</strong> Changing this to incorrect value will result in user losing access to their funds.</p>
+<dd><div class="line-block">
+<div class="line">Set deposits server-side subkey path. <strong>Required after first login.</strong></div>
+<div class="line">Server-side subkey path is a unique per-user value used for deriving server-side signing key  to protect users&#8217; privacy by not reusing the same GreenAddress public key for signing.</div>
+<div class="line"><strong>WARNING</strong> Changing this to incorrect value will result in user losing access to their funds.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L232">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>wallet_path</em>) &#8211; hex-encoded 64 bytes derived from the mnemonic using BIP-39-like
-seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#8216;mnemonic&#8217; used as a salt.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>wallet_path</em>) &#8211; hex-encoded 64 bytes derived from the mnemonic using BIP-39-like seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#8216;mnemonic&#8217; used as a salt.</td>
 </tr>
 </tbody>
 </table>
@@ -296,16 +354,24 @@ seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#821
 <dl class="method">
 <dt id="set_nlocktime">
 <tt class="descclassname">login/</tt><tt class="descname">set_nlocktime</tt><big>(</big><em>nlocktime</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#set_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the number of blocks after which nLockTime transaction is generated.</p>
+<dd><div class="line-block">
+<div class="line">Set the number of blocks after which nLockTime transaction is generated.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L337">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>Number</strong> (<em>nlocktime</em>) &#8211; Number of blocks</li>
-<li><strong>twofac_data</strong> &#8211; Two factor authentication data.
-{method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>nlocktime Number</strong> (<em>Number</em>) &#8211; Number of blocks</li>
+<li><strong>twofac_data</strong> (<em>Array</em>) &#8211; Two factor authentication data. {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
 </td>
 </tr>
 </tbody>
@@ -315,15 +381,24 @@ seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#821
 <dl class="method">
 <dt id="set_pricing_source">
 <tt class="descclassname">login/</tt><tt class="descname">set_pricing_source</tt><big>(</big><em>currency</em>, <em>exchange</em><big>)</big><a class="headerlink" href="#set_pricing_source" title="Permalink to this definition">¶</a></dt>
-<dd><p>Change the pricing source and currency.</p>
+<dd><div class="line-block">
+<div class="line">Change the pricing source and currency.</div>
+<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L464">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>String</strong> (<em>exchange</em>) &#8211; </li>
 <li><strong>String</strong> &#8211; pricing source</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
 </td>
 </tr>
 </tbody>
@@ -333,7 +408,11 @@ seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#821
 <dl class="method">
 <dt id="watch_only">
 <tt class="descclassname">login/</tt><tt class="descname">watch_only</tt><big>(</big><em>token_type</em>, <em>token</em>, <em>logout</em><big>)</big><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
-<dd><p>Log in to watch-only mode.</p>
+<dd><div class="line-block">
+<div class="line">Log in to watch-only mode. Limit is 100 watch only login day.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1338">JS Example</a></div>
+<div class="line">Or see our Python <a class="reference external" href="examples/custom_python_login.html">custom login example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -347,7 +426,7 @@ seed derivation with the string &#8216;greenaddress_path&#8217; instead of &#821
 <li>for &#8216;custom&#8217;: {username: String, password: String}</li>
 </ul>
 </li>
-<li><strong>Boolean</strong> (<em>logout</em>) &#8211; deprecated (currently multiple parallel watch only sessions are allowed,
+<li><strong>Boolean</strong> (<em>logout</em>) &#8211; <strong>deprecated</strong> (currently multiple parallel watch only sessions are allowed,
 so there is no need to force logout here)</li>
 </ul>
 </td>
@@ -424,7 +503,7 @@ so there is no need to force logout here)</li>
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

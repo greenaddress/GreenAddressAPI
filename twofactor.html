@@ -61,32 +61,123 @@
 <div><dl class="method">
 <dt id="activate_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">activate_email</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#activate_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Activate email 2FA</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L652">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP received via email</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="disable_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">disable_email</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Disable email two factor authentication.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L94">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="disable_gauth">
 <tt class="descclassname">twofactor/</tt><tt class="descname">disable_gauth</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_gauth" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Disable Google Authenticator</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L81">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> (<em>String</em>) &#8211; Gauth OTP</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="disable_phone">
 <tt class="descclassname">twofactor/</tt><tt class="descname">disable_phone</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_phone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Disable robot phonecall two factor authentication.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L122">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="disable_sms">
 <tt class="descclassname">twofactor/</tt><tt class="descname">disable_sms</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#disable_sms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Disable SMS two factor authentication</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L108">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="enable_email">
-<tt class="descclassname">twofactor/</tt><tt class="descname">enable_email</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_email" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signup only - for settings we use set_email, activate_email and enable_email_twofac</p>
+<tt class="descclassname">twofactor/</tt><tt class="descname">enable_email</tt><big>(</big><em>code</em><span class="optional">[</span>, <em>reset_email</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#enable_email" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Enable email two factor authentication on previously set email address.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L161">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> &#8211; If you have another 2FA enabled, would be {&#8216;code&#8217;: String (OTP), &#8216;method&#8217;: String}, else an empty String.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -97,39 +188,132 @@
 <dl class="method">
 <dt id="enable_gauth">
 <tt class="descclassname">twofactor/</tt><tt class="descname">enable_gauth</tt><big>(</big><em>code</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#enable_gauth" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Enable Google Authenticator two factor authentication</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L64">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>code</strong> (<em>Number</em>) &#8211; OTP</li>
+<li><strong>twofac_data</strong> &#8211; {&#8216;method&#8217;: String, &#8216;code&#8217;: String}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="enable_phone">
 <tt class="descclassname">twofactor/</tt><tt class="descname">enable_phone</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_phone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Enable robot phone call two factor authentication</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L227">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="enable_sms">
 <tt class="descclassname">twofactor/</tt><tt class="descname">enable_sms</tt><big>(</big><em>code</em><big>)</big><a class="headerlink" href="#enable_sms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Enable SMS two factor authentication</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L195">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="get_config">
 <tt class="descclassname">twofactor/</tt><tt class="descname">get_config</tt><big>(</big><big>)</big><a class="headerlink" href="#get_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get two factor authentication configuration.</p>
+<dd><div class="line-block">
+<div class="line">Get two factor authentication configuration.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="asdf">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;any&#8217;: Boolean, &#8216;email&#8217;: Boolean, &#8216;email_addr&#8217;: String, &#8216;email_confirmed&#8217;: Boolean, &#8216;gauth&#8217;: Boolean, &#8216;gauth_url&#8217;: String, &#8216;phone&#8217;: Boolean, &#8216;sms&#8217;: Boolean}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="init_enable_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_email</tt><big>(</big><em>email</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_email" title="Permalink to this definition">¶</a></dt>
-<dd><p>Signup only - for settings we use set_email, activate_email and enable_email_twofac</p>
+<dd><div class="line-block">
+<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L140">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>email</strong> (<em>String</em>) &#8211; Email address for 2FA</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="init_enable_phone">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_phone</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_phone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L211">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="init_enable_sms">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_sms</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_sms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L178">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="request_email">
@@ -229,7 +413,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
