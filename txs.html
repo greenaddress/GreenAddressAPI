@@ -1,64 +1,158 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>txs module &mdash; GreenAddress API  documentation</title>
-    
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
-    <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html" />
-    <link rel="next" title="vault module" href="vault.html" />
-    <link rel="prev" title="twofactor module" href="twofactor.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vault.html" title="vault module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="twofactor.html" title="twofactor module"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" accesskey="U">WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>txs module &mdash; GreenAddress API  documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
+        <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
+        <link rel="next" title="vault module" href="vault.html"/>
+        <link rel="prev" title="twofactor module" href="twofactor.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">GreenAddress API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="apicalls.html">WebSocket WAMP API calls</a> &raquo;</li>
+      
+    <li>txs module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
-  <div class="section" id="module-txs">
-<span id="txs-module"></span><h1>txs module<a class="headerlink" href="#module-txs" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/txs/</span></tt></p>
+  <div class="section" id="txs-module">
+<h1>txs module<a class="headerlink" href="#txs-module" title="Permalink to this headline">¶</a></h1>
+<p>The Transactions module is designed with all the functions needed to query incoming and outgoing transactions on the GreenAddress service, and more.</p>
+<p>Here you can manage your subaccounts, get your balance or a list of previously authorized
+transactions. A server assisted BIP70 implementation is available.</p>
+<p>You may also be interested in time locked transactions (nLockTime), the safety feature which makes GreenAddress
+users able to retrieve their funds independently of the service.</p>
+<p>nLocktime is described in the <a class="reference external" href="https://en.bitcoin.it/wiki/NLockTime">Bitcoin protocol specifications</a> as
+a parameter that can be attached to a transaction, that mandates a minimal time, that before this time, the transaction cannot be accepted into a block.</p>
+<p>On GreenAddress your funds are always redeemable with an nLocktime transaction and the <a class="reference external" href="https://github.com/greenaddress/gentle">Gentle tool</a>.</p>
+<span class="target" id="module-txs"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/txs/</span></tt></p>
 <blockquote>
 <div><dl class="method">
+<dt id="change_memo">
+<tt class="descclassname">txs/</tt><tt class="descname">change_memo</tt><big>(</big><em>txhash</em>, <em>memo</em><big>)</big><a class="headerlink" href="#change_memo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Edit already existing transaction&#8217;s memo.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>txhash</strong> (<em>string</em>) &#8211; Transaction hash, hex-encoded.</li>
+<li><strong>memo</strong> (<em>string</em>) &#8211; New memo.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="create_subaccount">
 <tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -198,11 +292,11 @@ with the exception of unclaimed below.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>page_id</strong> (<em>number</em>) &#8211; Returns the selected page from a paginated feed. Interval is 30 transactions per page.
 Page number must be smaller than 30.</li>
-<li><strong>search_query</strong> (<em>string</em>) &#8211; Generic search term. Search on address book, memos and vouchers.</li>
-<li><strong>sort_by</strong> (<em>string</em>) &#8211; Sort transactions by value. Accepted &#8216;ts&#8217;, &#8216;value&#8217;. Descending if param starts with &#8216;-&#8216;, else ascending (i.e.: &#8216;-value&#8217;)</li>
+<li><strong>search_query</strong> (<em>string</em>) &#8211; Generic search term. Queries the linked third party account names, memos and vouchers.</li>
+<li><strong>sort_by</strong> (<em>string</em>) &#8211; Sorts transactions by timestamp or value. Accepted &#8216;ts&#8217;, &#8216;value&#8217;. Descending if param starts with &#8216;-&#8216;, else ascending (i.e.: &#8216;-value&#8217;)</li>
 <li><strong>date_range</strong> (<em>list</em>) &#8211; Returns transactions in range. i.e.: [&#8216;2014-01-01T00:00:00.000&#8217;, &#8216;2014-06-31T23:59:59.999&#8217;].</li>
 <li><strong>subaccount</strong> (<em>number</em>) &#8211; Returns transactions belong to the specified subaccount, param is int account identifier.
-Also accept string &#8216;all&#8217;. If not specified return Main account transactions.</li>
+Also accepts string the &#8216;all&#8217;. If not specified returns Main account transactions.</li>
 </ul>
 </td>
 </tr>
@@ -323,7 +417,7 @@ Also accept string &#8216;all&#8217;. If not specified return Main account trans
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;cur_block&#8217;: Int, &#8216;list&#8217;: [{&#8216;$$hashKey&#8217;: String, &#8216;nlocktime_at&#8217;: Int, &#8216;output_n&#8217;: Int, &#8216;txhash&#8217;: String}, ...]}</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;cur_block&#8217;: Int, &#8216;list&#8217;: [{&#8216;nlocktime_at&#8217;: Int, &#8216;output_n&#8217;: Int, &#8216;txhash&#8217;: String}, ...]}</td>
 </tr>
 </tbody>
 </table>
@@ -334,70 +428,67 @@ Also accept string &#8216;all&#8217;. If not specified return Main account trans
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="twofactor.html"
-                        title="previous chapter">twofactor module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="vault.html"
-                        title="next chapter">vault module</a></p>
-<h3><a href="index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">txs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vault.html" class="btn btn-neutral float-right" title="vault module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="twofactor.html" class="btn btn-neutral" title="twofactor module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, GreenAddress.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="vault.html" title="vault module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="twofactor.html" title="twofactor module"
-             >previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" >WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

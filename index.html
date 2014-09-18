@@ -1,62 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Welcome to GreenAddress API documentation! &mdash; GreenAddress API  documentation</title>
-    
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="GreenAddress API  documentation" href="#" />
-    <link rel="next" title="Usage examples" href="examples.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="examples.html" title="Usage examples"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">GreenAddress API  documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to GreenAddress API documentation &mdash; GreenAddress API  documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="welcome-to-greenaddress-api-documentation">
-<h1>Welcome to GreenAddress API documentation!<a class="headerlink" href="#welcome-to-greenaddress-api-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="GreenAddress API  documentation" href="#"/>
+        <link rel="next" title="Usage examples" href="examples.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="#" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul>
@@ -64,6 +69,111 @@
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">GreenAddress API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Welcome to GreenAddress API documentation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <img alt="_images/logo-greenaddress.png" class="align-left" src="_images/logo-greenaddress.png" />
+<div class="section" id="welcome-to-greenaddress-api-documentation">
+<h1>Welcome to GreenAddress API documentation<a class="headerlink" href="#welcome-to-greenaddress-api-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>GreenAddress&#8217;</strong> aim is to provide a complete, fast and secure API to the Bitcoin blockchain, with the goal
+of making the Bitcoin management easier and as secure and powerful as ever. Currently a limited set of these
+features is implemented, namely support for creating, sending, and querying transactions contained within
+GreenAddress wallets, along with some other wallet-related functionalities like authentication and address book.</p>
+<p><strong>GreenAddress API</strong> uses WAMP - Web Application Messaging Protocol. WAMP is easy to set up, being a Remote Procedure Calls and PubSub layer on top of WebSockets.
+It is compatible with the majority programming languages: Python, Javascript, Cpp, RoR, Java and more.</p>
+<p>As you can see in the examples, the procedure is strictly different from a traditional HTTP API,
+it may take some times to get used to the model but we think it is worth it.</p>
+<p>For both our implementions we used the Autobahn framework, which helps the developer to interface with GreenAddress.
+For best results the API should be implemented with an event-driven logic, where something happen only when it&#8217;s
+needed, without useless looping calls.</p>
+<p>API calls are organized in modules, each module covering a different branch of GreenAddress
+functions (Transactions, Address Book, Login, etc).</p>
+<p>Use of the GreenAddress APIs is free of charge however some extra services may be charged for (all API for extra services will be labed as such)</p>
+<p>Users of GreenAddress API:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://therocktrading.com">TheRockTrading.com</a></li>
+<li><a class="reference external" href="https://github.com/spesmilo/electrum/blob/master/plugins/greenaddress_instant.py">Electrum.org</a></li>
+<li><a class="reference external" href="https://github.com/Bit451/Bit451-Portal">Bit451.com</a></li>
+</ul>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#compiling-bitcoinjs-lib">Compiling bitcoinjs-lib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#compiling-weilu-s-bip39">Compiling weilu&#8217;s bip39</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#deriving-the-private-key-from-mnemonic">Deriving the private key from mnemonic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#logging-in-greenaddress-wamp-server">Logging in GreenAddress WAMP server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom_python_login.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom_python_login.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/custom_python_login.html#using-the-greenaddress-wamp-server">Using the GreenAddress WAMP server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/mnemonic_python_login.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/mnemonic_python_login.html#using-the-greenaddress-wamp-server">Using the GreenAddress WAMP server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-bip70-instant-confirmation-extension">Using BIP70 instant confirmation extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-the-greenaddress-wamp-server-to-verify-instant-transactions">Using the GreenAddress WAMP server to verify instant transactions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-the-greenaddress-http-api-to-verify-instant-transactions">Using the GreenAddress HTTP API to verify instant transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="twofactor.html#proxies">proxies</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
@@ -86,61 +196,65 @@
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to GreenAddress API documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-
-  <h4>Next topic</h4>
-  <p class="topless"><a href="examples.html"
-                        title="next chapter">Usage examples</a></p>
-<h3><a href="#">Table Of Contents</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
-</ul>
-
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Usage examples"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="examples.html" title="Usage examples"
-             >next</a> |</li>
-        <li><a href="#">GreenAddress API  documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
         &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

@@ -1,62 +1,143 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>twofactor module &mdash; GreenAddress API  documentation</title>
-    
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
-    <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html" />
-    <link rel="next" title="txs module" href="txs.html" />
-    <link rel="prev" title="pin module" href="pin.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="txs.html" title="txs module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="pin.html" title="pin module"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" accesskey="U">WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>twofactor module &mdash; GreenAddress API  documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
+        <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
+        <link rel="next" title="txs module" href="txs.html"/>
+        <link rel="prev" title="pin module" href="pin.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">GreenAddress API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="apicalls.html">WebSocket WAMP API calls</a> &raquo;</li>
+      
+    <li>twofactor module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
-  <div class="section" id="module-twofactor">
-<span id="twofactor-module"></span><h1>twofactor module<a class="headerlink" href="#module-twofactor" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/twofactor/</span></tt></p>
+  <div class="section" id="twofactor-module">
+<h1>twofactor module<a class="headerlink" href="#twofactor-module" title="Permalink to this headline">¶</a></h1>
+<p>The Two Factor Authentication (2FA) is an important piece of your GreenAddress wallet security.</p>
+<p>When 2FA is active (mandatory by default from our clients) for some funds/auth related operations on the
+GreenAddress API, the user is requested to verify themselves with a One Time Password.</p>
+<p>OTP are handled by different methods, and whenever it is needed to set up a 2FA while another 2FA is active
+(i.e., setting a new SMS 2FA, confirming it with the email OTP) a proxy method is called.</p>
+<div class="section" id="proxies">
+<h2>proxies<a class="headerlink" href="#proxies" title="Permalink to this headline">¶</a></h2>
+<p>In GreenAddress 2FA &#8216;proxies&#8217; allow setting up a 2FA using another 2FA. A &#8216;proxy code&#8217; is another kind of OTP,
+valid for 5 minutes, which is used for the sole purpose of enabling a new 2FA method. The &#8216;proxy codes&#8217; are obtained by using
+some already set up 2FA method. It was implemented this way to allow the client to authenticate against some existing 2FA
+before providing the new 2FA data.</p>
+<p>For example, on an account with previously enabled email 2FA, the steps to enable SMS 2FA are as follows:</p>
+<ul class="simple">
+<li>Do a &#8216;request_email&#8217;, specify &#8216;enable_2fa&#8217; as action and {method: &#8216;sms&#8217;} as data - this requests an email authorizing the new 2FA setup.</li>
+<li>With the email OTP do a request_proxy, specifying &#8216;sms&#8217; as the new &#8216;method&#8217; and {code: &#8220;799154&#8221;, method: &#8220;email&#8221;} as twofac_data. We assume a proxy OTP &#8216;923039&#8217; is returned. This &#8216;proxy code&#8217; now allows initialising setting up of the new 2FA without providing any code  than the &#8216;proxy code&#8217; internally stored by the client.</li>
+<li>Call the init_enable_sms method, with the full intl number as &#8216;number&#8217; and {method: &#8220;proxy&#8221;, code: &#8220;923039&#8221;} as &#8216;twofac_data&#8217;.</li>
+<li>Confirm the sms code, once received, with enable_sms method.</li>
+</ul>
+<p>(To illustrate why proxies are useful: You should be also able to simply set up the new 2FA by providing the first email code as an argument
+to init_enable_sms,&nbsp;but then you need to know the phone number at the same time as the code, so you can&#8217;t validate the code provided by
+the user separately. This is especially important for user experience because you&#8217;d then have to ask for the second code directly after the &#8216;old method code&#8217; and users could confuse the two codes - asking for &#8216;(1) email code, (2) phone number, (3) sms code&#8217; is better in our opinion than asking for &#8216;(1) phone number, (2) email&nbsp;code, (3) sms code&#8217; which would be the case without proxies - the order with asking for &#8216;phone number preceding the sms code&#8217; seems more natural than &#8216;email code preceding sms code&#8217;.)</p>
+<span class="target" id="module-twofactor"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/twofactor/</span></tt></p>
 <blockquote>
 <div><dl class="method">
 <dt id="activate_email">
@@ -268,14 +349,18 @@
 <dt id="init_enable_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_email</tt><big>(</big><em>email</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_email" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Initialize the procedure to enable an email based two factor authentication</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L140">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>email</strong> (<em>String</em>) &#8211; Email address for 2FA</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>email</strong> (<em>String</em>) &#8211; Email address for 2FA</li>
+<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;123456&#8221;, method: &#8220;sms&#8221;}</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -285,14 +370,18 @@
 <dt id="init_enable_phone">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_phone</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_phone" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Initialize the procedure to enable a phone bot-call based two factor authentication.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L211">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</li>
+<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;123456&#8221;, method: &#8220;sms&#8221;}</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -302,14 +391,18 @@
 <dt id="init_enable_sms">
 <tt class="descclassname">twofactor/</tt><tt class="descname">init_enable_sms</tt><big>(</big><em>number</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#init_enable_sms" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Signup only - for settings we use set_email, activate_email and enable_email_twofac</div>
+<div class="line">Initialize the procedure to enable a SMS based two factor authentication</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L178">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</li>
+<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;799154&#8221;, method: &#8220;email&#8221;}</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -318,102 +411,209 @@
 <dl class="method">
 <dt id="request_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">request_email</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Request the OTP via email, valid for the specified action.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
+<li><strong>data</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="request_phone">
 <tt class="descclassname">twofactor/</tt><tt class="descname">request_phone</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_phone" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Request the OTP via robot phone call, valid for the specified action.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
+<li><strong>data</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="request_proxy">
 <tt class="descclassname">twofactor/</tt><tt class="descname">request_proxy</tt><big>(</big><em>method</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#request_proxy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">In GreenAddress two factor authentication, proxies are used to interact with a 2FA method from another.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/settings/controllers.js#L296">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>method</strong> (<em>String</em>) &#8211; Other 2FA method on which the proxy OTP will authorize.</li>
+<li><strong>twofac_data</strong> &#8211; Previously used 2fa method: i.e. {&#8216;method&#8217;: &#8216;email&#8217;:, &#8216;code&#8217;: &#8216;123456&#8217;}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="request_redeposit_proxy">
 <tt class="descclassname">twofactor/</tt><tt class="descname">request_redeposit_proxy</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#request_redeposit_proxy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>In GreenAddress, 2FA codes are not reusable, also if they have a limited validity time, like Google Authenticator. However, for
+nLocktime and multiple redeposits in a round, the need of a reusable 2FA code went up, but just for this operation.
+redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of redeposits, for 300 seconds once the code is sent.</p>
+<p>Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L745">JS Example</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Data from already enabled 2FA. i.e. {code: &#8220;799154&#8221;, method: &#8220;email&#8221;}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="request_sms">
 <tt class="descclassname">twofactor/</tt><tt class="descname">request_sms</tt><big>(</big><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#request_sms" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Request the OTP via SMS, valid for the specified action.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
+<li><strong>data</strong> &#8211; </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="set_email">
 <tt class="descclassname">twofactor/</tt><tt class="descname">set_email</tt><big>(</big><em>email</em>, <em>twofac_data</em><big>)</big><a class="headerlink" href="#set_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><div class="line-block">
+<div class="line">Set email address for two factor authentication. Method not available if email 2FA is enabled.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/settings/controllers.js#L658">JS Example</a></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>email</strong> (<em>string</em>) &#8211; Email address</li>
+<li><strong>twofac_data</strong> &#8211; Two factor authorization with another method, if enabled.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div></blockquote>
+</div>
 </div>
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="pin.html"
-                        title="previous chapter">pin module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="txs.html"
-                        title="next chapter">txs module</a></p>
-<h3><a href="index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">twofactor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="txs.html" class="btn btn-neutral float-right" title="txs module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pin.html" class="btn btn-neutral" title="pin module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, GreenAddress.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="txs.html" title="txs module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="pin.html" title="pin module"
-             >previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" >WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

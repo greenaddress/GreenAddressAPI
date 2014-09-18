@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Handling incoming instant confirmation &mdash; GreenAddress API  documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="GreenAddress API  documentation" href="../index.html"/>
+        <link rel="up" title="Usage examples" href="../examples.html"/>
+        <link rel="next" title="WebSocket WAMP API calls" href="../apicalls.html"/>
+        <link rel="prev" title="Simple Python full access login example" href="mnemonic_python_login.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="login.html">Simple JS login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_python_login.html">Simple Python watch-only login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Handling incoming instant confirmation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../twofactor.html">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../txs.html">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault.html">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">GreenAddress API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../examples.html">Usage examples</a> &raquo;</li>
+      
+    <li>Handling incoming instant confirmation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="handling-incoming-instant-confirmation">
+<h1>Handling incoming instant confirmation<a class="headerlink" href="#handling-incoming-instant-confirmation" title="Permalink to this headline">¶</a></h1>
+<p>GreenAddress&#8217; instant confirmations speed up Bitcoin transactions, introducing a trusted third-party for multisigned
+transactions certifying that the transactions won&#8217;t be double spent.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Here we show the different ways of handling instant confirmation transactions from GreenAddress.</p>
+<p>GreenAddress services are designed to reduce friction against Bitcoin and instant confirmations. As the official
+documentation explains, <em>the classic Bitcoin client will show a transaction as &#8220;n/unconfirmed&#8221; until the transaction
+is 6 blocks deep.</em></p>
+<p>The way GreenAddress works with multisignature makes the service able to emit <strong>instant transactions</strong>. In GreenAddress,
+transactions are signed by two parties, and GreenAddress will not allow for double spends when providing the instant confirmation.</p>
+<p>This means that GreenAddress transactions, if you trust the service, can be identified as &#8220;double spend free&#8221;, and marked as instant. The choice,
+as almost everything in GreenAddress, is in the hand of the user.</p>
+</div>
+<div class="section" id="using-bip70-instant-confirmation-extension">
+<h2>Using BIP70 instant confirmation extension<a class="headerlink" href="#using-bip70-instant-confirmation-extension" title="Permalink to this headline">¶</a></h2>
+<p>If you already implement BIP70 then implementing this extension is quite easy.</p>
+<p>The proposal is <a class="reference external" href="https://github.com/greenaddress/bips/blob/bip-payment-request-instant-confirmations/bip-payment-request-instant-confirmations.mediawiki">available on Github</a>.</p>
+<p>An example will be available soon.</p>
+</div>
+<div class="section" id="using-the-greenaddress-wamp-server-to-verify-instant-transactions">
+<h2>Using the GreenAddress WAMP server to verify instant transactions<a class="headerlink" href="#using-the-greenaddress-wamp-server-to-verify-instant-transactions" title="Permalink to this headline">¶</a></h2>
+<p>After a <a class="reference external" href="custom_python_login.html">watch-only</a> or <a class="reference external" href="mnemonic_python_login.html">full access login</a>, users can
+call the <a class="reference external" href="/txs.html#get_list_v2">txs/get_list_v2 method</a> to fetch the transactions history. Using it without any
+parameter will return the list of last 30 transactions.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">getTransactions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">s_query</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">date_range</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">subacc</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s">&#39;gait:txs/get_list_v2&#39;</span><span class="p">,</span> <span class="n">page</span><span class="p">,</span> <span class="n">s_query</span><span class="p">,</span> <span class="n">sort_by</span><span class="p">,</span> <span class="n">date_range</span><span class="p">,</span> <span class="n">subacc</span><span class="p">)</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>WAMP&#8217;s APIs are asynchronous. This means you should bind a chain of callbacks to handle the result. Here we assume a predefined and very simple print callback:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>The result will be printed on stdout. We&#8217;re going to look at the array &#8216;list&#8217;, containing the
+transactions&#8217; details and endpoints. This is how a single transaction could appear:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+    u&#39;cur_block&#39;: 278586,
+    u&#39;fiat_value&#39;: 478.58,
+    u&#39;fiat_currency&#39;: u&#39;USD&#39;,
+    u&#39;list&#39;: [{
+    u&#39;instant&#39;: True,
+    u&#39;memo&#39;: u&quot;an instant transaction&quot;,
+    u&#39;eps&#39;: [{}, ... ], # Transaction&#39;s endpoints are skipped here for readability
+    u&#39;block_height&#39;: None,
+    u&#39;txhash&#39;: u&#39;d6a6fd117a7b84e6a9a6ae7f2aa46ecdfdd440d13dc2058d83ce7fad9731&#39;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-greenaddress-http-api-to-verify-instant-transactions">
+<h2>Using the GreenAddress HTTP API to verify instant transactions<a class="headerlink" href="#using-the-greenaddress-http-api-to-verify-instant-transactions" title="Permalink to this headline">¶</a></h2>
+<p>This code is extracted from the GreenAddress instant verify plugin for Electrum Bitcoin client, and shows how a third-party
+service could check GreenAddress instant confirmations <strong>without having an account at GreenAddress</strong>.</p>
+<p>The plugin is <a class="reference external" href="https://github.com/spesmilo/electrum/blob/master/plugins/greenaddress_instant.py">available on Github</a>.</p>
+<p>The example uses the ability of Electrum client to sign messages with its own private key, and so certify the ownership of a
+Bitcoin address, without exposing the private keys or doing any transactions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_my_addr</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
+<span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Please verify if </span><span class="si">%s</span><span class="s"> is GreenAddress instant confirmed&quot;</span> <span class="o">%</span> <span class="n">tx</span><span class="o">.</span><span class="n">hash</span><span class="p">()</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">sign_message</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">&#39;greenaddress.it&#39;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s">&quot;/verify/?signature=</span><span class="si">%s</span><span class="s">&amp;txhash=</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">sig</span><span class="p">),</span> <span class="n">tx</span><span class="o">.</span><span class="n">hash</span><span class="p">())),</span>
+    <span class="bp">None</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s">&#39;Electrum&#39;</span><span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The steps are simple and self-explanatory: the script finds some address which received a GreenAddress
+instant transaction, then uses its private key to sign a message, containing the transaction hash, and sends the signature with an
+HTTP query to the GreenAddress server.</p>
+<p>The API answer is a JSON dictionary, with a &#8216;verified&#8217; key which will have a true value if
+verification is positive.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;verified&#39;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> is covered by GreenAddress instant confirmation&#39;</span> <span class="o">%</span> <span class="n">tx</span><span class="o">.</span><span class="n">hash</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> is not covered by GreenAddress instant confirmation&#39;</span> <span class="o">%</span> <span class="n">tx</span><span class="o">.</span><span class="n">hash</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The consideration of this practice is that to sign a message with your own private keys,
+you need to use them. This requirement is there for privacy reasons, to avoid exposing
+information about GreenAddress.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../apicalls.html" class="btn btn-neutral float-right" title="WebSocket WAMP API calls"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mnemonic_python_login.html" class="btn btn-neutral" title="Simple Python full access login example"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, GreenAddress.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

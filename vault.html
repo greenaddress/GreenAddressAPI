@@ -1,69 +1,132 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>vault module &mdash; GreenAddress API  documentation</title>
-    
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  false
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="GreenAddress API  documentation" href="index.html" />
-    <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html" />
-    <link rel="next" title="WebSocket WAMP notifications" href="notifications.html" />
-    <link rel="prev" title="txs module" href="txs.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="notifications.html" title="WebSocket WAMP notifications"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="txs.html" title="txs module"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" accesskey="U">WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>vault module &mdash; GreenAddress API  documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
+        <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
+        <link rel="next" title="WebSocket WAMP notifications" href="notifications.html"/>
+        <link rel="prev" title="txs module" href="txs.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">GreenAddress API</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="apicalls.html">WebSocket WAMP API calls</a> &raquo;</li>
+      
+    <li>vault module</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
             
-  <div class="section" id="module-vault">
-<span id="vault-module"></span><h1>vault module<a class="headerlink" href="#module-vault" title="Permalink to this headline">¶</a></h1>
-<p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/vault/</span></tt></p>
+  <div class="section" id="vault-module">
+<h1>vault module<a class="headerlink" href="#vault-module" title="Permalink to this headline">¶</a></h1>
+<p>On GreenAddress API, vault is the primary module for funds handling. Here you can &#8220;generate&#8221; new P2SH,
+the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing transactions.</p>
+<p>Social transactions are supported too by GreenAddress API, and the BIP0070 payment protocol as well.</p>
+<span class="target" id="module-vault"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/vault/</span></tt></p>
 <blockquote>
 <div><dl class="method">
 <dt id="fund">
 <tt class="descclassname">vault/</tt><tt class="descname">fund</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Generate and return P2SH hash the user can pay to. Limit is 1000 p2shday for each account.</div>
-<div class="line">Check usage on Github: <a href="#id11"><span class="problematic" id="id12">`JS Example &lt;https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188`_</span></a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
+<div class="line">Generate and return P2SH hash the user can pay to. This call is limited to 1000 P2SH per day for each wallet.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188">JS Example</a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
 <div class="line"><br /></div>
 <div class="line">References:</div>
 <div class="line-block">
@@ -280,8 +343,8 @@ instant: Boolean}</li>
 </pre></div>
 </div>
 <p>The &#8216;tx&#8217; returned contains the original unhashed prev_output script in its redeem script
-for each input. This original script can be used to generate the p2sh output script
-at the js side. This p2sh prev output script is needed to generate a signature.</p>
+for each input. This original script can be used to generate the P2SH output script
+at the js side. This P2SH prev output script is needed to generate a signature.</p>
 </dd></dl>
 
 <dl class="method">
@@ -364,7 +427,7 @@ pending finalisation.</li>
 <dt id="send_tx">
 <tt class="descclassname">vault/</tt><tt class="descname">send_tx</tt><big>(</big><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The transaction must have been prepared using prepare_tx and signed by the user in js.</div>
+<div class="line">The transaction must have been prepared using prepare_tx and signed client side.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L670">JS Example</a></div>
 <div class="line">Reference:</div>
 <div class="line-block">
@@ -396,70 +459,67 @@ pending finalisation.</li>
 
 
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="txs.html"
-                        title="previous chapter">txs module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="notifications.html"
-                        title="next chapter">WebSocket WAMP notifications</a></p>
-<h3><a href="index.html">Table Of Contents</a></h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">vault module</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="notifications.html" class="btn btn-neutral float-right" title="WebSocket WAMP notifications"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="txs.html" class="btn btn-neutral" title="txs module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, GreenAddress.
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="notifications.html" title="WebSocket WAMP notifications"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="txs.html" title="txs module"
-             >previous</a> |</li>
-        <li><a href="index.html">GreenAddress API  documentation</a> &raquo;</li>
-          <li><a href="apicalls.html" >WebSocket WAMP API calls</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, GreenAddress.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
