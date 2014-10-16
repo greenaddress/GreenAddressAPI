@@ -154,7 +154,7 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 
 <dl class="method">
 <dt id="create_subaccount">
-<tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><span class="optional">[</span>, <em>backup_public</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new subaccount. Available only in full control mode.</div>
 <div class="line">Returns the receiving ID, also used for payment</div>
@@ -247,11 +247,6 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="get_extra_addresses">
-<tt class="descclassname">txs/</tt><tt class="descname">get_extra_addresses</tt><big>(</big><em>endpoint_id</em><big>)</big><a class="headerlink" href="#get_extra_addresses" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="get_list">

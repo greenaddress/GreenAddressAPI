@@ -116,26 +116,26 @@
             
   <div class="section" id="pin-module">
 <h1>pin module<a class="headerlink" href="#pin-module" title="Permalink to this headline">¶</a></h1>
-<p>Despite its simplictity, the pin module doesn&#8217;t sacrifice security. The module is built
+<p>Despite its simplicity, the pin module doesn&#8217;t sacrifice security. The module is built
 to make the user able to login against the GA API with a simple PIN code, the PIN is handled
 on GA servers, and every client should have a different PIN.</p>
-<p>When the PIN is correct, GA servers will send back a password, which is the same one used by the client to encrypt the seed and the mnemonic passphrase.</p>
+<p>When the PIN + PIN ident + Device ID combination is correct, GA servers will send back a password, which is the same one used by the client to encrypt the seed and the mnemonic passphrase.</p>
 <p><strong>PIN module:</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li>When a new PIN is set, a device ID must also specified (usually a string generated from some 256 bit random number). This ID is sent together with the PIN.</li>
+<li>When a new PIN is set, a device ID must also specified previously (usually a string generated from some 256 bit random number). This ID is sent together with the PIN. This is specified during login.</li>
 <li>The password should be used to encrypt the mnemonic passphrase as well as seed (for speed) on client side, the mnemonic passphrase or seed is never sent to GA servers.</li>
-<li>When the combination of PIN and device ID match on GA servers, the password is returned, and can be used to decrypt the mnemonic passphrase locally.</li>
-<li>After 3 wrong PIN attempts, the PIN and password are deleted on GA servers.</li>
+<li>When the combination of PIN, PIN ident and device ID match on GA servers, the password is returned, and can be used to decrypt the mnemonic passphrase locally.</li>
+<li>After 3 wrong PIN attempts, the PIN, PIN ident and password are deleted on GA servers.</li>
 </ul>
 </div></blockquote>
 <span class="target" id="module-pin"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/pin/</span></tt></p>
 <blockquote>
 <div><dl class="method">
 <dt id="change_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">change_pin_login</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pin/</tt><tt class="descname">change_pin_login</tt><big>(</big><em>pin</em>, <em>pin_ident</em><big>)</big><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Changes the PIN for given device_ident</div>
+<div class="line">Changes the PIN for given pin_ident</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1347">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -144,7 +144,7 @@ on GA servers, and every client should have a different PIN.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>pin</strong> (<em>String</em>) &#8211; string with a few characters (max 15 characters)</li>
-<li><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</li>
+<li><strong>pin_ident</strong> (<em>String</em>) &#8211; uuid</li>
 </ul>
 </td>
 </tr>
@@ -158,9 +158,9 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="disable_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">disable_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pin/</tt><tt class="descname">disable_pin_login</tt><big>(</big><em>pin_ident</em><big>)</big><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Removes the device from the list of PIN logins if the wallet_id matches.</div>
+<div class="line">Removes the device from the list of PIN logins if the pin_ident matches.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -185,7 +185,7 @@ on GA servers, and every client should have a different PIN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[[&quot;device_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[[&quot;pin_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></tt></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">List</td>
 </tr>
@@ -195,10 +195,10 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="get_password">
-<tt class="descclassname">pin/</tt><tt class="descname">get_password</tt><big>(</big><em>pin</em>, <em>device_ident</em><big>)</big><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pin/</tt><tt class="descname">get_password</tt><big>(</big><em>pin</em>, <em>pin_ident</em><big>)</big><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">If pin and device_ident will match, the API will return the paired password.</div>
-<div class="line">PIN for the given device is disabled on our servers after 3 failed logins.</div>
+<div class="line">If pin and pin_ident will match, the API will return the paired password.</div>
+<div class="line">PIN for the given device is disabled on GreenAddress servers after 3 failed logins.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/signuplogin/controllers.js#L335">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -207,7 +207,7 @@ on GA servers, and every client should have a different PIN.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>pin</strong> (<em>string</em>) &#8211; The previously set device PIN</li>
-<li><strong>device_ident</strong> (<em>string</em>) &#8211; The device name</li>
+<li><strong>pin_ident</strong> (<em>string</em>) &#8211; The device name</li>
 </ul>
 </td>
 </tr>
@@ -245,16 +245,16 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="remove_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">remove_pin_login</tt><big>(</big><em>device_ident</em><big>)</big><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">pin/</tt><tt class="descname">remove_pin_login</tt><big>(</big><em>pin_ident</em><big>)</big><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Remove the PIN login for given device_ident</div>
+<div class="line">Remove the PIN login for given pin_ident</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L857">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_ident</strong> (<em>String</em>) &#8211; uuid</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pin_ident</strong> (<em>String</em>) &#8211; uuid</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
@@ -268,7 +268,7 @@ on GA servers, and every client should have a different PIN.</p>
 <dt id="set_pin_login">
 <tt class="descclassname">pin/</tt><tt class="descname">set_pin_login</tt><big>(</big><em>pin</em>, <em>device_name</em><big>)</big><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Generates a password and sends it back. This password is used for client side AES encryption of the seed and mnemonic.</div>
+<div class="line">Generates a pin_ident and sends it back. This password is used for client side AES encryption of the seed and mnemonic.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L844">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -281,7 +281,7 @@ on GA servers, and every client should have a different PIN.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">password</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pin_ident - The pin unique ID</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
