@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>txs module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,15 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="vault module" href="vault.html"/>
         <link rel="prev" title="twofactor module" href="twofactor.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,28 +46,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
@@ -75,16 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,7 +110,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -108,11 +125,14 @@
     <li>txs module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="txs-module">
 <h1>txs module<a class="headerlink" href="#txs-module" title="Permalink to this headline">¶</a></h1>
@@ -124,11 +144,11 @@ users able to retrieve their funds independently of the service.</p>
 <p>nLocktime is described in the <a class="reference external" href="https://en.bitcoin.it/wiki/NLockTime">Bitcoin protocol specifications</a> as
 a parameter that can be attached to a transaction, that mandates a minimal time, that before this time, the transaction cannot be accepted into a block.</p>
 <p>On GreenAddress your funds are always redeemable with an nLocktime transaction and the <a class="reference external" href="https://github.com/greenaddress/gentle">Gentle tool</a>.</p>
-<span class="target" id="module-txs"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/txs/</span></tt></p>
+<span class="target" id="module-txs"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.txs</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="change_memo">
-<tt class="descclassname">txs/</tt><tt class="descname">change_memo</tt><big>(</big><em>txhash</em>, <em>memo</em><big>)</big><a class="headerlink" href="#change_memo" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">change_memo</code><span class="sig-paren">(</span><em>txhash</em>, <em>memo</em><span class="sig-paren">)</span><a class="headerlink" href="#change_memo" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Edit already existing transaction&#8217;s memo.</div>
 </div>
@@ -154,7 +174,7 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 
 <dl class="method">
 <dt id="create_subaccount">
-<tt class="descclassname">txs/</tt><tt class="descname">create_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><span class="optional">[</span>, <em>backup_public</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">create_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><span class="optional">[</span>, <em>backup_public</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new subaccount. Available only in full control mode.</div>
 <div class="line">Returns the receiving ID, also used for payment</div>
@@ -184,8 +204,24 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 </dd></dl>
 
 <dl class="method">
+<dt id="get_all_unspent_outputs">
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_all_unspent_outputs</code><span class="sig-paren">(</span><span class="optional">[</span><em>confs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_all_unspent_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns a list of all user&#8217;s unspent transaction hashes and output numbers.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>confs</strong> (<em>number</em>) &#8211; Minimum number of confirmations required (default=1)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="get_balance">
-<tt class="descclassname">txs/</tt><tt class="descname">get_balance</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns the sum of unspent outputs destined to user&#8217;s wallet.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/controllers.js#L119">JS Example</a></div>
@@ -211,7 +247,7 @@ See get_balance_by_addr for instant confirmations support.</li>
 
 <dl class="method">
 <dt id="get_balance_by_addr">
-<tt class="descclassname">txs/</tt><tt class="descname">get_balance_by_addr</tt><big>(</big><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance_by_addr</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the sum of unspent outputs destined to given user&#8217;s address.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -231,7 +267,7 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 
 <dl class="method">
 <dt id="get_daily_balance_chart">
-<tt class="descclassname">txs/</tt><tt class="descname">get_daily_balance_chart</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_daily_balance_chart</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of days with balance values for drawing balance graph.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/info/controllers.js#L25">JS Example</a></div>
@@ -250,7 +286,7 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 
 <dl class="method">
 <dt id="get_list">
-<tt class="descclassname">txs/</tt><tt class="descname">get_list</tt><big>(</big><em>last_txhash</em>, <em>unclaimed</em><big>)</big><a class="headerlink" href="#get_list" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_list</code><span class="sig-paren">(</span><em>last_txhash</em>, <em>unclaimed</em><span class="sig-paren">)</span><a class="headerlink" href="#get_list" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of all user&#8217;s transactions since last_txhash. Please use get_list_v2() described below.</div>
 </div>
@@ -275,7 +311,7 @@ with the exception of unclaimed below.</li>
 
 <dl class="method">
 <dt id="get_list_v2">
-<tt class="descclassname">txs/</tt><tt class="descname">get_list_v2</tt><big>(</big><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_list_v2</code><span class="sig-paren">(</span><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_prev_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of user&#8217;s transactions. Accept multiple parameters.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L382">JS Example</a></div>
@@ -305,7 +341,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="get_payment_request">
-<tt class="descclassname">txs/</tt><tt class="descname">get_payment_request</tt><big>(</big><em>txhash</em><big>)</big><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_payment_request</code><span class="sig-paren">(</span><em>txhash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">BIP70 payment protocol. Returns the payment request for the specified transaction.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L94">JS Example</a></div>
@@ -326,8 +362,16 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 </dd></dl>
 
 <dl class="method">
+<dt id="get_raw_unspent_output">
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_unspent_output</code><span class="sig-paren">(</span><em>txhash</em><span class="optional">[</span>, <em>asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_unspent_output" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns a list of all user&#8217;s confirmed unspent transaction hashes and output numbers.</div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="get_redeem_message">
-<tt class="descclassname">txs/</tt><tt class="descname">get_redeem_message</tt><big>(</big><em>type_</em>, <em>hash_or_pubkey</em><big>)</big><a class="headerlink" href="#get_redeem_message" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_redeem_message</code><span class="sig-paren">(</span><em>type_</em>, <em>hash_or_pubkey</em><span class="sig-paren">)</span><a class="headerlink" href="#get_redeem_message" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a voucher&#8217;s message. No authentication is needed against this public API.</div>
 <div class="line">An anonymous user can request the message attached to his voucher providing the voucher pubkey received (&#8216;pubkey&#8217;).</div>
@@ -356,7 +400,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="rename_subaccount">
-<tt class="descclassname">txs/</tt><tt class="descname">rename_subaccount</tt><big>(</big><em>pointer</em>, <em>name</em><big>)</big><a class="headerlink" href="#rename_subaccount" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">rename_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#rename_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Rename already existing subaccount. Doesn&#8217;t accept duplicates.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1219">JS Example</a></div>
@@ -383,7 +427,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="send_nlocktime">
-<tt class="descclassname">txs/</tt><tt class="descname">send_nlocktime</tt><big>(</big><big>)</big><a class="headerlink" href="#send_nlocktime" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">send_nlocktime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#send_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Request an email with all user&#8217;s nLockTime transactions.</div>
 <div class="line">Available only in full control mode.</div>
@@ -403,7 +447,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="upcoming_nlocktime">
-<tt class="descclassname">txs/</tt><tt class="descname">upcoming_nlocktime</tt><big>(</big><big>)</big><a class="headerlink" href="#upcoming_nlocktime" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">upcoming_nlocktime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upcoming_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns upcoming nLocktime signed transactions. Available only in full control mode.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L384">JS Example</a></div>
@@ -422,15 +466,16 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="vault.html" class="btn btn-neutral float-right" title="vault module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vault.html" class="btn btn-neutral float-right" title="vault module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="twofactor.html" class="btn btn-neutral" title="twofactor module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="twofactor.html" class="btn btn-neutral" title="twofactor module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -439,12 +484,14 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

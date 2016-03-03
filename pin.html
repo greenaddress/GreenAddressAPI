@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>pin module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,15 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="twofactor module" href="twofactor.html"/>
         <link rel="prev" title="login module" href="login.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,28 +46,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
@@ -75,16 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,7 +110,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -108,11 +125,14 @@
     <li>pin module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="pin-module">
 <h1>pin module<a class="headerlink" href="#pin-module" title="Permalink to this headline">¶</a></h1>
@@ -129,11 +149,11 @@ on GA servers, and every client should have a different PIN.</p>
 <li>After 3 wrong PIN attempts, the PIN, PIN ident and password are deleted on GA servers.</li>
 </ul>
 </div></blockquote>
-<span class="target" id="module-pin"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/pin/</span></tt></p>
+<span class="target" id="module-pin"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.pin</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="change_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">change_pin_login</tt><big>(</big><em>pin</em>, <em>pin_ident</em><big>)</big><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">change_pin_login</code><span class="sig-paren">(</span><em>pin</em>, <em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Changes the PIN for given pin_ident</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1347">JS Example</a></div>
@@ -158,7 +178,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="disable_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">disable_pin_login</tt><big>(</big><em>pin_ident</em><big>)</big><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">disable_pin_login</code><span class="sig-paren">(</span><em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#disable_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Removes the device from the list of PIN logins if the pin_ident matches.</div>
 </div>
@@ -176,7 +196,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="get_devices">
-<tt class="descclassname">pin/</tt><tt class="descname">get_devices</tt><big>(</big><big>)</big><a class="headerlink" href="#get_devices" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">get_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_devices" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Lists all pin devices in this wallet sorted by device_name.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L835">JS Example</a></div>
@@ -185,7 +205,7 @@ on GA servers, and every client should have a different PIN.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[[&quot;pin_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">[[&quot;pin_ident&quot;,</span> <span class="pre">&quot;device_name&quot;],</span> <span class="pre">[...]]</span></code></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">List</td>
 </tr>
@@ -195,7 +215,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="get_password">
-<tt class="descclassname">pin/</tt><tt class="descname">get_password</tt><big>(</big><em>pin</em>, <em>pin_ident</em><big>)</big><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">get_password</code><span class="sig-paren">(</span><em>pin</em>, <em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">If pin and pin_ident will match, the API will return the paired password.</div>
 <div class="line">PIN for the given device is disabled on GreenAddress servers after 3 failed logins.</div>
@@ -226,7 +246,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="remove_all_pin_logins">
-<tt class="descclassname">pin/</tt><tt class="descname">remove_all_pin_logins</tt><big>(</big><big>)</big><a class="headerlink" href="#remove_all_pin_logins" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">remove_all_pin_logins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#remove_all_pin_logins" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove all PIN logins previously set. After calling this method, user will not be able anymore to do PIN login from any device he previously paired.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L906">JS Example</a></div>
@@ -245,7 +265,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="remove_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">remove_pin_login</tt><big>(</big><em>pin_ident</em><big>)</big><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">remove_pin_login</code><span class="sig-paren">(</span><em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove the PIN login for given pin_ident</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L857">JS Example</a></div>
@@ -266,7 +286,7 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="set_pin_login">
-<tt class="descclassname">pin/</tt><tt class="descname">set_pin_login</tt><big>(</big><em>pin</em>, <em>device_name</em><big>)</big><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">set_pin_login</code><span class="sig-paren">(</span><em>pin</em>, <em>device_name</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generates a pin_ident and sends it back. This password is used for client side AES encryption of the seed and mnemonic.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L844">JS Example</a></div>
@@ -295,15 +315,16 @@ on GA servers, and every client should have a different PIN.</p>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="twofactor.html" class="btn btn-neutral float-right" title="twofactor module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="twofactor.html" class="btn btn-neutral float-right" title="twofactor module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="login.html" class="btn btn-neutral" title="login module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="login.html" class="btn btn-neutral" title="login module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -312,12 +333,14 @@ on GA servers, and every client should have a different PIN.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

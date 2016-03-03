@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>login module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,15 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="pin module" href="pin.html"/>
         <link rel="prev" title="addressbook module" href="addressbook.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,28 +46,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">login module</a></li>
@@ -75,16 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,7 +110,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -108,22 +125,25 @@
     <li>login module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="login-module">
 <h1>login module<a class="headerlink" href="#login-module" title="Permalink to this headline">¶</a></h1>
 <p>The login module gives different ways of logging in to your GreenAddress wallet.
 This module allows the user to authenticate against the server.</p>
 <p>Also, initial settings, like the nLocktime and Fiat price source, are provided within the login process.</p>
-<span class="target" id="module-login"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/login/</span></tt></p>
+<span class="target" id="module-login"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.login</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="authenticate">
-<tt class="descclassname">login/</tt><tt class="descname">authenticate</tt><big>(</big><em>signature</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>signature</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Validates the signature of the challenge done using current wallet&#8217;s private key.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1180">JS Example</a></div>
@@ -148,6 +168,7 @@ This module allows the user to authenticate against the server.</p>
 </li>
 <li><strong>device_id</strong> (<em>String</em>) &#8211; unique device identifier. When doing forced logout, user is not
 warned about having &#8220;logged in elsewhere&#8221; if the same device forced the logout.</li>
+<li><strong>user_agent</strong> (<em>String</em>) &#8211; client name and version</li>
 </ul>
 </td>
 </tr>
@@ -155,7 +176,8 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 &#8216;receiving_id&#8217;: String, &#8216;expired_deposits&#8217;: Array, &#8216;nlocktime_blocks&#8217;: Number,
 &#8216;cache_password&#8217;: String, &#8216;gait_path&#8217;: hex,
 &#8216;privacy&#8217;: {...},
-&#8216;limits&#8217;: {&#8216;is_fiat&#8217;: Boolean, &#8216;total&#8217;: satoshis, &#8216;per_tx&#8217;: satoshis}}</p>
+&#8216;limits&#8217;: {&#8216;is_fiat&#8217;: Boolean, &#8216;total&#8217;: satoshis, &#8216;per_tx&#8217;: satoshis},
+&#8216;earliest_key_creation_time&#8217;: Number}</p>
 </td>
 </tr>
 </tbody>
@@ -164,7 +186,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="available_currencies">
-<tt class="descclassname">login/</tt><tt class="descname">available_currencies</tt><big>(</big><big>)</big><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">available_currencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of allowed currencies for all available pricing sources.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L411">JS Example</a></div>
@@ -182,7 +204,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="change_settings">
-<tt class="descclassname">login/</tt><tt class="descname">change_settings</tt><big>(</big><em>key</em>, <em>value</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#change_settings" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">change_settings</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#change_settings" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change settings. Currently used only for privacy settings and transaction limits.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L669">JS Example</a></div>
@@ -227,8 +249,13 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 </dd></dl>
 
 <dl class="method">
+<dt id="create_session">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">create_session</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#create_session" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="get_challenge">
-<tt class="descclassname">login/</tt><tt class="descname">get_challenge</tt><big>(</big><em>pubkey_hash</em><big>)</big><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_challenge</code><span class="sig-paren">(</span><em>pubkey_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return a challenge that must be signed for a successful authentication.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1164">JS Example</a> or take a look at the <a class="reference external" href="examples/mnemonic_python_login.html">Python mnemonic login example</a></div>
@@ -249,7 +276,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="get_spending_limits">
-<tt class="descclassname">login/</tt><tt class="descname">get_spending_limits</tt><big>(</big><big>)</big><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_spending_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns spending limits.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L675">JS Example</a></div>
@@ -266,10 +293,10 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="get_trezor_challenge">
-<tt class="descclassname">login/</tt><tt class="descname">get_trezor_challenge</tt><big>(</big><em>pubkey_hash</em><big>)</big><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_trezor_challenge</code><span class="sig-paren">(</span><em>pubkey_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return a Trezor challenge that must be signed for a successful authentication.</div>
-<div class="line">A string &#8216;<tt class="docutils literal"><span class="pre">greenaddress.it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">login</span> <span class="pre">ABCDE</span></tt>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token) must be signed to proceed with authentication.</div>
+<div class="line">A string &#8216;<code class="docutils literal"><span class="pre">greenaddress.it</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="pre">login</span> <span class="pre">ABCDE</span></code>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token) must be signed to proceed with authentication.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1230">JS Example</a></div>
 <div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
 </div>
@@ -289,7 +316,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="register">
-<tt class="descclassname">login/</tt><tt class="descname">register</tt><big>(</big><em>master_public</em>, <em>master_chaincode</em><big>)</big><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">register</code><span class="sig-paren">(</span><em>master_public</em>, <em>master_chaincode</em><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new account.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L114">JS Example</a></div>
@@ -301,10 +328,11 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
 <li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 20 byte chaincode, hex-encoded</li>
+<li><strong>user_agent</strong> (<em>String</em>) &#8211; client name and version</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;wallet_id&#8217;: Int}</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">boolean</p>
 </td>
 </tr>
 </tbody>
@@ -313,7 +341,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="remove_account">
-<tt class="descclassname">login/</tt><tt class="descname">remove_account</tt><big>(</big><em>twofac_data</em><big>)</big><a class="headerlink" href="#remove_account" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">remove_account</code><span class="sig-paren">(</span><em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#remove_account" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove the account</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L613">JS Example</a></div>
@@ -334,7 +362,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_appearance">
-<tt class="descclassname">login/</tt><tt class="descname">set_appearance</tt><big>(</big><em>appearance</em><big>)</big><a class="headerlink" href="#set_appearance" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_appearance</code><span class="sig-paren">(</span><em>appearance</em><span class="sig-paren">)</span><a class="headerlink" href="#set_appearance" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Update appearance settings.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L165">JS Example</a></div>
@@ -343,7 +371,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appearance</strong> (<em>JSON</em>) &#8211; {&#8220;sound&#8221;: Boolean, &#8220;altimeout&#8221;: Int, &#8220;unit&#8221;: String (&#8216;BTC&#8217;, &#8216;mBTC&#8217;, &#8216;µBTC&#8217; }</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appearance</strong> (<em>JSON</em>) &#8211; {&#8220;sound&#8221;: Boolean, &#8220;altimeout&#8221;: Number, &#8220;pgp&#8221;: String, &#8220;unit&#8221;: String (&#8216;BTC&#8217;, &#8216;mBTC&#8217;, &#8216;µBTC&#8217;, &#8216;bits&#8217; }</td>
 </tr>
 </tbody>
 </table>
@@ -351,7 +379,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_currency">
-<tt class="descclassname">login/</tt><tt class="descname">set_currency</tt><big>(</big><em>currency</em><big>)</big><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_currency</code><span class="sig-paren">(</span><em>currency</em><span class="sig-paren">)</span><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the pricing source currency.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L504">JS Example</a></div>
@@ -374,7 +402,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_exchange">
-<tt class="descclassname">login/</tt><tt class="descname">set_exchange</tt><big>(</big><em>exchange</em><big>)</big><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_exchange</code><span class="sig-paren">(</span><em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the pricing source. GreenAddress indexes a large number of Bitcoin exchanges, and return to the user the preferred price.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L528">JS Example</a></div>
@@ -397,7 +425,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_gait_path">
-<tt class="descclassname">login/</tt><tt class="descname">set_gait_path</tt><big>(</big><em>wallet_path</em><big>)</big><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_gait_path</code><span class="sig-paren">(</span><em>wallet_path</em><span class="sig-paren">)</span><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Set deposits server-side subkey path. <strong>Required after first login.</strong></div>
 <div class="line">Server-side subkey path is a unique per-user value used for deriving server-side signing key  to protect users&#8217; privacy by not reusing the same GreenAddress public key for signing.</div>
@@ -416,7 +444,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_nlocktime">
-<tt class="descclassname">login/</tt><tt class="descname">set_nlocktime</tt><big>(</big><em>nlocktime</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#set_nlocktime" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_nlocktime</code><span class="sig-paren">(</span><em>nlocktime</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#set_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Set the number of blocks after which nLockTime transaction is generated.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L337">JS Example</a></div>
@@ -443,7 +471,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_pricing_source">
-<tt class="descclassname">login/</tt><tt class="descname">set_pricing_source</tt><big>(</big><em>currency</em>, <em>exchange</em><big>)</big><a class="headerlink" href="#set_pricing_source" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_pricing_source</code><span class="sig-paren">(</span><em>currency</em>, <em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pricing_source" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the pricing source and currency.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L464">JS Example</a></div>
@@ -470,7 +498,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="watch_only">
-<tt class="descclassname">login/</tt><tt class="descname">watch_only</tt><big>(</big><em>token_type</em>, <em>token</em>, <em>logout</em><big>)</big><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">watch_only</code><span class="sig-paren">(</span><em>token_type</em>, <em>token</em>, <em>logout</em><span class="sig-paren">)</span><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Log in to watch-only mode. It is limited to 100 watch only logins per day.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1338">JS Example</a></div>
@@ -502,15 +530,16 @@ so there is no need to force logout here)</li>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pin.html" class="btn btn-neutral float-right" title="pin module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pin.html" class="btn btn-neutral float-right" title="pin module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="addressbook.html" class="btn btn-neutral" title="addressbook module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="addressbook.html" class="btn btn-neutral" title="addressbook module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -519,12 +548,14 @@ so there is no need to force logout here)</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

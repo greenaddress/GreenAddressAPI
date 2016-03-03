@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Welcome to GreenAddress API documentation &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,11 +28,13 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="#"/>
         <link rel="next" title="Usage examples" href="examples.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -42,47 +44,48 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="#" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -97,18 +100,27 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
       
     <li>Welcome to GreenAddress API documentation</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <img alt="_images/logo-greenaddress.png" class="align-left" src="_images/logo-greenaddress.png" />
 <div class="section" id="welcome-to-greenaddress-api-documentation">
@@ -140,10 +152,10 @@ functions (Transactions, Address Book, Login, etc).</p>
 <li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="examples/login.html#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/login.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/login.html#compiling-bitcoinjs-lib">Compiling bitcoinjs-lib</a></li>
-<li class="toctree-l3"><a class="reference internal" href="examples/login.html#compiling-weilu-s-bip39">Compiling weilu&#8217;s bip39</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/login.html#deriving-the-private-key-from-mnemonic">Deriving the private key from mnemonic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/login.html#logging-in-greenaddress-wamp-server">Logging in GreenAddress WAMP server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/login.html#preparing-a-browserify-bundle-optional">Preparing a Browserify bundle (optional)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a><ul>
@@ -162,6 +174,13 @@ functions (Transactions, Address Book, Login, etc).</p>
 <li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-bip70-instant-confirmation-extension">Using BIP70 instant confirmation extension</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-the-greenaddress-wamp-server-to-verify-instant-transactions">Using the GreenAddress WAMP server to verify instant transactions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="examples/instant_confirmation.html#using-the-greenaddress-http-api-to-verify-instant-transactions">Using the GreenAddress HTTP API to verify instant transactions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/httpbridge.html">HTTP Bridge usage example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/httpbridge.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/httpbridge.html#note-experimental-feature">NOTE: Experimental feature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/httpbridge.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/httpbridge.html#using-the-greenaddress-wamp-server">Using the GreenAddress WAMP server</a></li>
 </ul>
 </li>
 </ul>
@@ -189,18 +208,19 @@ functions (Transactions, Address Book, Login, etc).</p>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples.html" class="btn btn-neutral float-right" title="Usage examples"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Usage examples" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -210,12 +230,14 @@ functions (Transactions, Address Book, Login, etc).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

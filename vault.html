@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>vault module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,15 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="WebSocket WAMP notifications" href="notifications.html"/>
         <link rel="prev" title="txs module" href="txs.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,28 +46,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
@@ -75,16 +89,13 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,7 +110,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -108,22 +125,25 @@
     <li>vault module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="vault-module">
 <h1>vault module<a class="headerlink" href="#vault-module" title="Permalink to this headline">¶</a></h1>
 <p>On GreenAddress API, vault is the primary module for funds handling. Here you can &#8220;generate&#8221; new P2SH,
 the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing transactions.</p>
 <p>Social transactions are supported too by GreenAddress API, and the BIP0070 payment protocol as well.</p>
-<span class="target" id="module-vault"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/vault/</span></tt></p>
+<span class="target" id="module-vault"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.vault</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="fund">
-<tt class="descclassname">vault/</tt><tt class="descname">fund</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_pointer</em><span class="optional">]</span><span class="optional">[</span>, <em>confidential</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return P2SH hash the user can pay to. This call is limited to 1000 P2SH per day for each wallet.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188">JS Example</a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
@@ -137,11 +157,17 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified, default is main account.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified, default is main account.</li>
+<li><strong>return_pointer</strong> (<em>boolean</em>) &#8211; Whether to return BIP32 pointer number in addition to the script (default=false)</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">hex encoded script</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">hex encoded script</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -149,7 +175,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 
 <dl class="method">
 <dt id="fund_receiving_id">
-<tt class="descclassname">vault/</tt><tt class="descname">fund_receiving_id</tt><big>(</big><em>receiving_id</em><big>)</big><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund_receiving_id</code><span class="sig-paren">(</span><em>receiving_id</em><span class="sig-paren">)</span><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a P2SH hash the anyone can pay to given receiving_id.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L191">JS Example</a></div>
@@ -170,7 +196,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 
 <dl class="method">
 <dt id="get_next_private_derived_pointer">
-<tt class="descclassname">vault/</tt><tt class="descname">get_next_private_derived_pointer</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">get_next_private_derived_pointer</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns next unused EXTERNAL branch private key pointer.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L476">JS Example</a></div>
@@ -186,39 +212,8 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 </dd></dl>
 
 <dl class="method">
-<dt id="prepare_nlocktime">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_nlocktime</tt><big>(</big><em>txouts</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_nlocktime" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Generate a nLockTime transaction.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L54">JS Example</a></div>
-<div class="line">Reference guide:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">https://bitcoin.org/en/developer-guide#locktime-and-sequence-number</a></div>
-</div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>txouts</strong> (<em>Array</em>) &#8211; [[txhash, out_n], ...]</li>
-<li><strong>twofac_data</strong> (<em>String</em>) &#8211; Two factor authentication data.
-{method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;tx&#8217;: hex,
-&#8216;prevout_pointers&#8217;: [Number, ...],
-&#8216;prevout_subaccounts&#8217;: [Number, ...]}</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="prepare_payreq">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_payreq</tt><big>(</big><em>value</em>, <em>data</em><big>)</big><a class="headerlink" href="#prepare_payreq" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_payreq</code><span class="sig-paren">(</span><em>value</em>, <em>data</em><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_payreq" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Prepare BIP70 payment protocol transaction.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L573">JS Example</a></div>
@@ -246,7 +241,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 
 <dl class="method">
 <dt id="prepare_redeposit">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_redeposit</tt><big>(</big><em>txouts</em><big>)</big><a class="headerlink" href="#prepare_redeposit" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_redeposit</code><span class="sig-paren">(</span><em>txouts</em><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_redeposit" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Prepare nLockTime redeposit.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L287">JS Example</a></div>
@@ -269,7 +264,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 
 <dl class="method">
 <dt id="prepare_sweep_social">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_sweep_social</tt><big>(</big><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_sweep_social</code><span class="sig-paren">(</span><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Prepare public key sweeping transaction.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L23">JS Example</a></div>
@@ -294,7 +289,7 @@ only GreenAddress transactions are considered.</li>
 
 <dl class="method">
 <dt id="prepare_tx">
-<tt class="descclassname">vault/</tt><tt class="descname">prepare_tx</tt><big>(</big><em>value</em>, <em>rcpt_ad</em>, <em>add_fee</em>, <em>priv_data</em><big>)</big><a class="headerlink" href="#prepare_tx" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_tx</code><span class="sig-paren">(</span><em>value</em>, <em>rcpt_ad</em>, <em>add_fee</em>, <em>priv_data</em><span class="sig-paren">)</span><a class="headerlink" href="#prepare_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Prepare transaction.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L398">JS Example</a></div>
@@ -317,7 +312,11 @@ only GreenAddress transactions are considered.</li>
 pointer: Number,
 pubkey: bytes array,
 social_destination: String,
-instant: Boolean}</li>
+instant: Boolean,
+memo: String,
+minimize_inputs: Boolean}</li>
+<li><strong>priv_data.minimize_inputs</strong> &#8211; whether to optimize for minimum number of inputs
+instead of nLockTime expiring</li>
 </ul>
 </td>
 </tr>
@@ -349,7 +348,7 @@ at the js side. This P2SH prev output script is needed to generate a signature.<
 
 <dl class="method">
 <dt id="process_bip0070_url">
-<tt class="descclassname">vault/</tt><tt class="descname">process_bip0070_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">process_bip0070_url</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns BIP70 payment request data</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js">JS Example</a></div>
@@ -383,7 +382,7 @@ pending finalisation.</li>
 
 <dl class="method">
 <dt id="send_email">
-<tt class="descclassname">vault/</tt><tt class="descname">send_email</tt><big>(</big><em>destination</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_email</code><span class="sig-paren">(</span><em>destination</em>, <em>href</em><span class="sig-paren">)</span><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Vouchers: Send an email containing private derived key.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L349">JS Example</a></div>
@@ -403,8 +402,13 @@ pending finalisation.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="send_raw_tx">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_raw_tx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="send_reddit">
-<tt class="descclassname">vault/</tt><tt class="descname">send_reddit</tt><big>(</big><em>recipient</em>, <em>href</em><big>)</big><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_reddit</code><span class="sig-paren">(</span><em>recipient</em>, <em>href</em><span class="sig-paren">)</span><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Vouchers: Send a reddit message containing private derived key.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L375">JS Example</a></div>
@@ -425,7 +429,7 @@ pending finalisation.</li>
 
 <dl class="method">
 <dt id="send_tx">
-<tt class="descclassname">vault/</tt><tt class="descname">send_tx</tt><big>(</big><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_tx</code><span class="sig-paren">(</span><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">The transaction must have been prepared using prepare_tx and signed client side.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L670">JS Example</a></div>
@@ -454,19 +458,25 @@ pending finalisation.</li>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="set_scanning_key">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">set_scanning_key</code><span class="sig-paren">(</span><em>subaccount</em>, <em>pointer</em>, <em>pubkey</em><span class="sig-paren">)</span><a class="headerlink" href="#set_scanning_key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div></blockquote>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="notifications.html" class="btn btn-neutral float-right" title="WebSocket WAMP notifications"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="notifications.html" class="btn btn-neutral float-right" title="WebSocket WAMP notifications" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="txs.html" class="btn btn-neutral" title="txs module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="txs.html" class="btn btn-neutral" title="txs module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -475,12 +485,14 @@ pending finalisation.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

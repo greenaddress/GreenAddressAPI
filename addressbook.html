@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>addressbook module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,15 @@
   
 
   
+
+  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="login module" href="login.html"/>
         <link rel="prev" title="WebSocket WAMP API calls" href="apicalls.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,28 +46,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">addressbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
@@ -75,16 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,7 +110,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -108,21 +125,24 @@
     <li>addressbook module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="addressbook-module">
 <h1>addressbook module<a class="headerlink" href="#addressbook-module" title="Permalink to this headline">¶</a></h1>
 <p>The Addressbook module is used to manage contacts of a GreenAddress account
 and synchronize them between social accounts.</p>
-<span class="target" id="module-addressbook"></span><p><tt class="docutils literal"><span class="pre">http://greenaddressit.com/addressbook/</span></tt></p>
+<span class="target" id="module-addressbook"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.addressbook</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="add_entry">
-<tt class="descclassname">addressbook/</tt><tt class="descname">add_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">add_entry</code><span class="sig-paren">(</span><em>address</em>, <em>name</em>, <em>rating</em><span class="sig-paren">)</span><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Add new entry to the addressbook. Does not allow repeated addresses.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L753">JS Example</a></div>
@@ -150,7 +170,7 @@ and synchronize them between social accounts.</p>
 
 <dl class="method">
 <dt id="delete_entry">
-<tt class="descclassname">addressbook/</tt><tt class="descname">delete_entry</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#delete_entry" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">delete_entry</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#delete_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Delete addressbook entry.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L720">JS Example</a></div>
@@ -169,7 +189,7 @@ and synchronize them between social accounts.</p>
 
 <dl class="method">
 <dt id="disable_sync">
-<tt class="descclassname">addressbook/</tt><tt class="descname">disable_sync</tt><big>(</big><em>party</em><big>)</big><a class="headerlink" href="#disable_sync" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">disable_sync</code><span class="sig-paren">(</span><em>party</em><span class="sig-paren">)</span><a class="headerlink" href="#disable_sync" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Disable linking of a third-party account.</div>
 <div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
@@ -190,7 +210,7 @@ and synchronize them between social accounts.</p>
 
 <dl class="method">
 <dt id="edit_entry">
-<tt class="descclassname">addressbook/</tt><tt class="descname">edit_entry</tt><big>(</big><em>address</em>, <em>name</em>, <em>rating</em><big>)</big><a class="headerlink" href="#edit_entry" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">edit_entry</code><span class="sig-paren">(</span><em>address</em>, <em>name</em>, <em>rating</em><span class="sig-paren">)</span><a class="headerlink" href="#edit_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change name and rating of an address.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L735">JS Example</a></div>
@@ -218,7 +238,7 @@ and synchronize them between social accounts.</p>
 
 <dl class="method">
 <dt id="get_my_addresses">
-<tt class="descclassname">addressbook/</tt><tt class="descname">get_my_addresses</tt><big>(</big><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>before_pointer</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_my_addresses</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>before_pointer</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns previously generated addresses. Available only in full access mode. Result is paginated and addresses are returned 10 per page,
 in descending address pointer order.</div>
@@ -247,7 +267,7 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="get_sync_status">
-<tt class="descclassname">addressbook/</tt><tt class="descname">get_sync_status</tt><big>(</big><big>)</big><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_sync_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns the linking status of third-party accounts and the logged in GreenAddress Wallet. With this API you can check which third-party accounts are linked, and if a custom login is enabled.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L1031">JS Example</a></div>
@@ -264,7 +284,7 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="read_all">
-<tt class="descclassname">addressbook/</tt><tt class="descname">read_all</tt><big>(</big><em>hashed</em><big>)</big><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">read_all</code><span class="sig-paren">(</span><em>hashed</em><span class="sig-paren">)</span><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Read all entries from addressbook.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1770">JS Example</a></div>
@@ -273,7 +293,7 @@ pointer from the returned page to fetch the next page.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></tt></td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -281,13 +301,13 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="reddit_user_has_wallet">
-<tt class="descclassname">addressbook/</tt><tt class="descname">reddit_user_has_wallet</tt><big>(</big><em>username</em><big>)</big><a class="headerlink" href="#reddit_user_has_wallet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">reddit_user_has_wallet</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#reddit_user_has_wallet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deprecated: use user_has_wallet(&#8216;reddit&#8217;, username)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sync_custom">
-<tt class="descclassname">addressbook/</tt><tt class="descname">sync_custom</tt><big>(</big><em>username</em>, <em>password</em><big>)</big><a class="headerlink" href="#sync_custom" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_custom</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_custom" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Define and enable custom login for the current account. Available in user full access mode only, it enables watch-only mode.</div>
 <div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L245">JS Example</a></div>
@@ -314,7 +334,7 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="sync_fb">
-<tt class="descclassname">addressbook/</tt><tt class="descname">sync_fb</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_fb</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Link GreenAddress account with a Facebook account.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#942">JS Example</a></div>
@@ -336,7 +356,7 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="sync_reddit">
-<tt class="descclassname">addressbook/</tt><tt class="descname">sync_reddit</tt><big>(</big><em>access_token</em><big>)</big><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_reddit</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Link GreenAddress account with a Reddit account.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
@@ -358,7 +378,7 @@ pointer from the returned page to fetch the next page.</li>
 
 <dl class="method">
 <dt id="user_has_wallet">
-<tt class="descclassname">addressbook/</tt><tt class="descname">user_has_wallet</tt><big>(</big><em>usertype</em>, <em>username</em><big>)</big><a class="headerlink" href="#user_has_wallet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">user_has_wallet</code><span class="sig-paren">(</span><em>usertype</em>, <em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#user_has_wallet" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Check if a contact has a wallet on GreenAddress.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/send/controllers.js#L524">JS Example</a></div>
@@ -387,15 +407,16 @@ pointer from the returned page to fetch the next page.</li>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="login.html" class="btn btn-neutral float-right" title="login module"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="login.html" class="btn btn-neutral float-right" title="login module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="apicalls.html" class="btn btn-neutral" title="WebSocket WAMP API calls"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="apicalls.html" class="btn btn-neutral" title="WebSocket WAMP API calls" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -404,12 +425,14 @@ pointer from the returned page to fetch the next page.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2014, GreenAddress.
+        &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 
