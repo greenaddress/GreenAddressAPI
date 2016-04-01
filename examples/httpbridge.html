@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>HTTP Bridge usage example &mdash; GreenAddress API  documentation</title>
@@ -15,6 +14,7 @@
   
 
   
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,15 +28,13 @@
   
 
   
-
-  
     <link rel="top" title="GreenAddress API  documentation" href="../index.html"/>
         <link rel="up" title="Usage examples" href="../examples.html"/>
         <link rel="next" title="WebSocket WAMP API calls" href="../apicalls.html"/>
         <link rel="prev" title="Handling incoming instant confirmation" href="instant_confirmation.html"/> 
 
   
-  <script src="../_static/js/modernizr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
 </head>
 
@@ -46,65 +44,48 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="../index.html" class="icon icon-home"> GreenAddress API
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+      </div>
 
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul class="current">
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="login.html">Simple JS login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_python_login.html">Simple Python watch-only login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mnemonic_python_login.html">Simple Python full access login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instant_confirmation.html">Handling incoming instant confirmation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">HTTP Bridge usage example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#note-experimental-feature">NOTE: Experimental feature</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-greenaddress-wamp-server">Using the GreenAddress WAMP server</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#retrieving-a-token-and-creating-a-session">Retrieving a token and creating a session</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#logging-in-and-retrieving-the-balance">Logging in and retrieving the balance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">HTTP Bridge usage example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../twofactor.html">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../txs.html">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vault.html">vault module</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html#block-count">block_count</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-            
-          
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -119,13 +100,7 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
@@ -134,14 +109,11 @@
     <li>HTTP Bridge usage example</li>
       <li class="wy-breadcrumbs-aside">
         
-          
-        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main">
             
   <div class="section" id="http-bridge-usage-example">
 <h1>HTTP Bridge usage example<a class="headerlink" href="#http-bridge-usage-example" title="Permalink to this headline">¶</a></h1>
@@ -163,12 +135,12 @@
 <h2>Using the GreenAddress WAMP server<a class="headerlink" href="#using-the-greenaddress-wamp-server" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="retrieving-a-token-and-creating-a-session">
 <h3>Retrieving a token and creating a session<a class="headerlink" href="#retrieving-a-token-and-creating-a-session" title="Permalink to this headline">¶</a></h3>
-<p>To connect to GreenAddress server, you need to acquire a token over HTTP which is used for protecting our servers against Denial of Service attacks:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ curl https://greenaddress.it/token/
+<p>To connect to GreenAddress server, you need to acquire a token over HTTP which is used for collecting usage data about issued requests:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl https://greenaddress.it/token/
 </pre></div>
 </div>
 <p>Store the returned value somewhere and then call :gait:meth`.create_session` to create a new GA session, replacing TOKEN below with your token value.:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&quot;: &quot;com.greenaddress.login.create_session&quot;, &quot;args&quot;: [&quot;TOKEN&quot;]}&#39; https://greenaddress.it/httpbridge/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&quot;: &quot;com.greenaddress.login.create_session&quot;, &quot;args&quot;: [&quot;TOKEN&quot;]}&#39; https://greenaddress.it/httpbridge/
 </pre></div>
 </div>
 <p>Again store the returned value and use it in further calls to pass as session id.</p>
@@ -176,7 +148,7 @@
 <div class="section" id="logging-in-and-retrieving-the-balance">
 <h3>Logging in and retrieving the balance<a class="headerlink" href="#logging-in-and-retrieving-the-balance" title="Permalink to this headline">¶</a></h3>
 <p>Now after retrieving the token and creating the session, you can log in using custom login, and retrieve the balance:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&quot;: &quot;com.greenaddress.login.watch_only&quot;, &quot;kwargs&quot;: {&quot;session_id&quot;: &quot;[your session id]&quot;}, &quot;args&quot;: [&quot;custom&quot;, {&quot;username&quot;: &quot;[your username]&quot;, &quot;password&quot;: &quot;[your password]&quot;}, false]}&#39; https://greenaddress.it/httpbridge/
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&quot;: &quot;com.greenaddress.login.watch_only&quot;, &quot;kwargs&quot;: {&quot;session_id&quot;: &quot;[your session id]&quot;}, &quot;args&quot;: [&quot;custom&quot;, {&quot;username&quot;: &quot;[your username]&quot;, &quot;password&quot;: &quot;[your password]&quot;}, false]}&#39; https://greenaddress.it/httpbridge/
 
 $ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&quot;: &quot;com.greenaddress.txs.get_balance&quot;, &quot;kwargs&quot;: {&quot;session_id&quot;: &quot;[your session id]&quot;}}&#39; https://greenaddress.it/httpbridge/
 </pre></div>
@@ -186,16 +158,15 @@ $ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&qu
 </div>
 
 
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../apicalls.html" class="btn btn-neutral float-right" title="WebSocket WAMP API calls" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../apicalls.html" class="btn btn-neutral float-right" title="WebSocket WAMP API calls"/>Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="instant_confirmation.html" class="btn btn-neutral" title="Handling incoming instant confirmation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="instant_confirmation.html" class="btn btn-neutral" title="Handling incoming instant confirmation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -205,13 +176,11 @@ $ curl -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;procedure&qu
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, GreenAddress.
-
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
-
         </div>
       </div>
 

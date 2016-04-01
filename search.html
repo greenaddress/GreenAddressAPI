@@ -5,7 +5,6 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Search &mdash; GreenAddress API  documentation</title>
@@ -15,6 +14,7 @@
   
 
   
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,12 +28,10 @@
   
 
   
-
-  
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/> 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
 </head>
 
@@ -43,48 +41,48 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="index.html" class="icon icon-home"> GreenAddress API
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="#" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+      </div>
 
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/httpbridge.html">HTTP Bridge usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="twofactor.html">twofactor module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vault.html">vault module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -99,13 +97,7 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -116,8 +108,7 @@
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+          <div role="main">
             
   <noscript>
   <div id="fallback" class="admonition warning">
@@ -133,7 +124,6 @@
   
   </div>
 
-           </div>
           </div>
           <footer>
   
@@ -143,13 +133,11 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, GreenAddress.
-
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
-
         </div>
       </div>
 
