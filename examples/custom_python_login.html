@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Simple Python watch-only login example &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,18 @@
   
 
   
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GreenAddress API  documentation" href="../index.html"/>
         <link rel="up" title="Usage examples" href="../examples.html"/>
         <link rel="next" title="Simple Python full access login example" href="mnemonic_python_login.html"/>
         <link rel="prev" title="Simple JS login example" href="login.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,48 +49,64 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="../index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="login.html">Simple JS login example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Simple Python watch-only login example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Simple Python watch-only login example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-greenaddress-wamp-server">Using the GreenAddress WAMP server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logging-in">Logging in</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#p2sh-generation">P2SH generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="mnemonic_python_login.html">Simple Python full access login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instant_confirmation.html">Handling incoming instant confirmation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="httpbridge.html">HTTP Bridge usage example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../addressbook.html">addressbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../login.html">login module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pin.html">pin module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../twofactor.html">twofactor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../txs.html">txs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../vault.html">vault module</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../apicalls.html">WebSocket WAMP API calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -100,7 +121,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
@@ -109,11 +136,14 @@
     <li>Simple Python watch-only login example</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="simple-python-watch-only-login-example">
 <h1>Simple Python watch-only login example<a class="headerlink" href="#simple-python-watch-only-login-example" title="Permalink to this headline">¶</a></h1>
@@ -206,15 +236,16 @@
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mnemonic_python_login.html" class="btn btn-neutral float-right" title="Simple Python full access login example"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mnemonic_python_login.html" class="btn btn-neutral float-right" title="Simple Python full access login example" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="login.html" class="btn btn-neutral" title="Simple JS login example"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="login.html" class="btn btn-neutral" title="Simple JS login example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -224,11 +255,13 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 

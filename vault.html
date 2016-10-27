@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>vault module &mdash; GreenAddress API  documentation</title>
@@ -14,7 +15,6 @@
   
 
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   
   
@@ -28,13 +28,18 @@
   
 
   
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GreenAddress API  documentation" href="index.html"/>
         <link rel="up" title="WebSocket WAMP API calls" href="apicalls.html"/>
         <link rel="next" title="WebSocket WAMP notifications" href="notifications.html"/>
         <link rel="prev" title="txs module" href="txs.html"/> 
 
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -44,29 +49,40 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        <a href="index.html" class="fa fa-home"> GreenAddress API</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GreenAddress API
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
-        
-            <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/login.html">Simple JS login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/custom_python_login.html">Simple Python watch-only login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/mnemonic_python_login.html">Simple Python full access login example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/instant_confirmation.html">Handling incoming instant confirmation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/httpbridge.html">HTTP Bridge usage example</a></li>
-</ul>
-</li>
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
@@ -76,16 +92,13 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">vault module</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#tx-notify">tx_notify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notifications.html#block-count">block_count</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
 </ul>
 
-        
+            
+          
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -100,7 +113,13 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
@@ -109,11 +128,14 @@
     <li>vault module</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+        
       </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="vault-module">
 <h1>vault module<a class="headerlink" href="#vault-module" title="Permalink to this headline">¶</a></h1>
@@ -362,30 +384,56 @@ pending finalisation.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="send_email">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_email</code><span class="sig-paren">(</span><em>destination</em>, <em>href</em><span class="sig-paren">)</span><a class="headerlink" href="#send_email" title="Permalink to this definition">¶</a></dt>
+<dt id="send_raw_tx">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_raw_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Vouchers: Send an email containing private derived key.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L349">JS Example</a></div>
+<div class="line">Sign and send a hex-encoded transaction.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>destination</strong> (<em>String</em>) &#8211; email address</li>
-<li><strong>href</strong> (<em>String</em>) &#8211; private key /redeem/ URL</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rawtx_hex</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the transaction
+to sign and send.</li>
+<li><strong>twofac_data</strong> (<em>dict</em>) &#8211; <p>optional 2FA data - keys:</p>
+<div class="line-block">
+<div class="line">For all transactions &#8211; 2FA must be requested with action
+&#8216;send_raw_tx&#8217; (for most cases), or &#8216;bump_fee&#8217;:</div>
+<div class="line">- <strong>code</strong></div>
+<div class="line">- <strong>method</strong></div>
+</div>
+<div class="line-block">
+<div class="line">For raw tx &#8216;simply spending&#8217; some given amount of satoshi:</div>
+<div class="line">- <strong>send_raw_tx_amount</strong> - spent satoshi amount (<em>including</em> fee)</div>
+<div class="line">- <strong>send_raw_tx_fee</strong> - fee satoshi amount</div>
+<div class="line">- <strong>send_raw_tx_recipient</strong> - recipient address</div>
+</div>
+<div class="line-block">
+<div class="line">For raw tx &#8216;bumping fee&#8217;:</div>
+<div class="line">- <strong>bump_fee_amount</strong> - satoshi amount of bumped fee</div>
+</div>
+</li>
+<li><strong>priv_data</strong> (<em>dict</em>) &#8211; <p>optional additional transaction data - keys:</p>
+<div class="line-block">
+<div class="line">- <strong>instant</strong>: boolean</div>
+<div class="line">- <strong>memo</strong>: string</div>
+</div>
+</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>dict - keys:</p>
+<div class="line-block">
+<div class="line"><strong>txhash</strong>: resulting tx hash</div>
+<div class="line">[<strong>limit_decrease</strong>]: optional amount of spending limit decrease</div>
+</div>
+</p>
 </td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="send_raw_tx">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_raw_tx" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="send_reddit">
@@ -448,15 +496,16 @@ pending finalisation.</li>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="notifications.html" class="btn btn-neutral float-right" title="WebSocket WAMP notifications"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="notifications.html" class="btn btn-neutral float-right" title="WebSocket WAMP notifications" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="txs.html" class="btn btn-neutral" title="txs module"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="txs.html" class="btn btn-neutral" title="txs module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -466,11 +515,13 @@ pending finalisation.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, GreenAddress.
+
     </p>
   </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
-  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
 </footer>
+
         </div>
       </div>
 
