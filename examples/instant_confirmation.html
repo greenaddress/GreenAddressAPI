@@ -198,7 +198,7 @@ transactions&#8217; details and endpoints. This is how a single transaction coul
 <h2>Using the GreenAddress HTTP API to verify instant transactions<a class="headerlink" href="#using-the-greenaddress-http-api-to-verify-instant-transactions" title="Permalink to this headline">¶</a></h2>
 <p>This code is extracted from the GreenAddress instant verify plugin for Electrum Bitcoin client, and shows how a third-party
 service could check GreenAddress instant confirmations <strong>without having an account at GreenAddress</strong>.</p>
-<p>The plugin is <a class="reference external" href="https://github.com/spesmilo/electrum/blob/master/plugins/greenaddress_instant.py">available on Github</a>.</p>
+<p>The plugin is <a class="reference external" href="https://github.com/spesmilo/electrum/blob/master/plugins/greenaddress_instant/qt.py">available on Github</a>.</p>
 <p>The example uses the ability of Electrum client to sign messages with its own private key, and so certify the ownership of a
 Bitcoin address, without exposing the private keys or doing any transactions.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">addr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_my_addr</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span>
