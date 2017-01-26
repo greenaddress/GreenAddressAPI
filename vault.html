@@ -146,7 +146,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <blockquote>
 <div><dl class="method">
 <dt id="fund">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_pointer</em><span class="optional">]</span><span class="optional">[</span>, <em>confidential</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_pointer</em><span class="optional">]</span><span class="optional">[</span>, <em>addr_type</em><span class="optional">]</span><span class="optional">[</span>, <em>confidential</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return P2SH hash the user can pay to. This call is limited to 1000 P2SH per day for each wallet.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188">JS Example</a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
@@ -180,7 +180,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <dt id="fund_receiving_id">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund_receiving_id</code><span class="sig-paren">(</span><em>receiving_id</em><span class="sig-paren">)</span><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a P2SH hash the anyone can pay to given receiving_id.</div>
+<div class="line">Returns a P2SH hash that anyone can pay to given receiving_id.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L191">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -314,7 +314,6 @@ only GreenAddress transactions are considered.</li>
 {external_private: Boolean,
 pointer: Number,
 pubkey: bytes array,
-social_destination: String,
 instant: Boolean,
 memo: String,
 minimize_inputs: Boolean}</li>
@@ -408,10 +407,21 @@ to sign and send.</li>
 <div class="line">- <strong>send_raw_tx_amount</strong> - spent satoshi amount (<em>including</em> fee)</div>
 <div class="line">- <strong>send_raw_tx_fee</strong> - fee satoshi amount</div>
 <div class="line">- <strong>send_raw_tx_recipient</strong> - recipient address</div>
+<div class="line">- <strong>send_raw_tx_change_idx</strong> - change output index (-1 if no change)</div>
 </div>
 <div class="line-block">
 <div class="line">For raw tx &#8216;bumping fee&#8217;:</div>
 <div class="line">- <strong>bump_fee_amount</strong> - satoshi amount of bumped fee</div>
+</div>
+<div class="line-block">
+<div class="line">For raw tx &#8216;simply spending&#8217; some given amount of satoshi, below
+user&#8217;s spending limit (not requiring 2FA):</div>
+<div class="line">- <strong>try_under_limits_spend</strong> - dict with keys <strong>amount</strong>
+(can be &#8216;any&#8217;), <strong>change_idx</strong>, <strong>fee</strong> (optional)</div>
+</div>
+<div class="line-block">
+<div class="line">For raw tx &#8216;bumping fee&#8217;, below user&#8217;s spending limit (not requiring 2FA):</div>
+<div class="line">- <strong>try_under_limits_bump</strong> - satoshi amount of bumped fee</div>
 </div>
 </li>
 <li><strong>priv_data</strong> (<em>dict</em>) &#8211; <p>optional additional transaction data - keys:</p>
@@ -426,7 +436,7 @@ to sign and send.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>dict - keys:</p>
 <div class="line-block">
 <div class="line"><strong>txhash</strong>: resulting tx hash</div>
-<div class="line">[<strong>limit_decrease</strong>]: optional amount of spending limit decrease</div>
+<div class="line">[<strong>new_limit</strong>]: optional amount of new spending limit after the transaction</div>
 </div>
 </p>
 </td>
@@ -438,23 +448,7 @@ to sign and send.</li>
 <dl class="method">
 <dt id="send_reddit">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_reddit</code><span class="sig-paren">(</span><em>recipient</em>, <em>href</em><span class="sig-paren">)</span><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Vouchers: Send a reddit message containing private derived key.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L375">JS Example</a></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>recipient</strong> (<em>String</em>) &#8211; recipient username</li>
-<li><strong>href</strong> (<em>String</em>) &#8211; private key /redeem/ URL</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="send_tx">
@@ -491,6 +485,36 @@ to sign and send.</li>
 <dt id="set_scanning_key">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">set_scanning_key</code><span class="sig-paren">(</span><em>subaccount</em>, <em>pointer</em>, <em>pubkey</em><span class="sig-paren">)</span><a class="headerlink" href="#set_scanning_key" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="sign_raw_tx">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">sign_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sign_raw_tx" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Sign a hex-encoded transaction.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rawtx_hex</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the transaction
+to sign.</li>
+<li><strong>twofac_data</strong> (<em>dict</em>) &#8211; optional 2FA data - keys are the same as
+for the send_raw_tx RPC.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>dict - keys:</p>
+<div class="line-block">
+<div class="line"><strong>tx</strong>: resulting signed tx</div>
+<div class="line">[<strong>new_limit</strong>]: optional amount of new spending limit after the transaction</div>
+</div>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div></blockquote>
 </div>

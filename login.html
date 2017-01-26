@@ -337,7 +337,8 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
 <li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 32 byte chaincode, hex-encoded</li>
-<li><strong>user_agent</strong> (<em>String</em>) &#8211; client name and version</li>
+<li><strong>user_agent</strong> (<em>String</em>) &#8211; Client features, name and version</li>
+<li><strong>wallet_path</strong> (<em>String</em>) &#8211; Derived wallet path for the user</li>
 </ul>
 </td>
 </tr>
@@ -510,6 +511,11 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="watch_only">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">watch_only</code><span class="sig-paren">(</span><em>token_type</em>, <em>token</em>, <em>logout</em><span class="sig-paren">)</span><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="watch_only_v2">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">watch_only_v2</code><span class="sig-paren">(</span><em>token_type</em>, <em>token</em>, <em>user_agent</em><span class="sig-paren">)</span><a class="headerlink" href="#watch_only_v2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Log in to watch-only mode. It is limited to 100 watch only logins per day.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1338">JS Example</a></div>
@@ -520,16 +526,10 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>String</strong> (<em>token</em>) &#8211; one of &#8216;facebook&#8217;, &#8216;reddit&#8217;, &#8216;custom&#8217;</li>
-<li><strong>String</strong> &#8211; <p>login token value</p>
-<ul>
-<li>for &#8216;facebook&#8217;: FB access_token</li>
-<li>for &#8216;reddit&#8217;: bearer token</li>
-<li>for &#8216;custom&#8217;: {username: String, password: String}</li>
-</ul>
-</li>
-<li><strong>Boolean</strong> (<em>logout</em>) &#8211; <strong>deprecated</strong> (currently multiple parallel watch only sessions are allowed,
-so there is no need to force logout here)</li>
+<li><strong>String</strong> (<em>token</em>) &#8211; &#8216;custom&#8217;</li>
+<li><strong>String</strong> &#8211; login token value
+* for &#8216;custom&#8217;: {username: String, password: String}</li>
+<li><strong>user_agent</strong> (<em>String</em>) &#8211; client name and version</li>
 </ul>
 </td>
 </tr>

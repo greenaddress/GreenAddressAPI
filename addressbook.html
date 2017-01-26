@@ -147,7 +147,7 @@ and synchronize them between social accounts.</p>
 <dt id="add_entry">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">add_entry</code><span class="sig-paren">(</span><em>address</em>, <em>name</em>, <em>rating</em><span class="sig-paren">)</span><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Add new entry to the addressbook. Does not allow repeated addresses.</div>
+<div class="line">Add a new entry to the addressbook. Does not allow repeated addresses.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L753">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -223,7 +223,7 @@ and synchronize them between social accounts.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>address</strong> (<em>String</em>) &#8211; identifying address</li>
+<li><strong>address</strong> (<em>String</em>) &#8211; b58 string</li>
 <li><strong>name</strong> (<em>String</em>) &#8211; Contact name</li>
 <li><strong>rating</strong> (<em>Number</em>) &#8211; &gt;= 0</li>
 </ul>
@@ -243,7 +243,7 @@ and synchronize them between social accounts.</p>
 <dt id="get_my_addresses">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_my_addresses</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>before_pointer</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns previously generated addresses. Available only in full access mode. Result is paginated and addresses are returned 10 per page,
+<div class="line">Returns previously generated addresses in batches of 10 at a time.
 in descending address pointer order.</div>
 <div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/receive/controllers.js#L8">JS Example</a></div>
 </div>
@@ -289,24 +289,17 @@ pointer from the returned page to fetch the next page.</li>
 <dt id="read_all">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">read_all</code><span class="sig-paren">(</span><em>hashed</em><span class="sig-paren">)</span><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Read all entries from addressbook.</div>
+<div class="line">Read all entries from the addressbook.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1770">JS Example</a></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></td>
-</tr>
-</tbody>
-</table>
+<p>:param hashed Either a SHA-1 hash previously returned by this call or &#8216;skip&#8217; to return the current values without hashing. If the addressbook contents have not changed since the hash was generated, an empty list is returned. Callers can optionally use this to determine when nothing has changed. The first time this function is called, pass an empty string as the hash to have the initial hash computed and returned.
+:return: <code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="reddit_user_has_wallet">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">reddit_user_has_wallet</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#reddit_user_has_wallet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deprecated: use user_has_wallet(&#8216;reddit&#8217;, username)</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="sync_custom">
@@ -338,46 +331,12 @@ pointer from the returned page to fetch the next page.</li>
 <dl class="method">
 <dt id="sync_fb">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_fb</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Link GreenAddress account with a Facebook account.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#942">JS Example</a></div>
-<div class="line">Please read also the <a class="reference external" href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook documentation</a> about access_token</div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>access_token</strong> (<em>string</em>) &#8211; Facebook user access token</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="sync_reddit">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_reddit</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Link GreenAddress account with a Reddit account.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
-<div class="line">Please read also the <a class="reference external" href="https://github.com/reddit/reddit/wiki/OAuth2-Quick-Start-Example">Reddit documentation</a> about OAuth</div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>access_token</strong> (<em>string</em>) &#8211; Reddit user access token</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="user_has_wallet">
