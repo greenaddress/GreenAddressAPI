@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -43,6 +45,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -79,7 +82,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notifications.html">WebSocket WAMP notifications</a></li>
@@ -95,8 +101,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">GreenAddress API</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">GreenAddress API</a>
+        
       </nav>
 
 
@@ -105,21 +113,38 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
-      
-    <li>Welcome to GreenAddress API documentation</li>
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Welcome to GreenAddress API documentation</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -137,11 +162,11 @@ It is compatible with the majority of programming languages: Python, Javascript,
 <p>As you can see in the examples, the procedure is strictly different from a traditional HTTP API,
 it may take some time to get used to the model but we think it is worth it.</p>
 <p>For both our implementions we used the Autobahn framework, which helps the developer to interface with GreenAddress.
-For best results the API should be implemented with an event-driven logic, where something happen only when it&#8217;s
+For best results the API should be implemented with an event-driven logic, where something happens only when it&#8217;s
 needed, without useless looping calls.</p>
 <p>API calls are organized in modules, each module covering a different branch of GreenAddress
 functions (Transactions, Address Book, Login, etc).</p>
-<p>Use of the GreenAddress APIs is free of charge however some extra services may be charged for (all API for extra services will be labed as such)</p>
+<p>Use of the GreenAddress APIs is free of charge however some extra services may be charged for (all API for extra services will be labeled as such)</p>
 <p>Users of GreenAddress API:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://therocktrading.com">TheRockTrading.com</a></li>
@@ -217,12 +242,15 @@ functions (Transactions, Address Book, Login, etc).</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples.html" class="btn btn-neutral float-right" title="Usage examples" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Usage examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -232,7 +260,7 @@ functions (Transactions, Address Book, Login, etc).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, GreenAddress.
+        &copy; Copyright 2017, GreenAddress.
 
     </p>
   </div>
@@ -257,7 +285,8 @@ functions (Transactions, Address Book, Login, etc).</p>
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

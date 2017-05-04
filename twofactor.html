@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Usage examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="apicalls.html">WebSocket WAMP API calls</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="addressbook.html">addressbook module</a></li>
@@ -108,8 +114,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">GreenAddress API</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GreenAddress API</a>
+        
       </nav>
 
 
@@ -118,23 +126,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
           <li><a href="apicalls.html">WebSocket WAMP API calls</a> &raquo;</li>
-      
-    <li>twofactor module</li>
+        
+      <li>twofactor module</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -579,15 +604,18 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="txs.html" class="btn btn-neutral float-right" title="txs module" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="txs.html" class="btn btn-neutral float-right" title="txs module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pin.html" class="btn btn-neutral" title="pin module" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pin.html" class="btn btn-neutral" title="pin module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -596,7 +624,7 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, GreenAddress.
+        &copy; Copyright 2017, GreenAddress.
 
     </p>
   </div>
@@ -621,7 +649,8 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

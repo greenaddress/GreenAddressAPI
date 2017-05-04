@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="login.html">Simple JS login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_python_login.html">Simple Python watch-only login example</a></li>
@@ -111,8 +117,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">GreenAddress API</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GreenAddress API</a>
+        
       </nav>
 
 
@@ -121,23 +129,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../examples.html">Usage examples</a> &raquo;</li>
-      
-    <li>Simple Python full access login example</li>
+        
+      <li>Simple Python full access login example</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -187,14 +212,14 @@ In full control login all the features are unlocked (i.e. you can&#8217;t create
 <span class="k">class</span> <span class="nc">GreenAddressClientProtocol</span><span class="p">(</span><span class="n">ApplicationSession</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">GreenAddressClientProtocol</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GreenAddressClientProtocol</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">onConnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Implements :func:`autobahn.wamp.interfaces.ISession.onConnect`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="s2">u&quot;realm1&quot;</span>
+            <span class="sa">u</span><span class="s2">&quot;realm1&quot;</span>
         <span class="p">)</span>
 
     <span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
@@ -247,10 +272,10 @@ In full control login all the features are unlocked (i.e. you can&#8217;t create
         <span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">factory</span> <span class="o">=</span> <span class="n">ApplicationRunner</span><span class="p">(</span>
-        <span class="s2">u&quot;wss://prodwss.greenaddress.it/v2/ws/&quot;</span><span class="p">,</span>
-        <span class="s2">u&quot;realm1&quot;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;wss://prodwss.greenaddress.it/v2/ws/&quot;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;realm1&quot;</span><span class="p">,</span>
         <span class="c1"># debug_wamp=True,  # optional; log many WAMP details</span>
         <span class="c1"># debug=True,  # optional; log even more details</span>
     <span class="p">)</span>
@@ -266,15 +291,18 @@ In full control login all the features are unlocked (i.e. you can&#8217;t create
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="instant_confirmation.html" class="btn btn-neutral float-right" title="Handling incoming instant confirmation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="instant_confirmation.html" class="btn btn-neutral float-right" title="Handling incoming instant confirmation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="custom_python_login.html" class="btn btn-neutral" title="Simple Python watch-only login example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="custom_python_login.html" class="btn btn-neutral" title="Simple Python watch-only login example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -283,7 +311,7 @@ In full control login all the features are unlocked (i.e. you can&#8217;t create
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, GreenAddress.
+        &copy; Copyright 2017, GreenAddress.
 
     </p>
   </div>
@@ -308,7 +336,8 @@ In full control login all the features are unlocked (i.e. you can&#8217;t create
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>

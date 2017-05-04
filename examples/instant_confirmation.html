@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">Usage examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="login.html">Simple JS login example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="custom_python_login.html">Simple Python watch-only login example</a></li>
@@ -110,8 +116,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">GreenAddress API</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GreenAddress API</a>
+        
       </nav>
 
 
@@ -120,23 +128,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../examples.html">Usage examples</a> &raquo;</li>
-      
-    <li>Handling incoming instant confirmation</li>
+        
+      <li>Handling incoming instant confirmation</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -181,15 +206,15 @@ parameter will return the list of last 30 transactions.:</p>
 <p>The result will be printed on stdout. We&#8217;re going to look at the array &#8216;list&#8217;, containing the
 transactions&#8217; details and endpoints. This is how a single transaction could appear:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">u&#39;cur_block&#39;</span><span class="p">:</span> <span class="mi">278586</span><span class="p">,</span>
-    <span class="s1">u&#39;fiat_value&#39;</span><span class="p">:</span> <span class="mf">478.58</span><span class="p">,</span>
-    <span class="s1">u&#39;fiat_currency&#39;</span><span class="p">:</span> <span class="s1">u&#39;USD&#39;</span><span class="p">,</span>
-    <span class="s1">u&#39;list&#39;</span><span class="p">:</span> <span class="p">[{</span>
-    <span class="s1">u&#39;instant&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="s1">u&#39;memo&#39;</span><span class="p">:</span> <span class="s2">u&quot;an instant transaction&quot;</span><span class="p">,</span>
-    <span class="s1">u&#39;eps&#39;</span><span class="p">:</span> <span class="p">[{},</span> <span class="o">...</span> <span class="p">],</span> <span class="c1"># Transaction&#39;s endpoints are skipped here for readability</span>
-    <span class="s1">u&#39;block_height&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="s1">u&#39;txhash&#39;</span><span class="p">:</span> <span class="s1">u&#39;d6a6fd117a7b84e6a9a6ae7f2aa46ecdfdd440d13dc2058d83ce7fad9731&#39;</span>
+    <span class="sa">u</span><span class="s1">&#39;cur_block&#39;</span><span class="p">:</span> <span class="mi">278586</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;fiat_value&#39;</span><span class="p">:</span> <span class="mf">478.58</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;fiat_currency&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;USD&#39;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;list&#39;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="sa">u</span><span class="s1">&#39;instant&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;memo&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s2">&quot;an instant transaction&quot;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;eps&#39;</span><span class="p">:</span> <span class="p">[{},</span> <span class="o">...</span> <span class="p">],</span> <span class="c1"># Transaction&#39;s endpoints are skipped here for readability</span>
+    <span class="sa">u</span><span class="s1">&#39;block_height&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;txhash&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;d6a6fd117a7b84e6a9a6ae7f2aa46ecdfdd440d13dc2058d83ce7fad9731&#39;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -231,15 +256,18 @@ information about GreenAddress.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="httpbridge.html" class="btn btn-neutral float-right" title="HTTP Bridge usage example" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="httpbridge.html" class="btn btn-neutral float-right" title="HTTP Bridge usage example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="mnemonic_python_login.html" class="btn btn-neutral" title="Simple Python full access login example" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mnemonic_python_login.html" class="btn btn-neutral" title="Simple Python full access login example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -248,7 +276,7 @@ information about GreenAddress.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, GreenAddress.
+        &copy; Copyright 2017, GreenAddress.
 
     </p>
   </div>
@@ -273,7 +301,8 @@ information about GreenAddress.</p>
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
