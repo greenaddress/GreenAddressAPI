@@ -234,7 +234,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="change_settings">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">change_settings</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#change_settings" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Change settings. Currently used only for privacy settings and transaction limits.</div>
+<div class="line">Change user settings. Used for privacy settings and transaction limits.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L669">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -243,17 +243,21 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>key</strong> (<em>String</em>) &#8211; name of the value to change. Can be one of
-&#8216;tx_limits&#8217;, &#8216;privacy.send_me&#8217;, &#8216;privacy.show_as_sender&#8217;.</li>
-<li><strong>value</strong> (<em>String</em>) &#8211; <p>the value to set.</p>
+&#8216;tx_limits&#8217;, &#8216;privacy.send_me&#8217;, or &#8216;privacy.show_as_sender&#8217;.</li>
+<li><strong>value</strong> (<em>String</em>) &#8211; <p>the new value to set.</p>
 <ul>
-<li>for tx_limits: {total: satoshis, per_tx: satoshis, is_fiat: Boolean}</li>
-<li>for privacy.send_me: one of:<ul>
+<li>For &#8220;tx_limits&#8221;: {total: amount, per_tx: amount_per_tx, is_fiat: Boolean}
+* Per transaction values are not currently supported.
+* Fiat values should be passed as the amount * 100, e.g.<blockquote>
+<div>10.50 USD should be passed as 1050.</div></blockquote>
+</li>
+<li>For &#8220;privacy.send_me&#8221;: one of:<ul>
 <li>0 (PRIVATE)</li>
 <li>1 (ADDRBOOK)</li>
 <li>2 (PUBLIC)</li>
 </ul>
 </li>
-<li>for privacy.show_as_sender: one of:<ul>
+<li>For &#8220;privacy.show_as_sender&#8221;: one of:<ul>
 <li>0 (PRIVATE)</li>
 <li>1 (MUTUAL_ADDRBOOK)</li>
 <li>2 (PUBLIC)</li>
@@ -306,14 +310,14 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="get_spending_limits">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">get_spending_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns spending limits.</div>
+<div class="line">Returns the users current spending limits.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L675">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;total&#8217;: satoshis, &#8216;per_tx&#8217;: satoshis}</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;total&#8217;: satoshis, &#8216;per_tx&#8217;: satoshis, &#8216;is_fiat&#8217;: Boolean}</td>
 </tr>
 </tbody>
 </table>
@@ -352,8 +356,31 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="register">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">register</code><span class="sig-paren">(</span><em>master_public</em>, <em>master_chaincode</em><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="optional">[</span>, <em>wallet_path</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Create a new account.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L114">JS Example</a></div>
+<div class="line">Create a new GreenAddress account.</div>
+<div class="line"><br /></div>
+<div class="line">This call is used to register and create an account for a new user.</div>
+<div class="line">The caller should create a new BIP32 wallet and pass its master</div>
+<div class="line">pubkey and chaincode so that the service can generate and monitor</div>
+<div class="line">addresses for the wallet.</div>
+<div class="line"><br /></div>
+<div class="line">user_agent is free form ASCII text beginning with a capabilities</div>
+<div class="line">string surrounded by &#8216;[]&#8217;. As the value is logged by the service</div>
+<div class="line">it should not contain privacy sensitive or secret information.</div>
+<div class="line">Currently the caller must pass &#8216;[v2,sw]&#8217; to indicate that they</div>
+<div class="line">are using the latest API version and support segwit addresses.</div>
+<div class="line"><br /></div>
+<div class="line">wallet_path is a 32 byte, hex encoded string which the service uses</div>
+<div class="line">when deriving server side keys for the users transactions. In order</div>
+<div class="line">to ensure that the path is unique, and to enable correct recovery of</div>
+<div class="line">funds, this data must be produced using the following algorithm:</div>
+<div class="line"><br /></div>
+<div class="line">1. Compute the master BIP 32 key from the users mnemonics (M)</div>
+<div class="line">2. Derive a child key from M using child number 0x80004741 (M&#8217;)</div>
+<div class="line">3. Note that the child derivation above is a BIP32 hardened deriviation</div>
+<div class="line">4. Create a binary buffer from hex &#8216;477265656e416464726573732e69742048442077616c6c65742070617468&#8217; (S)</div>
+<div class="line">5. Append M&#8217;.chaincode and M&#8217;.pubkey into binary buffer (B)</div>
+<div class="line">6. Compute HMAC-SHA512(S, B)</div>
+<div class="line">7. The result of step 6 is the wallet path.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -363,7 +390,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
 <li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 32 byte chaincode, hex-encoded</li>
 <li><strong>user_agent</strong> (<em>String</em>) &#8211; Client features, name and version</li>
-<li><strong>wallet_path</strong> (<em>String</em>) &#8211; Derived wallet path for the user</li>
+<li><strong>wallet_path</strong> (<em>String</em>) &#8211; Derived wallet path for the user, hex-encoded</li>
 </ul>
 </td>
 </tr>
@@ -385,7 +412,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Two factor authentication data. Required to increase transaction limits. {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Two factor authentication data. {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
@@ -416,7 +443,9 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="set_currency">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_currency</code><span class="sig-paren">(</span><em>currency</em><span class="sig-paren">)</span><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Change the pricing source currency.</div>
+<div class="line">Change the users pricing source currency.</div>
+<div class="line">Note that changing the currency resets the users spending limits if</div>
+<div class="line">any are set in fiat.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L504">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -439,7 +468,9 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="set_exchange">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_exchange</code><span class="sig-paren">(</span><em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Change the pricing source. GreenAddress indexes a large number of Bitcoin exchanges, and return to the user the preferred price.</div>
+<div class="line">Change the users pricing source.</div>
+<div class="line">Note that changing the exchange resets the users spending limits if</div>
+<div class="line">any are set in fiat.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L528">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -461,23 +492,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dl class="method">
 <dt id="set_gait_path">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_gait_path</code><span class="sig-paren">(</span><em>wallet_path</em><span class="sig-paren">)</span><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Set the server-side subkey path. <strong>Required after first login.</strong></div>
-<div class="line">The server-side subkey path is a unique per-user value used to derive server-side signing keys. This protects users&#8217; privacy by ensuring the GreenAddress public key used for signing transactions is different for each user. The subkey path must be computed from the users mnemonics using::</div>
-<div class="line">HMAC-SHA512(&#8220;GreenAddress.it HD wallet path&#8221;, PBKDF2-HMAC-SHA512(mnemonic, &#8220;greenaddress_path&#8221;, 2048));</div>
-<div class="line"><br /></div>
-<div class="line"><strong>WARNING</strong> Using any other algorithm to calculate the subkey path will result in the user losing access to their funds.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L232">JS Example</a></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>wallet_path</em>) &#8211; The hash calculated by the algorithm given above, hex-encoded</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="set_nlocktime">
@@ -511,6 +526,8 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_pricing_source</code><span class="sig-paren">(</span><em>currency</em>, <em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pricing_source" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the pricing source and currency.</div>
+<div class="line">Note that changing the pricing source resets the users spending limits if</div>
+<div class="line">any are set in fiat.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L464">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">

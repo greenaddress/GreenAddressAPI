@@ -94,7 +94,11 @@
 <li class="toctree-l2"><a class="reference internal" href="login.html">login module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pin.html">pin module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">twofactor module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#proxies">proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#action-types">Action types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#passing-otps">Passing OTPs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proxies">Proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-twofactor">API Calls</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="txs.html">txs module</a></li>
@@ -167,28 +171,234 @@
             
   <div class="section" id="twofactor-module">
 <h1>twofactor module<a class="headerlink" href="#twofactor-module" title="Permalink to this headline">¶</a></h1>
-<p>The Two Factor Authentication (2FA) is an important piece of your GreenAddress wallet security.</p>
-<p>When 2FA is active (mandatory by default from our clients) for some funds/auth related operations on the
-GreenAddress API, the user is requested to verify themselves with a One Time Password.</p>
-<p>OTP are handled by different methods, and whenever it is needed to set up a 2FA while another 2FA is active
-(i.e., setting a new SMS 2FA, confirming it with the email OTP) a proxy method is called.</p>
+<p>Two Factor Authentication (2FA) is an important piece of your GreenAddress
+wallet security.</p>
+<p>When 2FA is enabled for a users wallet, operations that change security
+settings or move coins require 2FA authorization. This is done by requesting
+a One Time Password (OTP) for the required action from the service. After the
+service delivers the OTP to the user, the user passes it to to the API which
+allows the action to proceed.</p>
+<p>One Time Passwords are valid only for a specific action and for a limited
+time.</p>
+<div class="section" id="methods">
+<span id="fa-methods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<p>The following two factor methods are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">method</th>
+<th class="head" colspan="2">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>email</td>
+<td colspan="2"><div class="first last line-block">
+<div class="line">Sends the action details and OTP via email</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>gauth</td>
+<td colspan="2"><div class="first last line-block">
+<div class="line">Uses Google Authenticator to calculate OTPs</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>phone</td>
+<td colspan="2"><div class="first last line-block">
+<div class="line">Reads a short summary and the OTP via phone call</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>proxy</td>
+<td colspan="2"><div class="first last line-block">
+<div class="line">See <a class="reference internal" href="#fa-proxies"><span class="std std-ref">Proxies</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>sms</td>
+<td colspan="2"><div class="first last line-block">
+<div class="line">Sends a short summary and the OTP via SMS</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Note that SMS and phone authentication have recently been shown to be insecure
+and should not be used if possible. Users should always enable more than
+one two factor method and ensure they back up any two factor data in order
+to maintain full access to their wallet.</p>
+</div>
+<div class="section" id="action-types">
+<span id="fa-action-types"></span><h2>Action types<a class="headerlink" href="#action-types" title="Permalink to this headline">¶</a></h2>
+<p>When calling the API calls <code class="docutils literal"><span class="pre">request_&lt;method&gt;</span></code> to request an OTP, you must
+pass an <code class="docutils literal"><span class="pre">action</span></code> string and associated <code class="docutils literal"><span class="pre">data</span></code>. The table below describes the
+available actions along with the corresponding expected data format.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="32%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">action</th>
+<th class="head">data</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>activate_email</td>
+<td><div class="first last line-block">
+<div class="line">{}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">No data</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>change_tx_limits</td>
+<td><div class="first last line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">&#8216;is_fiat&#8217;: &lt;bool&gt;,</div>
+<div class="line">&#8216;total&#8217;:   &lt;int&gt;,</div>
+<div class="line">&#8216;per_tx&#8217;:  &lt;bool&gt;,</div>
+</div>
+<div class="line">}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>enable_2fa</td>
+<td><div class="first last line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">&#8216;method&#8217;: &lt;string&gt;</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="line">}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+<div class="line">2fa method to enable, one of:</div>
+<div class="line">&#8216;email&#8217;</div>
+<div class="line">&#8216;sms&#8217;</div>
+<div class="line">&#8216;phone&#8217;</div>
+<div class="line">&#8216;gauth&#8217;</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>remove_account</td>
+<td><div class="first last line-block">
+<div class="line">{}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">No data</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>send_tx</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>set_nlocktime</td>
+<td><div class="first last line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">&#8216;value&#8217;: &lt;int&gt;,</div>
+</div>
+<div class="line">}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+<div class="line">nlocktime value</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>sign_alt_tx</td>
+<td><div class="first last line-block">
+<div class="line">{</div>
+<div class="line-block">
+<div class="line">&#8216;sha256d&#8217;: &lt;hex&gt;,</div>
+<div class="line">&#8216;txtype&#8217;:  &lt;string&gt;</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+<div class="line">Double SHA256 of tx to sign</div>
+<div class="line">Tx type to sign, one of:</div>
+<div class="line">&#8216;bcash&#8217;</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="passing-otps">
+<span id="fa-passing-otps"></span><h2>Passing OTPs<a class="headerlink" href="#passing-otps" title="Permalink to this headline">¶</a></h2>
+<p>For calls that require a <code class="docutils literal"><span class="pre">2fa_data</span></code> parameter, this takes the following format:</p>
+<p><code class="docutils literal"><span class="pre">{'method':</span> <span class="pre">String,</span> <span class="pre">'code':</span> <span class="pre">String</span> <span class="pre">}</span></code></p>
+<p>Where <code class="docutils literal"><span class="pre">method</span></code> is a supported 2FA method (See <a class="reference internal" href="#fa-methods"><span class="std std-ref">Methods</span></a>) and <code class="docutils literal"><span class="pre">code</span></code>
+is the OTP received using that method for the action to perform.</p>
+<p>In cases where the user has no 2FA enabled, this parameter can be passed as null
+or an empty map.</p>
+</div>
 <div class="section" id="proxies">
-<h2>proxies<a class="headerlink" href="#proxies" title="Permalink to this headline">¶</a></h2>
-<p>In GreenAddress 2FA &#8216;proxies&#8217; allow setting up a 2FA using another 2FA. A &#8216;proxy code&#8217; is another kind of OTP,
-valid for 5 minutes, which is used for the sole purpose of enabling a new 2FA method. The &#8216;proxy codes&#8217; are obtained by using
-some already set up 2FA method. It was implemented this way to allow the client to authenticate against some existing 2FA
-before providing the new 2FA data.</p>
-<p>For example, on an account with previously enabled email 2FA, the steps to enable SMS 2FA are as follows:</p>
-<ul class="simple">
-<li>Do a &#8216;request_email&#8217;, specify &#8216;enable_2fa&#8217; as action and {method: &#8216;sms&#8217;} as data - this requests an email authorizing the new 2FA setup.</li>
-<li>With the email OTP do a request_proxy, specifying &#8216;sms&#8217; as the new &#8216;method&#8217; and {code: &#8220;799154&#8221;, method: &#8220;email&#8221;} as twofac_data. We assume a proxy OTP &#8216;923039&#8217; is returned. This &#8216;proxy code&#8217; now allows initialising setting up of the new 2FA without providing any code  than the &#8216;proxy code&#8217; internally stored by the client.</li>
-<li>Call the init_enable_sms method, with the full intl number as &#8216;number&#8217; and {method: &#8220;proxy&#8221;, code: &#8220;923039&#8221;} as &#8216;twofac_data&#8217;.</li>
-<li>Confirm the sms code, once received, with enable_sms method.</li>
-</ul>
-<p>(To illustrate why proxies are useful: You should be also able to simply set up the new 2FA by providing the first email code as an argument
-to init_enable_sms,&nbsp;but then you need to know the phone number at the same time as the code, so you can&#8217;t validate the code provided by
-the user separately. This is especially important for user experience because you&#8217;d then have to ask for the second code directly after the &#8216;old method code&#8217; and users could confuse the two codes - asking for &#8216;(1) email code, (2) phone number, (3) sms code&#8217; is better in our opinion than asking for &#8216;(1) phone number, (2) email&nbsp;code, (3) sms code&#8217; which would be the case without proxies - the order with asking for &#8216;phone number preceding the sms code&#8217; seems more natural than &#8216;email code preceding sms code&#8217;.)</p>
-<span class="target" id="module-twofactor"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.twofactor</span></code></p>
+<span id="fa-proxies"></span><h2>Proxies<a class="headerlink" href="#proxies" title="Permalink to this headline">¶</a></h2>
+<p>In GreenAddress 2FA proxies allow setting up 2FA using an existing 2FA method.
+The call <code class="docutils literal"><span class="pre">request_proxy</span></code> fetches an OTP for a new 2FA method given a valid
+OTP from an exiting method. This can be used to improve the user experience
+and reduce mistakes when interactively setting up two factor.</p>
+<p>For example, assume a user that has email 2FA already enabled, and wishes to
+enable SMS. Using a proxy the application would do the following:</p>
+<p>Request an OTP to enable the new SMS method from GreenAddress:</p>
+<p><code class="docutils literal"><span class="pre">twofactor.request_email('enable_2fa',</span> <span class="pre">{'method':</span> <span class="pre">'sms'})</span></code></p>
+<p>Prompt the user to check their email and enter the OTP <code class="docutils literal"><span class="pre">EMAIL_OTP</span></code> received.</p>
+<p>Request a proxy OTP <code class="docutils literal"><span class="pre">PROXY_OTP</span></code> for SMS using <code class="docutils literal"><span class="pre">EMAIL_OTP</span></code> from GreenAddress,
+then request enabling SMS 2FA using <code class="docutils literal"><span class="pre">PROXY_OTP</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">twofactor.request_proxy('sms',</span> <span class="pre">{'method':</span> <span class="pre">'email',</span> <span class="pre">'code':</span> <span class="pre">'EMAIL_OTP'})</span></code></p>
+<p><code class="docutils literal"><span class="pre">twofactor.init_enable_sms('&lt;phone</span> <span class="pre">number&gt;',</span> <span class="pre">{'method':</span> <span class="pre">'proxy',</span> <span class="pre">'code':</span> <span class="pre">'PROXY_OTP'})</span></code></p>
+<p>Prompt the user to check their SMS and enter the OTP <code class="docutils literal"><span class="pre">SMS_OTP</span></code> received.</p>
+<p>Enable SMS 2FA using <code class="docutils literal"><span class="pre">enable_sms</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">twofactor.enable_sms('SMS_OTP')</span></code></p>
+<p>Using a proxy in this case allows the order of operations presented to the
+user to be changed such that they are not prompted for the email and then SMS
+OTPs directly after each other.</p>
+<p>For non interactive enablement, the proxy step can be skipped in this example
+by passing the orginal email code to <code class="docutils literal"><span class="pre">twofactor.init_enable_sms</span></code> instead.</p>
+</div>
+<div class="section" id="module-twofactor">
+<span id="api-calls"></span><h2>API Calls<a class="headerlink" href="#module-twofactor" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">com.greenaddress.twofactor</span></code></p>
 <blockquote>
 <div><dl class="method">
 <dt id="activate_email">
@@ -222,7 +432,7 @@ the user separately. This is especially important for user experience because yo
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
@@ -257,14 +467,14 @@ the user separately. This is especially important for user experience because yo
 <dt id="disable_phone">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">disable_phone</code><span class="sig-paren">(</span><em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#disable_phone" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Disable robot phonecall two factor authentication.</div>
+<div class="line">Disable automated phone call two factor authentication.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L122">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
@@ -285,7 +495,7 @@ the user separately. This is especially important for user experience because yo
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; {&#8216;code&#8217;: String (OTP), method: &#8216;String&#8217; (&#8216;email&#8217;, &#8216;gauth&#8217;, &#8216;sms&#8217;, &#8216;phone&#8217;) }</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
@@ -329,8 +539,8 @@ the user separately. This is especially important for user experience because yo
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>code</strong> (<em>Number</em>) &#8211; OTP</li>
-<li><strong>twofac_data</strong> &#8211; {&#8216;method&#8217;: String, &#8216;code&#8217;: String}</li>
+<li><strong>code</strong> (<em>Number</em>) &#8211; OTP generated by Google Authenticator</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>
@@ -345,7 +555,7 @@ the user separately. This is especially important for user experience because yo
 <dt id="enable_phone">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">enable_phone</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#enable_phone" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Enable robot phone call two factor authentication</div>
+<div class="line">Enable automated phone call two factor authentication</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L227">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -371,7 +581,7 @@ the user separately. This is especially important for user experience because yo
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP received via SMS</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
@@ -384,7 +594,6 @@ the user separately. This is especially important for user experience because yo
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_config" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Get two factor authentication configuration.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="asdf">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -409,7 +618,7 @@ the user separately. This is especially important for user experience because yo
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>email</strong> (<em>String</em>) &#8211; Email address for 2FA</li>
-<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;123456&#8221;, method: &#8220;sms&#8221;}</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>
@@ -421,7 +630,11 @@ the user separately. This is especially important for user experience because yo
 <dt id="init_enable_phone">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">init_enable_phone</code><span class="sig-paren">(</span><em>number</em>, <em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#init_enable_phone" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Initialize the procedure to enable a phone bot-call based two factor authentication.</div>
+<div class="line">Initialize the procedure to enable automated phone call based two factor authentication.</div>
+<div class="line">Phone numbers must be given in E.164 format as defined in</div>
+<div class="line"><a class="reference external" href="http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164">http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164</a>.</div>
+</div>
+<div class="line-block">
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L211">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -430,7 +643,7 @@ the user separately. This is especially important for user experience because yo
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</li>
-<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;123456&#8221;, method: &#8220;sms&#8221;}</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>
@@ -442,7 +655,11 @@ the user separately. This is especially important for user experience because yo
 <dt id="init_enable_sms">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">init_enable_sms</code><span class="sig-paren">(</span><em>number</em>, <em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#init_enable_sms" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Initialize the procedure to enable a SMS based two factor authentication</div>
+<div class="line">Initialize the procedure to enable SMS two factor authentication.</div>
+<div class="line">Phone numbers must be given in E.164 format as defined in</div>
+<div class="line"><a class="reference external" href="http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164">http://www.itu.int/ITU-T/recommendations/rec.aspx?rec=E.164</a>.</div>
+</div>
+<div class="line-block">
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L178">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -451,7 +668,7 @@ the user separately. This is especially important for user experience because yo
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>number</strong> (<em>String</em>) &#8211; Phone number for two factor authentication</li>
-<li><strong>twofac_data</strong> &#8211; Data from already enabled 2fa. i.e. {code: &#8220;799154&#8221;, method: &#8220;email&#8221;}</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>
@@ -463,7 +680,7 @@ the user separately. This is especially important for user experience because yo
 <dt id="request_email">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_email</code><span class="sig-paren">(</span><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#request_email" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Request the OTP via email, valid for the specified action.</div>
+<div class="line">Request an OTP via email, valid for the specified action.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -471,8 +688,8 @@ the user separately. This is especially important for user experience because yo
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
-<li><strong>data</strong> &#8211; </li>
+<li><strong>action</strong> (<em>String</em>) &#8211; The 2FA action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
+<li><strong>data</strong> (<em>String</em>) &#8211; Data specific to action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
 </ul>
 </td>
 </tr>
@@ -487,7 +704,7 @@ the user separately. This is especially important for user experience because yo
 <dt id="request_phone">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_phone</code><span class="sig-paren">(</span><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#request_phone" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Request the OTP via robot phone call, valid for the specified action.</div>
+<div class="line">Request an OTP via automated phone call, valid for the specified action.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -495,8 +712,8 @@ the user separately. This is especially important for user experience because yo
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
-<li><strong>data</strong> &#8211; </li>
+<li><strong>action</strong> (<em>String</em>) &#8211; The 2FA action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
+<li><strong>data</strong> (<em>String</em>) &#8211; Data specific to action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
 </ul>
 </td>
 </tr>
@@ -511,7 +728,7 @@ the user separately. This is especially important for user experience because yo
 <dt id="request_proxy">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_proxy</code><span class="sig-paren">(</span><em>method</em>, <em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#request_proxy" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">In GreenAddress two factor authentication, proxies are used to interact with a 2FA method from another.</div>
+<div class="line">Request a proxy OTP from an existing OTP. See <a class="reference internal" href="#fa-proxies"><span class="std std-ref">Proxies</span></a>.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/settings/controllers.js#L296">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -520,7 +737,7 @@ the user separately. This is especially important for user experience because yo
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>method</strong> (<em>String</em>) &#8211; Other 2FA method on which the proxy OTP will authorize.</li>
-<li><strong>twofac_data</strong> &#8211; Previously used 2fa method: i.e. {&#8216;method&#8217;: &#8216;email&#8217;:, &#8216;code&#8217;: &#8216;123456&#8217;}</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>
@@ -534,15 +751,19 @@ the user separately. This is especially important for user experience because yo
 <dl class="method">
 <dt id="request_redeposit_proxy">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_redeposit_proxy</code><span class="sig-paren">(</span><em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#request_redeposit_proxy" title="Permalink to this definition">¶</a></dt>
-<dd><p>In GreenAddress, 2FA codes are not reusable, also if they have a limited validity time, like Google Authenticator. However, for
-nLocktime and multiple redeposits in a round, the need of a reusable 2FA code went up, but just for this operation.
-redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of redeposits, for 300 seconds once the code is sent.</p>
-<p>Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L745">JS Example</a></p>
+<dd><div class="line-block">
+<div class="line">Request a redeposit proxy OTP from an existing OTP. See <a class="reference internal" href="#fa-proxies"><span class="std std-ref">Proxies</span></a>.</div>
+<div class="line">Redeposit proxies are valid for 5 minutes after being sent and can be</div>
+<div class="line">used for any number of redeposits until this time is up.</div>
+</div>
+<div class="line-block">
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L745">JS Example</a></div>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; Data from already enabled 2FA. i.e. {code: &#8220;799154&#8221;, method: &#8220;email&#8221;}</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
@@ -554,7 +775,7 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
 <dt id="request_sms">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_sms</code><span class="sig-paren">(</span><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#request_sms" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Request the OTP via SMS, valid for the specified action.</div>
+<div class="line">Request an OTP via SMS, valid for the specified action.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/services.js#L727">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -562,8 +783,8 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>action</strong> (<em>String</em>) &#8211; The action you&#8217;re going to execute and authorize with 2FA (i.e. &#8216;send_tx&#8217;)</li>
-<li><strong>data</strong> &#8211; </li>
+<li><strong>action</strong> (<em>String</em>) &#8211; The 2FA action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
+<li><strong>data</strong> (<em>String</em>) &#8211; Data specific to action. See <a class="reference internal" href="#fa-action-types"><span class="std std-ref">Action types</span></a>.</li>
 </ul>
 </td>
 </tr>
@@ -587,7 +808,7 @@ redeposit_proxies are, therefore, 2FA codes valid for any number N &gt;= 1 of re
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>email</strong> (<em>string</em>) &#8211; Email address</li>
-<li><strong>twofac_data</strong> &#8211; Two factor authorization with another method, if enabled.</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
 </ul>
 </td>
 </tr>

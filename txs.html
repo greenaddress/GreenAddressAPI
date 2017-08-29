@@ -171,7 +171,7 @@ transactions. A server assisted BIP70 implementation is available.</p>
 users able to retrieve their funds independently of the service.</p>
 <p>nLocktime is described in the <a class="reference external" href="https://en.bitcoin.it/wiki/NLockTime">Bitcoin protocol specifications</a> as
 a parameter that can be attached to a transaction, that mandates a minimal time, that before this time, the transaction cannot be accepted into a block.</p>
-<p>On GreenAddress your funds are always redeemable with an nLocktime transaction and the <a class="reference external" href="https://github.com/greenaddress/gentle">Gentle tool</a>.</p>
+<p>On GreenAddress your funds are always redeemable with an nLocktime transaction and the <a class="reference external" href="https://github.com/greenaddress/garecovery">garecovery tool</a>.</p>
 <span class="target" id="module-txs"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.txs</span></code></p>
 <blockquote>
 <div><dl class="method">
@@ -298,21 +298,7 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 <dl class="method">
 <dt id="get_daily_balance_chart">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_daily_balance_chart</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
-<dd><div class="line-block">
-<div class="line">Returns a list of days with balance values for drawing balance graph.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/info/controllers.js#L25">JS Example</a></div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>number</em>) &#8211; Returns transactions that belong to the specified subaccount, param is int account identifier.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[{&#8216;balance&#8217;: int, &#8216;date&#8217;: datetime object}, ...]</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="get_list">
@@ -373,7 +359,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="get_raw_output">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_output</code><span class="sig-paren">(</span><em>txhash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_output" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_output</code><span class="sig-paren">(</span><em>txhash_hex</em><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_output" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of all user&#8217;s confirmed unspent transaction hashes and output numbers.</div>
 </div>
@@ -381,7 +367,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
 <dl class="method">
 <dt id="get_raw_unspent_output">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_unspent_output</code><span class="sig-paren">(</span><em>txhash</em><span class="optional">[</span>, <em>ga_asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_unspent_output" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_unspent_output</code><span class="sig-paren">(</span><em>txhash_hex</em><span class="optional">[</span>, <em>ga_asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_unspent_output" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Returns a list of all user&#8217;s confirmed unspent transaction hashes and output numbers.</div>
 </div>
@@ -447,7 +433,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="send_nlocktime">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">send_nlocktime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#send_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Request an email with all user&#8217;s nLockTime transactions.</div>
+<div class="line">Request an email with the user&#8217;s nLockTime transactions.</div>
 <div class="line">Available only in full control mode.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L399">JS Example</a></div>
 </div>

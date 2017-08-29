@@ -512,6 +512,45 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="sign_alt_tx">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">sign_alt_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em>, <em>txtype</em>, <em>inputs</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sign_alt_tx" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Sign a hex-encoded altcoin transaction.</div>
+<div class="line">The transactions input scripts must have a placeholder</div>
+<div class="line">PUSH 00 (0x01 0x00) which will be replaced with a push of the</div>
+<div class="line">GreenAddress signature. The inner script for each input should</div>
+<div class="line">be passed in the inputs parameter along with the GreenAddress</div>
+<div class="line">derivation information, i.e. the subaccount the input is from and</div>
+<div class="line">the pointer that it represents (this information can be fetched</div>
+<div class="line">from e.g. addressbook.get_my_addresses).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rawtx_hex</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the transaction to sign.</li>
+<li><strong>Array</strong> (<em>inputs</em>) &#8211; [{&#8216;script&#8217;:...,&#8217;subaccount&#8217;:...,&#8217;pointer&#8217;:...,&#8217;value&#8217;:...}, ...]</li>
+<li><strong>txtype</strong> (<em>hexstring</em>) &#8211; The type of altcoin transaction. Currently must be &#8220;bcash&#8221;.</li>
+<li><strong>twofac_data</strong> (<em>dict</em>) &#8211; 2FA data for the action &#8216;sign_alt_tx&#8217;, if 2FA is enabled.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>dict - keys:</p>
+<div class="line-block">
+<div class="line"><strong>sha256d</strong>: Double SHA256 of the transactions binary data</div>
+<div class="line"><strong>hashes</strong>: Transaction signature hashes for each input</div>
+<div class="line"><strong>scripts</strong>: Script including the GreenAddress signature for each input</div>
+<div class="line"><strong>signatures</strong>: The GreenAddress signatures for each input</div>
+</div>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="sign_raw_tx">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">sign_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sign_raw_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
