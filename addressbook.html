@@ -268,7 +268,7 @@ and synchronize them between social accounts.</p>
 <dt id="get_my_addresses">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_my_addresses</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>before_pointer</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_my_addresses" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns previously generated addresses in batches of 10 at a time.
+<div class="line">Return previously generated addresses in batches of 10 at a time.
 in descending address pointer order.</div>
 <div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/receive/controllers.js#L8">JS Example</a></div>
 </div>
@@ -297,7 +297,7 @@ pointer from the returned page to fetch the next page.</li>
 <dt id="get_sync_status">
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_sync_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns the linking status of third-party accounts and the logged in GreenAddress Wallet. With this API you can check which third-party accounts are linked, and if a custom login is enabled.</div>
+<div class="line">Return the linking status of third-party accounts and the logged in GreenAddress Wallet. With this API you can check which third-party accounts are linked, and if a custom login is enabled.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L1031">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -320,11 +320,6 @@ pointer from the returned page to fetch the next page.</li>
 <p>:param hashed Either a SHA-1 hash previously returned by this call or &#8216;skip&#8217; to return the current values without hashing. If the addressbook contents have not changed since the hash was generated, an empty list is returned. Callers can optionally use this to determine when nothing has changed. The first time this function is called, pass an empty string as the hash to have the initial hash computed and returned.
 :return: <code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></p>
 </dd></dl>
-
-<dl class="method">
-<dt id="reddit_user_has_wallet">
-<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">reddit_user_has_wallet</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#reddit_user_has_wallet" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="sync_custom">
@@ -352,16 +347,6 @@ pointer from the returned page to fetch the next page.</li>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="sync_fb">
-<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_fb</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_fb" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="sync_reddit">
-<code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_reddit</code><span class="sig-paren">(</span><em>access_token</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_reddit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="user_has_wallet">
@@ -415,7 +400,7 @@ pointer from the returned page to fetch the next page.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GreenAddress.
+        &copy; Copyright 2018, GreenAddress.
 
     </p>
   </div>

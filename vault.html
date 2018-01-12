@@ -173,7 +173,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <dt id="fund">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_pointer</em><span class="optional">]</span><span class="optional">[</span>, <em>addr_type</em><span class="optional">]</span><span class="optional">[</span>, <em>confidential</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Generate and return P2SH hash the user can pay to. This call is limited to 1000 P2SH per day for each wallet.</div>
+<div class="line">Generate and return hex encoded script the user can pay to. This call is limited to 1000 per day for each wallet.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188">JS Example</a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
 <div class="line"><br /></div>
 <div class="line">References:</div>
@@ -186,26 +186,34 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified, default is main account.</li>
+<li><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified default is main account.</li>
 <li><strong>return_pointer</strong> (<em>boolean</em>) &#8211; Whether to return BIP32 pointer number in addition to the script (default=false)</li>
+<li><strong>addr_type</strong> (<em>String</em>) &#8211; Address type - either &#8216;p2sh&#8217; or &#8216;p2wsh&#8217;</li>
+<li><strong>confidential</strong> (<em>bool</em>) &#8211; Deprecated - must be False</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">hex encoded script</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">hex encoded script if return_pointer is False or</p>
 </td>
 </tr>
 </tbody>
 </table>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;branch&#39;</span><span class="o">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="s1">&#39;subaccount&#39;</span><span class="o">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="s1">&#39;pointer&#39;</span><span class="o">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="s1">&#39;script&#39;</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="s1">&#39;addr_type&#39;</span><span class="o">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="fund_receiving_id">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund_receiving_id</code><span class="sig-paren">(</span><em>receiving_id</em><span class="sig-paren">)</span><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a P2SH hash that anyone can pay to given receiving_id.</div>
+<div class="line">Return a P2SH hash that anyone can pay to given receiving_id.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L191">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -226,7 +234,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <dt id="get_next_private_derived_pointer">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">get_next_private_derived_pointer</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns next unused EXTERNAL branch private key pointer.</div>
+<div class="line">Return next unused EXTERNAL branch private key pointer.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L476">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -364,6 +372,7 @@ instead of nLockTime expiring</li>
         }
     ],
     &#39;change_pointer&#39;: Number,
+    &#39;change_type&#39;: String,
     &#39;requires_2factor&#39;: Boolean
 }
 </pre></div>
@@ -377,7 +386,7 @@ at the js side. This P2SH prev output script is needed to generate a signature.<
 <dt id="process_bip0070_url">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">process_bip0070_url</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns BIP70 payment request data</div>
+<div class="line">Return BIP70 payment request data</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js">JS Example</a></div>
 <div class="line">Reference:</div>
 <div class="line-block">
@@ -471,11 +480,6 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 </dd></dl>
 
 <dl class="method">
-<dt id="send_reddit">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_reddit</code><span class="sig-paren">(</span><em>recipient</em>, <em>href</em><span class="sig-paren">)</span><a class="headerlink" href="#send_reddit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="send_tx">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_tx</code><span class="sig-paren">(</span><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -513,7 +517,7 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 
 <dl class="method">
 <dt id="sign_alt_tx">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">sign_alt_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em>, <em>txtype</em>, <em>inputs</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sign_alt_tx" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">sign_alt_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em>, <em>txtype</em>, <em>inputs</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="optional">[</span>, <em>fork_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#sign_alt_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Sign a hex-encoded altcoin transaction.</div>
 <div class="line">The transactions input scripts must have a placeholder</div>
@@ -531,8 +535,9 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>rawtx_hex</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the transaction to sign.</li>
 <li><strong>Array</strong> (<em>inputs</em>) &#8211; [{&#8216;script&#8217;:...,&#8217;subaccount&#8217;:...,&#8217;pointer&#8217;:...,&#8217;value&#8217;:...}, ...]</li>
-<li><strong>txtype</strong> (<em>hexstring</em>) &#8211; The type of altcoin transaction. Currently must be &#8220;bcash&#8221;.</li>
+<li><strong>txtype</strong> (<em>string</em>) &#8211; The type of altcoin transaction. Currently must be &#8220;bcash&#8221; or &#8220;forkid&#8221;.</li>
 <li><strong>twofac_data</strong> (<em>dict</em>) &#8211; 2FA data for the action &#8216;sign_alt_tx&#8217;, if 2FA is enabled.</li>
+<li><strong>fork_id</strong> (<em>int</em>) &#8211; The preimage fork id to use when signing &#8220;forkid&#8221; transactions, pre-multiplied by 256 and not having any of the first 8 bits set.</li>
 </ul>
 </td>
 </tr>
@@ -605,7 +610,7 @@ for the send_raw_tx RPC.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GreenAddress.
+        &copy; Copyright 2018, GreenAddress.
 
     </p>
   </div>

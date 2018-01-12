@@ -202,10 +202,9 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 
 <dl class="method">
 <dt id="create_subaccount">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">create_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em>, <em>user_public</em>, <em>user_chaincode</em><span class="optional">[</span>, <em>backup_public</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">create_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em>, <em>pubkey_hex</em>, <em>chaincode_hex</em><span class="optional">[</span>, <em>backup_pubkey_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode_hex</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new subaccount. Available only in full control mode.</div>
-<div class="line">Returns the receiving ID, also used for payment</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1195">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -215,13 +214,14 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>pointer</strong> (<em>number</em>) &#8211; Subaccount pointer.</li>
 <li><strong>name</strong> (<em>string</em>) &#8211; Subaccount name.</li>
-<li><strong>user_public</strong> (<em>string</em>) &#8211; User child public key, please refer to HD key creation.</li>
-<li><strong>user_chaincode</strong> (<em>string</em>) &#8211; Child public key chaincode. Please refer to HD key creation:
-<a class="reference external" href="https://bitcoin.org/en/developer-guide#hierarchical-deterministic-key-creation">https://bitcoin.org/en/developer-guide#hierarchical-deterministic-key-creation</a>.</li>
+<li><strong>pubkey_hex</strong> (<em>String</em>) &#8211; Subaccount BIP32 public key in compressed sec format, hex-encoded</li>
+<li><strong>chaincode_hex</strong> (<em>String</em>) &#8211; Master BIP32 chaincode, hex-encoded</li>
+<li><strong>backup_pubkey_hex</strong> (<em>String</em>) &#8211; Users backup public key in compressed sec format, hex-encoded</li>
+<li><strong>backup_chaincode_hex</strong> (<em>String</em>) &#8211; Users backup chaincode, hex-encoded</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Receiving ID</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The GreenAddress receiving ID</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
@@ -235,7 +235,7 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 <dt id="get_all_unspent_outputs">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_all_unspent_outputs</code><span class="sig-paren">(</span><span class="optional">[</span><em>confs</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>ga_asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_all_unspent_outputs" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a list of all user&#8217;s unspent transaction hashes and output numbers.</div>
+<div class="line">Return a list of all user&#8217;s unspent transaction hashes and output numbers.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -251,7 +251,7 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 <dt id="get_balance">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="optional">[</span>, <em>asset</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns the sum of unspent outputs destined to user&#8217;s wallet.</div>
+<div class="line">Return the sum of unspent outputs destined to user&#8217;s wallet.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/controllers.js#L119">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -277,7 +277,7 @@ See get_balance_by_addr for instant confirmations support.</li>
 <dt id="get_balance_by_addr">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance_by_addr</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns the sum of unspent outputs destined to given user&#8217;s address.</div>
+<div class="line">Return the sum of unspent outputs destined to given user&#8217;s address.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -296,20 +296,10 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 </dd></dl>
 
 <dl class="method">
-<dt id="get_daily_balance_chart">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_daily_balance_chart</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_daily_balance_chart" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="get_list">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_list</code><span class="sig-paren">(</span><em>last_txhash</em>, <em>unclaimed</em><span class="sig-paren">)</span><a class="headerlink" href="#get_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="get_list_v2">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_list_v2</code><span class="sig-paren">(</span><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_prev_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a list of user&#8217;s transactions. Accept multiple parameters.</div>
+<div class="line">Return a list of user&#8217;s transactions. Accept multiple parameters.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L382">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -339,7 +329,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="get_payment_request">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_payment_request</code><span class="sig-paren">(</span><em>txhash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">BIP70 payment protocol. Returns the payment request for the specified transaction.</div>
+<div class="line">BIP70 payment protocol. Return the payment request for the specified transaction.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L94">JS Example</a></div>
 <div class="line">Please refer to:</div>
 </div>
@@ -361,7 +351,9 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="get_raw_output">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_output</code><span class="sig-paren">(</span><em>txhash_hex</em><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_output" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a list of all user&#8217;s confirmed unspent transaction hashes and output numbers.</div>
+<div class="line">Return the hex-encoded raw transaction data for a user transaction.</div>
+<div class="line"><br /></div>
+<div class="line">If the transaction does not exist or does not involve the user return an empty string.</div>
 </div>
 </dd></dl>
 
@@ -369,7 +361,9 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="get_raw_unspent_output">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_unspent_output</code><span class="sig-paren">(</span><em>txhash_hex</em><span class="optional">[</span>, <em>ga_asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_unspent_output" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a list of all user&#8217;s confirmed unspent transaction hashes and output numbers.</div>
+<div class="line">Return the hex-encoded raw transaction data for an unspent output.</div>
+<div class="line"><br /></div>
+<div class="line">If the transaction is not unspent or does not exist return an empty string.</div>
 </div>
 </dd></dl>
 
@@ -377,7 +371,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="get_redeem_message">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_redeem_message</code><span class="sig-paren">(</span><em>type_</em>, <em>hash_or_pubkey</em><span class="sig-paren">)</span><a class="headerlink" href="#get_redeem_message" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a voucher&#8217;s message. No authentication is needed against this public API.</div>
+<div class="line">Return a voucher&#8217;s message. No authentication is needed against this public API.</div>
 <div class="line">An anonymous user can request the message attached to his voucher providing the voucher pubkey received (&#8216;pubkey&#8217;).</div>
 <div class="line">Redeem is also available with the hash of the bip38 encrypted private key (&#8216;hash&#8217;).</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L63">JS Example</a></div>
@@ -453,7 +447,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dt id="upcoming_nlocktime">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">upcoming_nlocktime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upcoming_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns upcoming nLocktime signed transactions. Available only in full control mode.</div>
+<div class="line">Return upcoming nLocktime signed transactions. Available only in full control mode.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L384">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -491,7 +485,7 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GreenAddress.
+        &copy; Copyright 2018, GreenAddress.
 
     </p>
   </div>

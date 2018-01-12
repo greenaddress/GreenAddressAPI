@@ -171,9 +171,9 @@ This module allows the user to authenticate against the server.</p>
 <blockquote>
 <div><dl class="method">
 <dt id="authenticate">
-<code class="descclassname">com.greenaddress.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>signature</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>signature_hex</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Validates the signature of the challenge done using current wallet&#8217;s private key.</div>
+<div class="line">Authenticate the user by ensuring their signature of the login challenge is valid.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1180">JS Example</a></div>
 <div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
 </div>
@@ -182,11 +182,7 @@ This module allows the user to authenticate against the server.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>signature</strong> (<em>Array</em>) &#8211; <p><cite>[r, s[, recid]]</cite> integers encoded as strings</p>
-<ul>
-<li>recid is required for Trezor authentication only</li>
-</ul>
-</li>
+<li><strong>signature_hex</strong> (<em>Array</em>) &#8211; DER encoded signature, hex-encoded</li>
 <li><strong>logout</strong> (<em>Boolean</em>) &#8211; whether to force log out existing session of the same user</li>
 <li><strong>path_hex</strong> (<em>String</em>) &#8211; <p>32 bit path for deriving subkey which was used for login</p>
 <ul>
@@ -216,7 +212,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="available_currencies">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">available_currencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns a list of allowed currencies for all available pricing sources.</div>
+<div class="line">Return a list of allowed currencies for all available pricing sources.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L411">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -287,7 +283,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="get_challenge">
-<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_challenge</code><span class="sig-paren">(</span><em>pubkey_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_challenge</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return a challenge that must be signed for a successful authentication.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1164">JS Example</a> or take a look at the <a class="reference external" href="examples/mnemonic_python_login.html">Python mnemonic login example</a></div>
@@ -296,7 +292,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pubkey_hash</strong> (<em>String</em>) &#8211; address calculated from pubkey - base58</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> (<em>String</em>) &#8211; Base58 bitcoin address from the wallets master key</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">number to be signed from 0..2^256 range</td>
 </tr>
@@ -310,7 +306,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="get_spending_limits">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">get_spending_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Returns the users current spending limits.</div>
+<div class="line">Return the user&#8217;s current spending limits.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L675">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -325,7 +321,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="get_trezor_challenge">
-<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_trezor_challenge</code><span class="sig-paren">(</span><em>pubkey_hash</em><span class="optional">[</span>, <em>hw_nlocktime_support</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_trezor_challenge</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>hw_nlocktime_support</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return a Trezor challenge that must be signed for a successful authentication.</div>
 <div class="line">A string &#8216;<code class="docutils literal"><span class="pre">greenaddress.it</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">login</span> <span class="pre">ABCDE</span></code>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token) must be signed to proceed with authentication.</div>
@@ -337,7 +333,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pubkey_hash</strong> (<em>String</em>) &#8211; address calculated from pubkey - base58</li>
+<li><strong>address</strong> (<em>String</em>) &#8211; Base58 bitcoin address from the wallets master key</li>
 <li><strong>hw_nlocktime_support</strong> (<em>Boolean</em>) &#8211; whether the hw wallet supports nlocktime transactions</li>
 </ul>
 </td>
@@ -354,7 +350,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="register">
-<code class="descclassname">com.greenaddress.login.</code><code class="descname">register</code><span class="sig-paren">(</span><em>master_public</em>, <em>master_chaincode</em><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="optional">[</span>, <em>wallet_path</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">register</code><span class="sig-paren">(</span><em>pubkey_hex</em>, <em>chaincode_hex</em><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="optional">[</span>, <em>gait_path_hex</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#register" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new GreenAddress account.</div>
 <div class="line"><br /></div>
@@ -369,7 +365,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <div class="line">Currently the caller must pass &#8216;[v2,sw]&#8217; to indicate that they</div>
 <div class="line">are using the latest API version and support segwit addresses.</div>
 <div class="line"><br /></div>
-<div class="line">wallet_path is a 32 byte, hex encoded string which the service uses</div>
+<div class="line">gait_path_hex is a 32 byte, hex encoded string which the service uses</div>
 <div class="line">when deriving server side keys for the users transactions. In order</div>
 <div class="line">to ensure that the path is unique, and to enable correct recovery of</div>
 <div class="line">funds, this data must be produced using the following algorithm:</div>
@@ -380,17 +376,17 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <div class="line">4. Create a binary buffer from hex &#8216;477265656e416464726573732e69742048442077616c6c65742070617468&#8217; (S)</div>
 <div class="line">5. Append M&#8217;.chaincode and M&#8217;.pubkey into binary buffer (B)</div>
 <div class="line">6. Compute HMAC-SHA512(S, B)</div>
-<div class="line">7. The result of step 6 is the wallet path.</div>
+<div class="line">7. The result of step 6 is the wallet path, gait_path_hex.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>master_public</strong> (<em>String</em>) &#8211; public key in compressed sec format, hex-encoded</li>
-<li><strong>master_chaincode</strong> (<em>String</em>) &#8211; 32 byte chaincode, hex-encoded</li>
+<li><strong>pubkey_hex</strong> (<em>String</em>) &#8211; Master BIP32 public key in compressed sec format, hex-encoded</li>
+<li><strong>chaincode_hex</strong> (<em>String</em>) &#8211; Master BIP32 chaincode, hex-encoded</li>
 <li><strong>user_agent</strong> (<em>String</em>) &#8211; Client features, name and version</li>
-<li><strong>wallet_path</strong> (<em>String</em>) &#8211; Derived wallet path for the user, hex-encoded</li>
+<li><strong>gait_path_hex</strong> (<em>String</em>) &#8211; Derived wallet path for the user, hex-encoded</li>
 </ul>
 </td>
 </tr>
@@ -491,7 +487,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
 <dl class="method">
 <dt id="set_gait_path">
-<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_gait_path</code><span class="sig-paren">(</span><em>wallet_path</em><span class="sig-paren">)</span><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_gait_path</code><span class="sig-paren">(</span><em>gait_path_hex</em><span class="sig-paren">)</span><a class="headerlink" href="#set_gait_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -604,7 +600,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GreenAddress.
+        &copy; Copyright 2018, GreenAddress.
 
     </p>
   </div>
