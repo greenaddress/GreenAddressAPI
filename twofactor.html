@@ -304,7 +304,7 @@ available actions along with the corresponding expected data format.</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>remove_account</td>
+<tr class="row-odd"><td>cancel_reset</td>
 <td><div class="first last line-block">
 <div class="line">{}</div>
 </div>
@@ -314,7 +314,17 @@ available actions along with the corresponding expected data format.</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>send_tx</td>
+<tr class="row-even"><td>remove_account</td>
+<td><div class="first last line-block">
+<div class="line">{}</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">No data</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>send_tx</td>
 <td><div class="first last line-block">
 <div class="line"><br /></div>
 </div>
@@ -324,7 +334,7 @@ available actions along with the corresponding expected data format.</p>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td>set_nlocktime</td>
+<tr class="row-even"><td>set_nlocktime</td>
 <td><div class="first last line-block">
 <div class="line">{</div>
 <div class="line-block">
@@ -340,7 +350,7 @@ available actions along with the corresponding expected data format.</p>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>sign_alt_tx</td>
+<tr class="row-odd"><td>sign_alt_tx</td>
 <td><div class="first last line-block">
 <div class="line">{</div>
 <div class="line-block">
@@ -404,18 +414,61 @@ by passing the orginal email code to <code class="docutils literal"><span class=
 <dt id="activate_email">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">activate_email</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#activate_email" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Activate email 2FA</div>
+<div class="line">Activate the email address previously set by calling <a class="reference external" href="#set_email">set_email</a>.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L652">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; OTP received via email</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>code</strong> (<em>String</em>) &#8211; <p>OTP received via email after calling <a class="reference external" href="#set_email">set_email</a></p>
+</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cancel_reset">
+<code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">cancel_reset</code><span class="sig-paren">(</span><em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#cancel_reset" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Cancel all outstanding two factor resets and unlock the wallet for normal operation.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">{ &#8216;reset_2fa_active&#8217;: False, &#8216;reset_2fa_days_remaining&#8217;: -1, &#8216;reset_2fa_disputed&#8217;: False }</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="confirm_reset">
+<code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">confirm_reset</code><span class="sig-paren">(</span><em>email</em>, <em>is_dispute</em>, <em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#confirm_reset" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Confirm a twofactor reset request made by twofactor.request_reset.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>email</strong> (<em>String</em>) &#8211; The email address originally passed to twofactor.request_reset</li>
+<li><strong>is_dispute</strong> (<em>Boolean</em>) &#8211; Pass true if the user is disputing an existing reset request</li>
+<li><strong>twofac_data</strong> &#8211; See <a class="reference internal" href="#fa-passing-otps"><span class="std std-ref">Passing OTPs</span></a></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">{ &#8216;reset_2fa_active&#8217;: Boolean, &#8216;reset_2fa_days_remaining&#8217;: Integer, &#8216;reset_2fa_disputed&#8217;: Boolean }</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -544,7 +597,7 @@ by passing the orginal email code to <code class="docutils literal"><span class=
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
 </td>
 </tr>
 </tbody>
@@ -772,6 +825,30 @@ by passing the orginal email code to <code class="docutils literal"><span class=
 </dd></dl>
 
 <dl class="method">
+<dt id="request_reset">
+<code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_reset</code><span class="sig-paren">(</span><em>email</em><span class="sig-paren">)</span><a class="headerlink" href="#request_reset" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Request to begin the two factor authentication reset process.</div>
+<div class="line">Note that this locks the user&#8217;s wallet for a fixed period of time (currently 12 months)</div>
+<div class="line">plus the nlocktime of any outstanding balance in the wallet. For example, if the wallet</div>
+<div class="line">has a UTXO with nlocktime 6 months from now, the reset process will lock the wallet for</div>
+<div class="line">18 months.</div>
+<div class="line">Once confirmed a reset request can only be cancelled by a user with access to the</div>
+<div class="line">original two factor authentication (by calling twofactor.cancel_reset).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>email</strong> (<em>String</em>) &#8211; The new email address that the user will use for two factor once the reset period expires</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">{ &#8216;reset_2fa_active&#8217;: Boolean, &#8216;reset_2fa_days_remaining&#8217;: -1, &#8216;reset_2fa_disputed&#8217;: Boolean }</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="request_sms">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">request_sms</code><span class="sig-paren">(</span><span class="optional">[</span><em>action</em><span class="optional">]</span><span class="optional">[</span>, <em>data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#request_sms" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -799,7 +876,13 @@ by passing the orginal email code to <code class="docutils literal"><span class=
 <dt id="set_email">
 <code class="descclassname">com.greenaddress.twofactor.</code><code class="descname">set_email</code><span class="sig-paren">(</span><em>email</em>, <em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#set_email" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Set email address for two factor authentication. Method not available if email 2FA is enabled.</div>
+<div class="line">Set the email address associated with the wallet.</div>
+<div class="line">Sends an email with a confirmation code which should be passed to <a class="reference external" href="#activate_email">activate_email</a></div>
+<div class="line">to complete the operation.</div>
+<div class="line">Note that this does not enable email 2FA - it is possible to set an email address for the</div>
+<div class="line">wallet to receive notifications without enabling it as a 2FA method.</div>
+<div class="line">To enable email 2FA see <a class="reference external" href="#init_enable_email">init_enable_email</a> and <a class="reference external" href="#enable_email">enable_email</a>.</div>
+<div class="line">This method is not available if email 2FA is enabled.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/1c995325106ec6b2eeb24b6029444802bf64e225/static/js/greenwallet/settings/controllers.js#L658">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">

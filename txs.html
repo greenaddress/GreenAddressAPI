@@ -176,9 +176,10 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 <blockquote>
 <div><dl class="method">
 <dt id="change_memo">
-<code class="descclassname">com.greenaddress.txs.</code><code class="descname">change_memo</code><span class="sig-paren">(</span><em>txhash</em>, <em>memo</em><span class="sig-paren">)</span><a class="headerlink" href="#change_memo" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.txs.</code><code class="descname">change_memo</code><span class="sig-paren">(</span><em>txhash</em>, <em>memo</em><span class="optional">[</span>, <em>memo_type</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#change_memo" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Edit already existing transaction&#8217;s memo.</div>
+<div class="line">Set or edit a transactions associated memo.</div>
+<div class="line">If the transaction already has a payment request memo, the call will fail.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -186,7 +187,9 @@ a parameter that can be attached to a transaction, that mandates a minimal time,
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>txhash</strong> (<em>string</em>) &#8211; Transaction hash, hex-encoded.</li>
-<li><strong>memo</strong> (<em>string</em>) &#8211; New memo.</li>
+<li><strong>memo</strong> (<em>string</em>) &#8211; Memo to associate with the transaction.</li>
+<li><strong>memo_type</strong> (<em>string</em>) &#8211; Either &#8220;user&#8221; for a user entered memo or &#8220;payreq&#8221;
+to add a BIP 70 payment request memo (which cannot be updated once set).</li>
 </ul>
 </td>
 </tr>

@@ -170,6 +170,55 @@ This module allows the user to authenticate against the server.</p>
 <span class="target" id="module-login"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.login</span></code></p>
 <blockquote>
 <div><dl class="method">
+<dt id="ack_system_message">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">ack_system_message</code><span class="sig-paren">(</span><em>message_id</em>, <em>message_hash</em>, <em>message_sig</em><span class="sig-paren">)</span><a class="headerlink" href="#ack_system_message" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Acknowledge a system message returned from login.get_system_message.</div>
+<div class="line"><br /></div>
+<div class="line">Once acknowledged, messages will not be returned in login data upon login.</div>
+<div class="line"><br /></div>
+<div class="line">The hash of the message must be the sha256d hash of the utf-8 encoded message text.</div>
+<div class="line">For example, given a message &#8220;test message&#8221; the hash can be calculated with the following</div>
+<div class="line">python code:</div>
+<div class="line">&gt;&gt;&gt; import wallycore as wally</div>
+<div class="line">&gt;&gt;&gt; messageHash = wally.sha256d(&#8216;test message&#8217;.encode(&#8216;utf-8&#8217;))</div>
+<div class="line">&gt;&gt;&gt; wally.hex_from_bytes(messageHash) # Print the hash</div>
+<div class="line">&#8216;251afd3f20ab4a307ecd50f3f84fd34097f2888505642dacce06c6ffa048ccf0&#8217;</div>
+<div class="line"><br /></div>
+<div class="line">The signature must be generated using a private key derived from the wallet extended</div>
+<div class="line">private key. The path of the signing key is:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[M/0x4741b11e/6/X]</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">M is the master key for the wallet and 0x4741b11e/6 indicates a message signing key. X</div>
+<div class="line">is derived by interpreting the last 4 bytes of the binary sha256d message hash as a 32 bit</div>
+<div class="line">big-endian unsigned integer with the higest bit cleared. For the message &#8216;test message&#8217;</div>
+<div class="line">above, this results in a path of [M/0x4741b11e/6/0xa048ccf0].</div>
+<div class="line"><br /></div>
+<div class="line">The signature must be generated using using the &#8216;Bitcoin Signed Message:&#8217; convention</div>
+<div class="line">with the message set to the hex sha256d message hash.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>message_id</strong> (<em>Number</em>) &#8211; Identifies the message being acknowledged</li>
+<li><strong>message_hash</strong> (<em>String</em>) &#8211; Hex encoded hash of message as described below</li>
+<li><strong>message_sig</strong> (<em>String</em>) &#8211; Hex encoded DER signature as described below</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="authenticate">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>signature_hex</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -320,6 +369,33 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 </dd></dl>
 
 <dl class="method">
+<dt id="get_system_message">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">get_system_message</code><span class="sig-paren">(</span><em>message_id</em><span class="sig-paren">)</span><a class="headerlink" href="#get_system_message" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Get a system message and the id of the next message, if any.</div>
+<div class="line"><br /></div>
+<div class="line">The return value has the following fields:</div>
+<div class="line"><br /></div>
+<div class="line">message: utf-8 encoded message text, or blank if there are none remaining</div>
+<div class="line">message_id: Message id of the returned message, or 0 if there are none remaining</div>
+<div class="line">next_message_id: Message id of next message, or 0 if there are none remaining</div>
+<div class="line"><br /></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message_id</strong> (<em>Number</em>) &#8211; Identifies a message to get. This value comes from either the
+next_system_message_id field in the user&#8217;s login data, or from
+the next_message_id returned by a previous call to this API.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">JSON</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="get_trezor_challenge">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">get_trezor_challenge</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>hw_nlocktime_support</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_trezor_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
@@ -366,11 +442,11 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <div class="line">are using the latest API version and support segwit addresses.</div>
 <div class="line"><br /></div>
 <div class="line">gait_path_hex is a 32 byte, hex encoded string which the service uses</div>
-<div class="line">when deriving server side keys for the users transactions. In order</div>
+<div class="line">when deriving server side keys for the user&#8217;s transactions. In order</div>
 <div class="line">to ensure that the path is unique, and to enable correct recovery of</div>
 <div class="line">funds, this data must be produced using the following algorithm:</div>
 <div class="line"><br /></div>
-<div class="line">1. Compute the master BIP 32 key from the users mnemonics (M)</div>
+<div class="line">1. Compute the master BIP 32 key from the user&#8217;s mnemonics (M)</div>
 <div class="line">2. Derive a child key from M using child number 0x80004741 (M&#8217;)</div>
 <div class="line">3. Note that the child derivation above is a BIP32 hardened deriviation</div>
 <div class="line">4. Create a binary buffer from hex &#8216;477265656e416464726573732e69742048442077616c6c65742070617468&#8217; (S)</div>
@@ -439,8 +515,8 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="set_currency">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_currency</code><span class="sig-paren">(</span><em>currency</em><span class="sig-paren">)</span><a class="headerlink" href="#set_currency" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Change the users pricing source currency.</div>
-<div class="line">Note that changing the currency resets the users spending limits if</div>
+<div class="line">Change the user&#8217;s pricing source currency.</div>
+<div class="line">Note that changing the currency resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L504">JS Example</a></div>
 </div>
@@ -464,8 +540,8 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <dt id="set_exchange">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_exchange</code><span class="sig-paren">(</span><em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_exchange" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Change the users pricing source.</div>
-<div class="line">Note that changing the exchange resets the users spending limits if</div>
+<div class="line">Change the user&#8217;s pricing source.</div>
+<div class="line">Note that changing the exchange resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
 <div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L528">JS Example</a></div>
 </div>
@@ -522,7 +598,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_pricing_source</code><span class="sig-paren">(</span><em>currency</em>, <em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pricing_source" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the pricing source and currency.</div>
-<div class="line">Note that changing the pricing source resets the users spending limits if</div>
+<div class="line">Note that changing the pricing source resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
 <div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L464">JS Example</a></div>
 </div>

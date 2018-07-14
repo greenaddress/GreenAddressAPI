@@ -251,51 +251,20 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <dt id="prepare_payreq">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_payreq</code><span class="sig-paren">(</span><em>value</em>, <em>data</em><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_payreq" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Prepare BIP70 payment protocol transaction.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L573">JS Example</a></div>
-<div class="line">Reference:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#term-payment-protocol">https://bitcoin.org/en/developer-guide#term-payment-protocol</a></div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
+<div class="line">Users should construct complete transactions client side and</div>
+<div class="line">sign/send them using sign_raw_tx/send_raw_tx.</div>
 </div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>Number</strong> (<em>value</em>) &#8211; satoshis</li>
-<li><strong>data</strong> &#8211; data returned from process_bip0070_url</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">same as prepare_tx</p>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="prepare_redeposit">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_redeposit</code><span class="sig-paren">(</span><em>txouts</em><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_redeposit" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Prepare nLockTime redeposit.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L287">JS Example</a></div>
-<div class="line">Reference guide:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#locktime-and-sequence-number">https://bitcoin.org/en/developer-guide#locktime-and-sequence-number</a></div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
+<div class="line">Users should construct complete transactions client side and</div>
+<div class="line">sign/send them using sign_raw_tx/send_raw_tx.</div>
 </div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Array</strong> (<em>txouts</em>) &#8211; [[txhash, out_n], ...]</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">same as prepare_tx</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -327,98 +296,25 @@ only GreenAddress transactions are considered.</li>
 <dt id="prepare_tx">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_tx</code><span class="sig-paren">(</span><em>value</em>, <em>rcpt_ad</em>, <em>add_fee</em>, <em>priv_data</em><span class="sig-paren">)</span><a class="headerlink" href="#prepare_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Prepare transaction.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L398">JS Example</a></div>
-<div class="line">References:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#standard-transactions">https://bitcoin.org/en/developer-guide#standard-transactions</a></div>
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#non-standard-transactions">https://bitcoin.org/en/developer-guide#non-standard-transactions</a></div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
+<div class="line">Users should construct complete transactions client side and</div>
+<div class="line">sign/send them using sign_raw_tx/send_raw_tx.</div>
 </div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>value</strong> (<em>String</em>) &#8211; satoshis as string.</li>
-<li><strong>rcpt_ad</strong> (<em>String</em>) &#8211; recipient address.</li>
-<li><strong>add_fee</strong> (<em>String</em>) &#8211; &#8216;sender&#8217; or &#8216;recipient&#8217; pays the fee</li>
-<li><strong>priv_data</strong> &#8211; external private transaction and other additional data
-{external_private: Boolean,
-pointer: Number,
-pubkey: bytes array,
-instant: Boolean,
-memo: String,
-minimize_inputs: Boolean}</li>
-<li><strong>priv_data.minimize_inputs</strong> &#8211; whether to optimize for minimum number of inputs
-instead of nLockTime expiring</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">prep_info dictionary</p>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-javascript"><div class="highlight"><pre><span></span>{
-    &#39;tx&#39;: hexencoded binary unsigned transaction without signatures in redeem scripts,
-    &#39;prev_outputs&#39;: [
-        {
-            &#39;script&#39;: hex,
-            &#39;value&#39;: satoshis,
-            &#39;branch&#39;: branch of users&#39; pubkey in the redeem script,
-            &#39;pointer&#39;: pointer in the branch,
-            &#39;subaccount&#39;: Number
-        }
-    ],
-    &#39;change_pointer&#39;: Number,
-    &#39;change_type&#39;: String,
-    &#39;requires_2factor&#39;: Boolean
-}
-</pre></div>
-</div>
-<p>The &#8216;tx&#8217; returned contains the original unhashed prev_output script in its redeem script
-for each input. This original script can be used to generate the P2SH output script
-at the js side. This P2SH prev output script is needed to generate a signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="process_bip0070_url">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">process_bip0070_url</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#process_bip0070_url" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Return BIP70 payment request data</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js">JS Example</a></div>
-<div class="line">Reference:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#term-payment-protocol">https://bitcoin.org/en/developer-guide#term-payment-protocol</a></div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
+<div class="line">Users should construct complete transactions client side and</div>
+<div class="line">sign/send them using sign_raw_tx/send_raw_tx.</div>
 </div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>String</strong> (<em>url</em>) &#8211; payment request URL</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">{
-&#8216;outputs&#8217;: [{&#8216;amount&#8217;: satoshis, &#8216;address&#8217;: String}, ...],
-&#8216;merchant_data&#8217;: hex,
-&#8216;payment_url&#8217;: String,
-&#8216;payreq_url&#8217;: String,
-&#8216;payreq&#8217;: hex,
-&#8216;memo&#8217;: String,
-&#8216;requires_instant&#8217;: Boolean}<ul class="simple">
-<li>requires_instant field is deprecated, and BIP70 instant payments extension is still
-pending finalisation.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="send_raw_tx">
-<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_raw_tx" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="optional">[</span>, <em>priv_data</em><span class="optional">]</span><span class="optional">[</span>, <em>return_tx</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_raw_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Sign and send a hex-encoded transaction.</div>
 </div>
@@ -461,15 +357,18 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 <li><strong>priv_data</strong> (<em>dict</em>) &#8211; <p>optional additional transaction data - keys:</p>
 <div class="line-block">
 <div class="line">- <strong>instant</strong>: boolean</div>
-<div class="line">- <strong>memo</strong>: string</div>
+<div class="line">- <strong>payreq</strong>: hex encoded payment request for BIP 70 payments</div>
+<div class="line">- <strong>memo</strong>: string, will override the memo from &#8216;payreq&#8217; if present</div>
 </div>
 </li>
+<li><strong>boolean</strong> (<em>return_tx</em>) &#8211; True if the signed tx should be returned</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>dict - keys:</p>
 <div class="line-block">
 <div class="line"><strong>txhash</strong>: resulting tx hash</div>
+<div class="line"><strong>tx</strong>: hex encoded resulting tx, only returned if return_tx is true</div>
 <div class="line">[<strong>new_limit</strong>]: optional amount of new spending limit after the transaction</div>
 </div>
 </p>
@@ -483,31 +382,10 @@ user&#8217;s spending limit (not requiring 2FA):</div>
 <dt id="send_tx">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">send_tx</code><span class="sig-paren">(</span><em>signatures</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#send_tx" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">The transaction must have been prepared using prepare_tx and signed client side.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L670">JS Example</a></div>
-<div class="line">Reference:</div>
-<div class="line-block">
-<div class="line"><a class="reference external" href="https://bitcoin.org/en/developer-guide#signature-hash-types">https://bitcoin.org/en/developer-guide#signature-hash-types</a></div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
+<div class="line">Users should construct complete transactions client side and</div>
+<div class="line">sign/send them using sign_raw_tx/send_raw_tx.</div>
 </div>
-</div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>signatures</strong> (<em>Array</em>) &#8211; list of hex-encoded user signatures in the same order as prev_outputs.</li>
-<li><strong>twofac_data</strong> &#8211; (code requested with action=&#8217;send_tx&#8217;) {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">hex encoded txhash.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
