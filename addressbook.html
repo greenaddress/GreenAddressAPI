@@ -173,7 +173,6 @@ and synchronize them between social accounts.</p>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">add_entry</code><span class="sig-paren">(</span><em>address</em>, <em>name</em>, <em>rating</em><span class="sig-paren">)</span><a class="headerlink" href="#add_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Add a new entry to the addressbook. Does not allow repeated addresses.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L753">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -201,7 +200,6 @@ and synchronize them between social accounts.</p>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">delete_entry</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#delete_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Delete addressbook entry.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L720">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -220,7 +218,6 @@ and synchronize them between social accounts.</p>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">disable_sync</code><span class="sig-paren">(</span><em>party</em><span class="sig-paren">)</span><a class="headerlink" href="#disable_sync" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Disable linking of a third-party account.</div>
-<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L962">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -241,7 +238,6 @@ and synchronize them between social accounts.</p>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">edit_entry</code><span class="sig-paren">(</span><em>address</em>, <em>name</em>, <em>rating</em><span class="sig-paren">)</span><a class="headerlink" href="#edit_entry" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change name and rating of an address.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L735">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -270,7 +266,6 @@ and synchronize them between social accounts.</p>
 <dd><div class="line-block">
 <div class="line">Return previously generated addresses in batches of 10 at a time.
 in descending address pointer order.</div>
-<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/receive/controllers.js#L8">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -298,7 +293,7 @@ pointer from the returned page to fetch the next page.</li>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">get_sync_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_sync_status" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return the linking status of third-party accounts and the logged in GreenAddress Wallet. With this API you can check which third-party accounts are linked, and if a custom login is enabled.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L1031">JS Example</a></div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/login_watch_only_v2.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -315,10 +310,17 @@ pointer from the returned page to fetch the next page.</li>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">read_all</code><span class="sig-paren">(</span><em>hashed</em><span class="sig-paren">)</span><a class="headerlink" href="#read_all" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Read all entries from the addressbook.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1770">JS Example</a></div>
 </div>
-<p>:param hashed Either a SHA-1 hash previously returned by this call or &#8216;skip&#8217; to return the current values without hashing. If the addressbook contents have not changed since the hash was generated, an empty list is returned. Callers can optionally use this to determine when nothing has changed. The first time this function is called, pass an empty string as the hash to have the initial hash computed and returned.
-:return: <code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>hashed</strong> &#8211; Either a SHA-1 hash previously returned by this call or &#8216;skip&#8217; to return the current values without hashing. If the addressbook contents have not changed since the hash was generated, an empty list is returned. Callers can optionally use this to determine when nothing has changed. The first time this function is called, pass an empty string as the hash to have the initial hash computed and returned.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="docutils literal"><span class="pre">[['name',</span> <span class="pre">'b58_address',</span> <span class="pre">rating:Number],</span> <span class="pre">...]</span></code></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -326,7 +328,7 @@ pointer from the returned page to fetch the next page.</li>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">sync_custom</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#sync_custom" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Define and enable custom login for the current account. Available in user full access mode only, it enables watch-only mode.</div>
-<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/signup.min.js#L245">JS Example</a></div>
+<div class="line">Check usages on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/login_watch_only_v2.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -353,7 +355,6 @@ pointer from the returned page to fetch the next page.</li>
 <code class="descclassname">com.greenaddress.addressbook.</code><code class="descname">user_has_wallet</code><span class="sig-paren">(</span><em>usertype</em>, <em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#user_has_wallet" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Check if a contact has a wallet on GreenAddress.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/send/controllers.js#L524">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

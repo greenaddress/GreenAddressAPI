@@ -184,7 +184,6 @@ on GA servers, and every client should have a different PIN.</p>
 <code class="descclassname">com.greenaddress.pin.</code><code class="descname">change_pin_login</code><span class="sig-paren">(</span><em>pin</em>, <em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#change_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change the PIN for given pin_ident</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1347">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -214,7 +213,6 @@ on GA servers, and every client should have a different PIN.</p>
 <code class="descclassname">com.greenaddress.pin.</code><code class="descname">get_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_devices" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">List all pin devices in this wallet sorted by device_name.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L835">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -232,9 +230,10 @@ on GA servers, and every client should have a different PIN.</p>
 <dt id="get_password">
 <code class="descclassname">com.greenaddress.pin.</code><code class="descname">get_password</code><span class="sig-paren">(</span><em>pin</em>, <em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#get_password" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">If pin and pin_ident will match, the API will return the paired password.</div>
-<div class="line">PIN for the given device is disabled on GreenAddress servers after 3 failed logins.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/signuplogin/controllers.js#L335">JS Example</a></div>
+<div class="line">Return the password associated with the given PIN and PIN identifier for</div>
+<div class="line">the user&#8217;s wallet.</div>
+<div class="line">If the passed PIN does not match the stored PIN, then after 3</div>
+<div class="line">incorrect calls the service will permanently delete the PIN password.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -242,7 +241,7 @@ on GA servers, and every client should have a different PIN.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>pin</strong> (<em>string</em>) &#8211; The previously set device PIN</li>
-<li><strong>pin_ident</strong> (<em>string</em>) &#8211; The device name</li>
+<li><strong>pin_ident</strong> (<em>string</em>) &#8211; The PIN identifier</li>
 </ul>
 </td>
 </tr>
@@ -264,7 +263,6 @@ on GA servers, and every client should have a different PIN.</p>
 <code class="descclassname">com.greenaddress.pin.</code><code class="descname">remove_all_pin_logins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#remove_all_pin_logins" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove all PIN logins previously set. After calling this method, user will not be able anymore to do PIN login from any device he previously paired.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L906">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -283,7 +281,6 @@ on GA servers, and every client should have a different PIN.</p>
 <code class="descclassname">com.greenaddress.pin.</code><code class="descname">remove_pin_login</code><span class="sig-paren">(</span><em>pin_ident</em><span class="sig-paren">)</span><a class="headerlink" href="#remove_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove the PIN login for given pin_ident</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L857">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -301,22 +298,26 @@ on GA servers, and every client should have a different PIN.</p>
 
 <dl class="method">
 <dt id="set_pin_login">
-<code class="descclassname">com.greenaddress.pin.</code><code class="descname">set_pin_login</code><span class="sig-paren">(</span><em>pin</em>, <em>device_name</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">com.greenaddress.pin.</code><code class="descname">set_pin_login</code><span class="sig-paren">(</span><em>pin</em>, <em>device_name</em><span class="optional">[</span>, <em>return_password</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#set_pin_login" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Generate a pin_ident and send it back. This pin_ident is used for client side AES encryption of the seed and mnemonic.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L844">JS Example</a></div>
+<div class="line">Generate a new PIN password and associate it with a new PIN identifier.</div>
+<div class="line">The returned PIN identifier is passed to pin.get_password along with the PIN</div>
+<div class="line">to retrieve the password and allow the client&#8217;s stored PIN to be decrypted.</div>
+<div class="line">Callers must not store the PIN password. Once used to decrypt any data it should</div>
+<div class="line">be securely erased and re-fetched from the server on demand.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>pin</strong> (<em>String</em>) &#8211; with a few characters (max 15 characters)</li>
-<li><strong>device_name</strong> (<em>String</em>) &#8211; human readable string (max 100 characters)</li>
+<li><strong>pin</strong> (<em>String</em>) &#8211; The user&#8217;s chosen PIN (max 15 characters)</li>
+<li><strong>device_name</strong> (<em>String</em>) &#8211; A human readable string identifying the wallet device (max 100 characters)</li>
+<li><strong>return_password</strong> (<em>Boolean</em>) &#8211; Whether to append &#8216;;&#8217; and the pin password to the returned pin_ident</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pin_ident - The pin unique ID</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pin_ident - The pin identifier, optionally followed by &#8216;;&#8217; and the PIN password</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">String</p>

@@ -194,7 +194,7 @@ This module allows the user to authenticate against the server.</p>
 </div>
 <div class="line">M is the master key for the wallet and 0x4741b11e/6 indicates a message signing key. X</div>
 <div class="line">is derived by interpreting the last 4 bytes of the binary sha256d message hash as a 32 bit</div>
-<div class="line">big-endian unsigned integer with the higest bit cleared. For the message &#8216;test message&#8217;</div>
+<div class="line">big-endian unsigned integer with the highest bit cleared. For the message &#8216;test message&#8217;</div>
 <div class="line">above, this results in a path of [M/0x4741b11e/6/0xa048ccf0].</div>
 <div class="line"><br /></div>
 <div class="line">The signature must be generated using using the &#8216;Bitcoin Signed Message:&#8217; convention</div>
@@ -223,8 +223,7 @@ This module allows the user to authenticate against the server.</p>
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>signature_hex</em>, <em>logout</em><span class="optional">[</span>, <em>path_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>device_id</em><span class="optional">]</span><span class="optional">[</span>, <em>user_agent</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#authenticate" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Authenticate the user by ensuring their signature of the login challenge is valid.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1180">JS Example</a></div>
-<div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/gacommon/utils.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -247,7 +246,7 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;appearance&#8217;: JSON, &#8216;currency&#8217;: String, &#8216;exchange&#8217;: String,
 &#8216;receiving_id&#8217;: String, &#8216;expired_deposits&#8217;: Array, &#8216;nlocktime_blocks&#8217;: Number,
-&#8216;cache_password&#8217;: String, &#8216;gait_path&#8217;: hex,
+&#8216;csv_blocks&#8217;: Number, &#8216;cache_password&#8217;: String, &#8216;gait_path&#8217;: hex,
 &#8216;privacy&#8217;: {...},
 &#8216;limits&#8217;: {&#8216;is_fiat&#8217;: Boolean, &#8216;total&#8217;: satoshis, &#8216;per_tx&#8217;: satoshis},
 &#8216;earliest_key_creation_time&#8217;: Number}</p>
@@ -262,7 +261,6 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">available_currencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#available_currencies" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return a list of allowed currencies for all available pricing sources.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L411">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -280,7 +278,6 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">change_settings</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#change_settings" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Change user settings. Used for privacy settings and transaction limits.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/d74e6856a19788751cba93251b1c30718aaf0a5b/www/greenaddress.it/static/js/greenwallet/settings/controllers.js#L669">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -335,7 +332,6 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">get_challenge</code><span class="sig-paren">(</span><em>address</em><span class="sig-paren">)</span><a class="headerlink" href="#get_challenge" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return a challenge that must be signed for a successful authentication.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1164">JS Example</a> or take a look at the <a class="reference external" href="examples/mnemonic_python_login.html">Python mnemonic login example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -356,7 +352,6 @@ warned about having &#8220;logged in elsewhere&#8221; if the same device forced 
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">get_spending_limits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#get_spending_limits" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return the user&#8217;s current spending limits.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L675">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -401,8 +396,7 @@ the next_message_id returned by a previous call to this API.</td>
 <dd><div class="line-block">
 <div class="line">Generate and return a Trezor challenge that must be signed for a successful authentication.</div>
 <div class="line">A string &#8216;<code class="docutils literal"><span class="pre">greenaddress.it</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">login</span> <span class="pre">ABCDE</span></code>&#8216; (&#8216;greenaddress.it&#8217; + 6 spaces + the returned random token) must be signed to proceed with authentication.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/e43070f079ec04e2c9fb0694823b7b84f7224dfb/www/greenaddress.it/static/js/greenwallet/services.js#L1230">JS Example</a></div>
-<div class="line">Or see our simple <a class="reference external" href="examples/mnemonic_python_login.html">Python Login example</a></div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/gacommon/utils.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -453,6 +447,7 @@ the next_message_id returned by a previous call to this API.</td>
 <div class="line">5. Append M&#8217;.chaincode and M&#8217;.pubkey into binary buffer (B)</div>
 <div class="line">6. Compute HMAC-SHA512(S, B)</div>
 <div class="line">7. The result of step 6 is the wallet path, gait_path_hex.</div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/login_register.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -478,7 +473,6 @@ the next_message_id returned by a previous call to this API.</td>
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">remove_account</code><span class="sig-paren">(</span><em>twofac_data</em><span class="sig-paren">)</span><a class="headerlink" href="#remove_account" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Remove the account</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L613">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -499,13 +493,43 @@ the next_message_id returned by a previous call to this API.</td>
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_appearance</code><span class="sig-paren">(</span><em>appearance</em><span class="sig-paren">)</span><a class="headerlink" href="#set_appearance" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Update appearance settings.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L165">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>appearance</strong> (<em>JSON</em>) &#8211; {&#8220;sound&#8221;: Boolean, &#8220;altimeout&#8221;: Number, &#8220;pgp&#8221;: String, &#8220;unit&#8221;: String (&#8216;BTC&#8217;, &#8216;mBTC&#8217;, &#8216;µBTC&#8217;, &#8216;bits&#8217; }</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">success</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="set_csvtime">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_csvtime</code><span class="sig-paren">(</span><em>csvtime</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#set_csvtime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Set the number of blocks after which CSV transactions become</div>
+<div class="line">spendable without two factor authentication.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>csvtime Number</strong> (<em>Number</em>) &#8211; Number of blocks</li>
+<li><strong>twofac_data</strong> (<em>Array</em>) &#8211; Two factor authentication data. {method: &#8216;gauth&#8217;|&#8217;email&#8217;|&#8217;sms&#8217;|&#8217;phone&#8217;, code: String}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Boolean</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -518,7 +542,6 @@ the next_message_id returned by a previous call to this API.</td>
 <div class="line">Change the user&#8217;s pricing source currency.</div>
 <div class="line">Note that changing the currency resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L504">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -543,7 +566,6 @@ the next_message_id returned by a previous call to this API.</td>
 <div class="line">Change the user&#8217;s pricing source.</div>
 <div class="line">Note that changing the exchange resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L528">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -570,8 +592,10 @@ the next_message_id returned by a previous call to this API.</td>
 <dt id="set_nlocktime">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">set_nlocktime</code><span class="sig-paren">(</span><em>nlocktime</em><span class="optional">[</span>, <em>twofac_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#set_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Set the number of blocks after which nLockTime transactions become spendable.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L337">JS Example</a></div>
+<div class="line">Set the number of blocks after which nLockTime transactions become</div>
+<div class="line">spendable without two factor authentication. When this function</div>
+<div class="line">succeeds, if the user has an email address associated with the</div>
+<div class="line">wallet, an updated nlocktimes.zip file will be sent via email.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -600,7 +624,6 @@ the next_message_id returned by a previous call to this API.</td>
 <div class="line">Change the pricing source and currency.</div>
 <div class="line">Note that changing the pricing source resets the user&#8217;s spending limits if</div>
 <div class="line">any are set in fiat.</div>
-<div class="line">Check the usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L464">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -623,6 +646,11 @@ the next_message_id returned by a previous call to this API.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="set_pricing_source_v2">
+<code class="descclassname">com.greenaddress.login.</code><code class="descname">set_pricing_source_v2</code><span class="sig-paren">(</span><em>currency</em>, <em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#set_pricing_source_v2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="watch_only">
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">watch_only</code><span class="sig-paren">(</span><em>token_type</em>, <em>token</em>, <em>logout</em><span class="sig-paren">)</span><a class="headerlink" href="#watch_only" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -632,8 +660,7 @@ the next_message_id returned by a previous call to this API.</td>
 <code class="descclassname">com.greenaddress.login.</code><code class="descname">watch_only_v2</code><span class="sig-paren">(</span><em>token_type</em>, <em>token</em>, <em>user_agent</em><span class="sig-paren">)</span><a class="headerlink" href="#watch_only_v2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Log in to watch-only mode. It is limited to 100 watch only logins per day.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L1338">JS Example</a></div>
-<div class="line">Or see our Python <a class="reference external" href="examples/custom_python_login.html">custom login example</a></div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/login_watch_only_v2.py">Python Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

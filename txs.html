@@ -208,7 +208,6 @@ to add a BIP 70 payment request memo (which cannot be updated once set).</li>
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">create_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em>, <em>pubkey_hex</em>, <em>chaincode_hex</em><span class="optional">[</span>, <em>backup_pubkey_hex</em><span class="optional">]</span><span class="optional">[</span>, <em>backup_chaincode_hex</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#create_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Create a new subaccount. Available only in full control mode.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1195">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -238,13 +237,23 @@ to add a BIP 70 payment request memo (which cannot be updated once set).</li>
 <dt id="get_all_unspent_outputs">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_all_unspent_outputs</code><span class="sig-paren">(</span><span class="optional">[</span><em>confs</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>ga_asset_id</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_all_unspent_outputs" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Return a list of all user&#8217;s unspent transaction hashes and output numbers.</div>
+<div class="line">Return a list of information on all UTXO&#8217;s in a given subaccount.</div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>confs</strong> (<em>number</em>) &#8211; Minimum number of confirmations required (default=1)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>confs</strong> (<em>number</em>) &#8211; Minimum number of confirmations required (default=1)</li>
+<li><strong>subaccount</strong> (<em>number</em>) &#8211; The subaccount to get UTXO&#8217;s for (default=0)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">{&#8216;block_height&#8217;: Number, &#8216;txhash&#8217;: String,
+&#8216;pt_idx&#8217;: Number, &#8216;subaccount&#8217;: Number,
+&#8216;pointer&#8217;: Number, &#8216;script_type&#8217;: Number,
+&#8216;subtype&#8217;: Number, &#8216;value&#8217;: Number}</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -255,7 +264,6 @@ to add a BIP 70 payment request memo (which cannot be updated once set).</li>
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="optional">[</span>, <em>asset</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return the sum of unspent outputs destined to user&#8217;s wallet.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCordova/blob/dc78e533e857e726e26cc7ff0e4334962452ea05/www/greenaddress.it/static/js/greenwallet/controllers.js#L119">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -280,22 +288,8 @@ See get_balance_by_addr for instant confirmations support.</li>
 <dt id="get_balance_by_addr">
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_balance_by_addr</code><span class="sig-paren">(</span><em>address</em><span class="optional">[</span>, <em>confs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_balance_by_addr" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
-<div class="line">Return the sum of unspent outputs destined to given user&#8217;s address.</div>
+<div class="line">Deprecated, this call will be removed in the near future.</div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>address</strong> (<em>number</em>) &#8211; base58 encoded address</li>
-<li><strong>confs</strong> (<em>number</em>) &#8211; number of required confirmations. <strong>NOTE</strong>:
-GreenAddress instant confirmed transactions will be considered to have this number of confirmations, no matter how large it is.
-For example, given confs=1000000, this call will return balance of user&#8217;s instant confirmation outputs.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -303,7 +297,6 @@ For example, given confs=1000000, this call will return balance of user&#8217;s 
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_list_v2</code><span class="sig-paren">(</span><span class="optional">[</span><em>page_id</em><span class="optional">]</span><span class="optional">[</span>, <em>search_query</em><span class="optional">]</span><span class="optional">[</span>, <em>sort_by</em><span class="optional">]</span><span class="optional">[</span>, <em>date_range</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_prev_data</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_list_v2" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return a list of user&#8217;s transactions. Accept multiple parameters.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/94d01ff7a6ddb96a62b4b066f7464354e9710086/static/js/greenwallet/services.js#L382">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -333,7 +326,6 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_payment_request</code><span class="sig-paren">(</span><em>txhash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_payment_request" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">BIP70 payment protocol. Return the payment request for the specified transaction.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L94">JS Example</a></div>
 <div class="line">Please refer to:</div>
 </div>
 <ul class="simple">
@@ -355,9 +347,20 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">get_raw_output</code><span class="sig-paren">(</span><em>txhash_hex</em><span class="sig-paren">)</span><a class="headerlink" href="#get_raw_output" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return the hex-encoded raw transaction data for a user transaction.</div>
+<div class="line">If the transaction does not exist or does not involve the user, an</div>
+<div class="line">empty string is returned.</div>
 <div class="line"><br /></div>
-<div class="line">If the transaction does not exist or does not involve the user return an empty string.</div>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The hex-encoded transaction or an empty string.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -377,7 +380,6 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <div class="line">Return a voucher&#8217;s message. No authentication is needed against this public API.</div>
 <div class="line">An anonymous user can request the message attached to his voucher providing the voucher pubkey received (&#8216;pubkey&#8217;).</div>
 <div class="line">Redeem is also available with the hash of the bip38 encrypted private key (&#8216;hash&#8217;).</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L63">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -404,7 +406,6 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">rename_subaccount</code><span class="sig-paren">(</span><em>pointer</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#rename_subaccount" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Rename already existing subaccount. Doesn&#8217;t accept duplicates.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L1219">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -432,7 +433,6 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <dd><div class="line-block">
 <div class="line">Request an email with the user&#8217;s nLockTime transactions.</div>
 <div class="line">Available only in full control mode.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L399">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -451,13 +451,12 @@ Also accepts string the &#8216;all&#8217;. If not specified returns Main account
 <code class="descclassname">com.greenaddress.txs.</code><code class="descname">upcoming_nlocktime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#upcoming_nlocktime" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return upcoming nLocktime signed transactions. Available only in full control mode.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/settings/controllers.js#L384">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;cur_block&#8217;: Int, &#8216;list&#8217;: [{&#8216;nlocktime_at&#8217;: Int, &#8216;output_n&#8217;: Int, &#8216;txhash&#8217;: String}, ...]}</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">{&#8216;cur_block&#8217;: Int, &#8216;list&#8217;: [{&#8216;nlocktime_at&#8217;: Int, &#8216;output_n&#8217;: Int, &#8216;txhash&#8217;: String, &#8216;locktype&#8217;: Int}, ...]}</td>
 </tr>
 </tbody>
 </table>

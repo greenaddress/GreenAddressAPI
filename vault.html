@@ -170,11 +170,32 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <span class="target" id="module-vault"></span><p><code class="docutils literal"><span class="pre">com.greenaddress.vault</span></code></p>
 <blockquote>
 <div><dl class="method">
+<dt id="broadcast_raw_tx">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">broadcast_raw_tx</code><span class="sig-paren">(</span><em>rawtx_hex</em><span class="sig-paren">)</span><a class="headerlink" href="#broadcast_raw_tx" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Broadcasts a hex-encoded fully signed transaction.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rawtx_hex</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the transaction
+to broadcast.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">transaction hash hex</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">String</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="fund">
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="optional">[</span>, <em>return_pointer</em><span class="optional">]</span><span class="optional">[</span>, <em>addr_type</em><span class="optional">]</span><span class="optional">[</span>, <em>confidential</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#fund" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Generate and return hex encoded script the user can pay to. This call is limited to 1000 per day for each wallet.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/5e79817e8053ddd0d4aa0a4878377e7a9242f84f/static/js/greenwallet/receive/controllers.js#L188">JS Example</a> or look at our <a class="reference external" href="examples/custom_python_login.html">Python example</a></div>
+<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/gaexamples/blob/master/vault_fund.py">Python Example</a></div>
 <div class="line"><br /></div>
 <div class="line">References:</div>
 <div class="line-block">
@@ -188,7 +209,7 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>subaccount</strong> (<em>Int</em>) &#8211; If not specified default is main account.</li>
 <li><strong>return_pointer</strong> (<em>boolean</em>) &#8211; Whether to return BIP32 pointer number in addition to the script (default=false)</li>
-<li><strong>addr_type</strong> (<em>String</em>) &#8211; Address type - either &#8216;p2sh&#8217; or &#8216;p2wsh&#8217;</li>
+<li><strong>addr_type</strong> (<em>String</em>) &#8211; The type of addresses desired, p2sh, p2wsh or csv.</li>
 <li><strong>confidential</strong> (<em>bool</em>) &#8211; Deprecated - must be False</li>
 </ul>
 </td>
@@ -214,7 +235,6 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">fund_receiving_id</code><span class="sig-paren">(</span><em>receiving_id</em><span class="sig-paren">)</span><a class="headerlink" href="#fund_receiving_id" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return a P2SH hash that anyone can pay to given receiving_id.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/f1c2574fa971747e5eb77185bff1c594a9cbc532/static/js/greenwallet/controllers.js#L191">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -235,13 +255,30 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">get_next_private_derived_pointer</code><span class="sig-paren">(</span><span class="optional">[</span><em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#get_next_private_derived_pointer" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Return next unused EXTERNAL branch private key pointer.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/78d04615ed2ad5bccf1ceadf8bf21769dd28ea91/static/js/greenwallet/send/controllers.js#L476">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subaccount</strong> (<em>Number</em>) &#8211; If not specified, default subaccount is Main.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="get_utxos_for_script_hash">
+<code class="descclassname">com.greenaddress.vault.</code><code class="descname">get_utxos_for_script_hash</code><span class="sig-paren">(</span><em>scriptpubkeyhash</em><span class="sig-paren">)</span><a class="headerlink" href="#get_utxos_for_script_hash" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Returns a list of unspent outputs for a given scriptPubKey hash, including any unconfirmed mempool transactions</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>scriptpubkeyhash</strong> (<em>hexstring</em>) &#8211; Raw hex representation of the script pub key sha256 hash</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[{&#8216;height&#8217;: int, &#8216;tx_pos&#8217;: int, &#8216;tx_hash&#8217;: hexstring, &#8216;value&#8217;: number}]</td>
 </tr>
 </tbody>
 </table>
@@ -272,7 +309,6 @@ the BIP32 &#8220;bitcoin addresses&#8221;, but also sign and transmit outgoing t
 <code class="descclassname">com.greenaddress.vault.</code><code class="descname">prepare_sweep_social</code><span class="sig-paren">(</span><em>pubkey</em><span class="optional">[</span>, <em>use_electrum</em><span class="optional">]</span><span class="optional">[</span>, <em>subaccount</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#prepare_sweep_social" title="Permalink to this definition">¶</a></dt>
 <dd><div class="line-block">
 <div class="line">Prepare public key sweeping transaction.</div>
-<div class="line">Check usage on Github: <a class="reference external" href="https://github.com/greenaddress/WalletCrx/blob/4533e3242b363e993632eadaf6a85d6e45913860/static/js/greenwallet/transactions/controllers.js#L23">JS Example</a></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
